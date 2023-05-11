@@ -16,18 +16,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "npx prettier --write ."
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
-  },
-  "prettier": {
-    "printWidth": 90,
-    "bracketSpacing": false,
-    "trailingComma": "es5"
   },
   "browserslist": {
     "production": [

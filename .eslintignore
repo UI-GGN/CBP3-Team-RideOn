@@ -1,3 +1,4 @@
 build
 setupTests.js
-.eslintrc.js
+.eslintrc.json
+.npmrc

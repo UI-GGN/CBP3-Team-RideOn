@@ -2,3 +2,4 @@ build
 setupTests.js
 .eslintrc.json
 .npmrc
+commitlint.config.js

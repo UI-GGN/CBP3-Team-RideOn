@@ -3,3 +3,4 @@
 
 npx prettier --write .
 npm run lint
+npm test -- --watchAll=false

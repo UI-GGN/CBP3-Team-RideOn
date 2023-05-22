@@ -3,4 +3,5 @@
 
 npx prettier --write .
 npm run lint
+npm audit json
 npm test -- --watchAll=false

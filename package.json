@@ -55,6 +55,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
+    "@svgr/webpack": "^8.0.1",
     "eslint": "^8.40.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
@@ -62,6 +63,9 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3"
+  },
+  "overrides": {
+    "@svgr/webpack": "$@svgr/webpack"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

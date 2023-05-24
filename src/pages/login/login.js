@@ -1,12 +1,13 @@
 import React from "react";
 import {Button} from "@mui/material";
 import img from "../../images/login.png";
+import logo from "../../images/Logo.png";
 function Login() {
   return (
     <div>
       <div className="App">
         <header className="App-header">
-          <h1>RideOn</h1>
+          <img src={logo} width={180} />
         </header>
       </div>
       <body>
@@ -26,10 +27,7 @@ function Login() {
             </div>
             <div className="child3">
               <p>To book, track, or manage, click the button below</p>
-              <Button id="button"
-              >
-                login with google
-              </Button>
+              <Button id="button">login with google</Button>
             </div>
           </div>
         </div>

@@ -1,38 +1,37 @@
-.header {
+.logo {
   position: absolute;
-  height: 87px;
-  left: 76px;
-  top: 43px;
-}
-
-.login-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  height: 3rem;
+  left: 4.7rem;
+  top: 2.6rem;
 }
 
 .body-left {
   position: absolute;
-  width: 819px;
-  height: 454px;
-  left: 76px;
-  top: 286px;
+  width: 50rem;
+  height: 25rem;
+  left: 4.7rem;
+  top: 17.8rem;
 }
 
 .body-right {
   position: absolute;
-  width: 544px;
-  height: 397.11px;
-  left: 1058px;
-  top: 314px;
+  width: 34rem;
+  height: 24.8rem;
+  left: 66rem;
+  top: 19rem;
+  font-family: Nunito;
+  font-style: normal;
+  letter-spacing: 0.07rem;
 }
 
-.intro-text {
-  font-family: "Nunito";
-  font-style: normal;
+.login-heading-text {
   font-weight: 700;
-  font-size: 20px;
-  line-height: 40px;
-  /* or 169% */
-  letter-spacing: 1.25px;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+.login-body-text {
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
 }

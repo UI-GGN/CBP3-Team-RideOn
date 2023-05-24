@@ -4,10 +4,10 @@ App {
 
 .App-header {
   min-height: 10vh;
-  margin-top: 44px;
-  margin-left: 76px;
-  width: 225px;
-  height: 88px;
+  margin-top: 2.27rem;
+  margin-left: 4.7rem;
+  width: 14rem;
+  height: 5.5rem;
   align-items: flex-start;
   font-size: calc(10px + 2vmin);
   color: dodgerblue;
@@ -16,39 +16,4 @@ App {
 .body {
   padding: 0;
   margin: 0;
-}
-
-.Parent1 {
-  display: flex;
-  flex-direction: row;
-}
-.Parent2 {
-  display: flex;
-  flex-direction: column;
-}
-.child1 {
-  width: 75%;
-  height: 100vh;
-  margin-top: 20px;
-  text-align: center;
-  color: white;
-}
-
-.child2 {
-  width: 50%;
-  padding: 30px;
-  margin-top: 30px;
-  height: 20vh;
-  margin: 36px;
-  margin-bottom: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-}
-.child3 {
-  width: 50%;
-  padding: 20px;
-  height: 20vh;
-  margin-top: 30px;
-  margin: 36px;
-  text-align: center;
 }

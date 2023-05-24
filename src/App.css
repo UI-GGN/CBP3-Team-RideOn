@@ -52,7 +52,7 @@ App {
   margin: 36px;
   text-align: center;
 }
-#button{
+#button {
   padding: 0px 16px;
   gap: 16px;
   position: absolute;
@@ -60,8 +60,8 @@ App {
   height: 54.11px;
   left: 1058px;
   top: 657px;
-  background: #1976D2;
+  background: #1976d2;
   radius: 4px;
-  color: #FFFFFF;
-  backgroundColor: #1976D2;
+  color: #ffffff;
+  backgroundcolor: #1976d2;
 }

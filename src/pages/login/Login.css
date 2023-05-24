@@ -1,0 +1,38 @@
+.header {
+  position: absolute;
+  height: 87px;
+  left: 76px;
+  top: 43px;
+}
+
+.login-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.body-left {
+  position: absolute;
+  width: 819px;
+  height: 454px;
+  left: 76px;
+  top: 286px;
+}
+
+.body-right {
+  position: absolute;
+  width: 544px;
+  height: 397.11px;
+  left: 1058px;
+  top: 314px;
+}
+
+.intro-text {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 40px;
+  /* or 169% */
+  letter-spacing: 1.25px;
+}

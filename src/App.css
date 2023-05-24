@@ -52,16 +52,3 @@ App {
   margin: 36px;
   text-align: center;
 }
-#button {
-  padding: 0px 16px;
-  gap: 16px;
-  position: absolute;
-  width: 207px;
-  height: 54.11px;
-  left: 1058px;
-  top: 657px;
-  background: #1976d2;
-  radius: 4px;
-  color: #ffffff;
-  backgroundcolor: #1976d2;
-}

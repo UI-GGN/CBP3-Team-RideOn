@@ -1,33 +1,29 @@
 import React from "react";
 import {Button} from "@mui/material";
-import img from "../../images/Login.png";
-import logo from "../../images/Logo.png";
+import login from "../../assets/Login.png";
+import logo from "../../assets/Logo.png";
 import "./Login.css";
 
 function Login() {
   return (
     <div>
       <div className="login-header">
-        <header className="header">
-          <img src={logo} />
-        </header>
+        <img src={logo} className="logo" />
       </div>
-      <body className="login-body">
-        <div className="body-left">
-          <img src={img} />
+      <body>
+        <div>
+          <img src={login} className="body-left" />
         </div>
         <div className="body-right">
           <div>
-            <p className="intro-text">
-              <h3>What is RideOn?</h3>
-              <p>
-                Simplifying employee cab management for seamless transportation logistics.
-                Effortlessly manage employee transportation with RideOn, the ultimate cab
-                management system.
-              </p>
+            <h3 className="login-heading-text">What is RideOn?</h3>
+            <p className="login-body-text">
+              Simplifying employee cab management for seamless transportation logistics.
+              Effortlessly manage employee transportation with RideOn, the ultimate cab
+              management system.
               <p>To book track or manage, click the button below</p>
             </p>
-            <Button variant="contained" size="medium">
+            <Button variant="contained" size="large">
               LOGIN WITH GOOGLE
             </Button>
           </div>

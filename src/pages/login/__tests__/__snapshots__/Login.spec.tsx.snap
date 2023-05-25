@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login test renders correctly 1`] = `
+<body>
+  <div>
+    <div>
+      <img
+        class="logo"
+        src="Logo.png"
+      />
+      <div
+        class="body"
+      >
+        <div>
+          <img
+            class="body-left"
+            src="Login.png"
+          />
+        </div>
+        <div
+          class="body-right"
+        >
+          <div>
+            <h3
+              class="login-heading-text"
+            >
+              What is RideOn?
+            </h3>
+            <p
+              class="login-body-text"
+            >
+              Simplifying employee cab management for seamless transportation logistics. Effortlessly manage employee transportation with RideOn, the ultimate cab management system.
+            </p>
+          </div>
+          <div>
+            <p
+              class="login-body-text"
+            >
+              To book track or manage, click the button below
+            </p>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge css-jh47zj-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
+            >
+              LOGIN WITH GOOGLE
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

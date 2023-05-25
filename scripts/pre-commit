@@ -11,3 +11,6 @@
 #git stash pop -q
 #
 #exit $status
+curl https://thoughtworks.github.io/talisman/install.sh > ~/install-talisman.sh
+chmod +x ~/install-talisman.sh
+~/install-talisman.sh pre-commit

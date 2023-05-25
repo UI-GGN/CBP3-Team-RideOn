@@ -22,7 +22,9 @@ function Login() {
             </p>
           </div>
           <div>
-            <p className="login-body-text">To book track or manage, click the button below</p>
+            <p className="login-body-text">
+              To book track or manage, click the button below
+            </p>
             <Button variant="contained" size="large">
               LOGIN WITH GOOGLE
             </Button>

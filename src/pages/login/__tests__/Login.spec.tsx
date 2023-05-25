@@ -3,7 +3,7 @@ import Login from "../Login.js";
 
 describe("Login test", () => {
   it("renders correctly", () => {
-    const {baseElement} = render(<Login/>);
+    const {baseElement} = render(<Login />);
     expect(baseElement).toMatchSnapshot();
   });
 });

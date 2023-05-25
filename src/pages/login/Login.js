@@ -3,8 +3,11 @@ import {Button} from "@mui/material";
 import login from "../../assets/Login.png";
 import logo from "../../assets/Logo.png";
 import "./Login.css";
+import {useAuth0} from "@auth0/auth0-react";
 
 function Login() {
+  const {loginWithRedirect} = useAuth0();
+
   return (
     <div>
       <div className="login-header">
@@ -23,7 +26,7 @@ function Login() {
               management system.
               <p>To book track or manage, click the button below</p>
             </p>
-            <Button variant="contained" size="large">
+            <Button variant="contained" size="large" onClick={() => loginWithRedirect()}>
               LOGIN WITH GOOGLE
             </Button>
           </div>

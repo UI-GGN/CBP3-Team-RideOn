@@ -3,7 +3,8 @@
   margin-top: 40px;
 }
 
-.body {
+
+.login-page-body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -11,6 +12,9 @@
   margin-top: 170px;
 }
 
+.body-left {
+  width: 37rem;
+}
 .body-right {
   display: flex;
   flex-direction: column;

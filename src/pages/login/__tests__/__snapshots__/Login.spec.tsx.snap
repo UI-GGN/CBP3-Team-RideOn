@@ -6,15 +6,15 @@ exports[`Login test renders correctly 1`] = `
     <div>
       <img
         class="logo"
-        src="Logo.png"
+        src="Logo.svg"
       />
       <div
-        class="body"
+        class="login-page-body"
       >
         <div>
           <img
             class="body-left"
-            src="Login.png"
+            src="Login.svg"
           />
         </div>
         <div

@@ -1,16 +1,16 @@
 import React from "react";
 import {Button} from "@mui/material";
-import login from "../../assets/Login.png";
-import logo from "../../assets/Logo.png";
+import loginImage from "../../assets/Login.png";
+import logoImage from "../../assets/Logo.png";
 import "./Login.css";
 
 function Login() {
   return (
     <div>
-      <img src={logo} className="logo" />
-      <div className="body">
+      <img src={logoImage} className="logo" />
+      <div className="login-page-body">
         <div>
-          <img src={login} className="body-left" />
+          <img src={loginImage} className="body-left" />
         </div>
         <div className="body-right">
           <div>

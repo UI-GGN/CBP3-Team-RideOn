@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Welcome to RideOn!</h2>
-      </header>
+    <div>
+      <Login />
     </div>
   );
 }

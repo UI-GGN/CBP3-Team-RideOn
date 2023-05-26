@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from "@mui/material";
-import loginImage from "../../assets/Login.png";
-import logoImage from "../../assets/Logo.png";
+import loginImage from "../../assets/Login.svg";
+import logoImage from "../../assets/Logo.svg";
 import "./Login.css";
 
 function Login() {

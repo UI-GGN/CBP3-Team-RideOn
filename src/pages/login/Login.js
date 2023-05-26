@@ -7,13 +7,10 @@ import {useAuth0} from "@auth0/auth0-react";
 
 function Login() {
   const {loginWithRedirect} = useAuth0();
-
   return (
     <div>
-      <div className="login-header">
-        <img src={logo} className="logo" />
-      </div>
-      <body>
+      <img src={logo} className="logo" />
+      <div className="body">
         <div>
           <img src={login} className="body-left" />
         </div>
@@ -24,14 +21,18 @@ function Login() {
               Simplifying employee cab management for seamless transportation logistics.
               Effortlessly manage employee transportation with RideOn, the ultimate cab
               management system.
-              <p>To book track or manage, click the button below</p>
+            </p>
+          </div>
+          <div>
+            <p className="login-body-text">
+              To book track or manage, click the button below
             </p>
             <Button variant="contained" size="large" onClick={() => loginWithRedirect()}>
               LOGIN WITH GOOGLE
             </Button>
           </div>
         </div>
-      </body>
+      </div>
     </div>
   );
 }

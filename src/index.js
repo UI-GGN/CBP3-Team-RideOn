@@ -12,7 +12,7 @@ root.render(
     <Auth0Provider
       domain={Config.AUTH0_DOMAIN}
       clientId={Config.AUTH0_CLIENT_ID}
-      redirectUri="http://localhost:3000/dashboard"
+      redirectUri={Config.AUTH0_REDIRECT_URI}
       scopes="roles"
     >
       <BrowserRouter>

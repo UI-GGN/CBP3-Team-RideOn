@@ -9,7 +9,7 @@ function Dashboard() {
       <Button variant="contained" size="large" onClick={() => logout()}>
         Logout
       </Button>
-        {console.log(user)}
+      {console.log(user)}
       <div className="welcome-message">Welcome to Ride On {user ? user.name : ""}</div>
     </div>
   );

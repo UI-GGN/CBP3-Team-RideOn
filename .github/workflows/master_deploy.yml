@@ -3,7 +3,7 @@ name: Deploy workflow
 on:
   push:
     branches: [ main, "*", "*/*", "**" ]
-
+    # added it just for testing, will remove it at the time of merging!!!
 jobs:
   lint:
     name: Lint

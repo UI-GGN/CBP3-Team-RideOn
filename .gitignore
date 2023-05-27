@@ -13,6 +13,7 @@
 
 # misc
 .DS_Store
+master_deploy copy.yml
 .env.local
 .env.development.local
 .env.test.local

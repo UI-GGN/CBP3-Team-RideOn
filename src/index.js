@@ -11,7 +11,7 @@ root.render(
     <Auth0Provider
       domain="dev-11jeq2vs.us.auth0.com"
       clientId="MDGSSxqOah7fNQVvndBh3abAZlgj41AM"
-      redirectUri="https://rideongurgaon.netlify.app/dashboard"
+      redirectUri="https://rideongurgaon.netlify.app/"
       scopes="roles"
     >
       <BrowserRouter>

@@ -4,14 +4,15 @@ import "./index.css";
 import App from "./App";
 import {Auth0Provider} from "@auth0/auth0-react";
 import {BrowserRouter} from "react-router-dom";
+import Config from "./config/config";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-8buiztfssus4palq.us.auth0.com"
-      clientId="LyOGzbSP5BjkqWQiRuCqxZz1em74jvaM"
-      redirectUri="https://rideongurgaon.netlify.app/dashboard"
+      domain={Config.AUTH0_DOMAIN}
+      clientId={Config.AUTH0_CLIENT_ID}
+      redirectUri={Config.AUTH0_REDIRECT_URI}
       scopes="roles"
     >
       <BrowserRouter>

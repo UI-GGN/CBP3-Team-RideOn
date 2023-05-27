@@ -9,9 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-11jeq2vs.us.auth0.com"
-      clientId="MDGSSxqOah7fNQVvndBh3abAZlgj41AM"
-      redirectUri="https://rideongurgaon.netlify.app/"
+      domain="dev-8buiztfssus4palq.us.auth0.com"
+      clientId="LyOGzbSP5BjkqWQiRuCqxZz1em74jvaM"
+      redirectUri="https://rideongurgaon.netlify.app/dashboard"
       scopes="roles"
     >
       <BrowserRouter>

@@ -27,7 +27,7 @@ function Login() {
             <p className="login-body-text">
               To book track or manage, click the button below
             </p>
-            <Button variant="contained" size="large" onClick={() => loginWithRedirect()}>
+            <Button variant="contained" size="large" onClick={loginWithRedirect}>
               LOGIN WITH GOOGLE
             </Button>
           </div>

@@ -5,13 +5,13 @@ import "./Dasboard.css";
 function Dashboard() {
   const {logout, user, isAuthenticated} = useAuth0();
   return (
-    isAuthenticated &&
+    isAuthenticated && user &&
       <div className="dashboard">
-    <Button variant="contained" size="large" onClick={() => logout()}>
+    <Button variant="contained" size="large" onClick={logout}>
         Logout
       </Button>
-      <div className="welcome-message">Welcome to Ride On {user ? user.name : ""}</div>
-      <div className="welcome-message">Your Role is: {user ? user.my_roles[0] : ""}</div>
+      { user?.name && <div className="welcome-message">Welcome to Ride On { user.name }</div>}
+      { user?.my_roles?.[0] && <div className="welcome-message">Your Role is: {user.my_roles[0]}</div>}
     </div>
   );
 }

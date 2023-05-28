@@ -22,6 +22,7 @@ Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### Talisman setup
+
 In order to commit to this repo, install talisman(https://github.com/thoughtworks/talisman#installation). You can use global (or) single-repo installation for pre-commit hook.
 Add ~/.talisman/bin to system PATH (to avail talisman_hook_script for pre-commit). If you are curious, check the .husky/pre-commit ( and .talismanrc) to understand how the pre-commit works.
 

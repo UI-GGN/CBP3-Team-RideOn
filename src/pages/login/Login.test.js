@@ -7,7 +7,7 @@ jest.mock("@auth0/auth0-react");
 describe("Login Page", () => {
   it("should call loginWithRedirect method on onClick", async () => {
     useAuth0.mockReturnValue({
-      loginWithRedirect: jest.fn()
+      loginWithRedirect: jest.fn(),
     });
     const {loginWithRedirect} = useAuth0();
 

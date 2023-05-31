@@ -28,7 +28,7 @@ function Login() {
               To book track or manage, click the button below
             </p>
             <Button variant="contained" size="large" onClick={loginWithRedirect}>
-              LOGIN WITH GOOGLE
+              LOGIN
             </Button>
           </div>
         </div>

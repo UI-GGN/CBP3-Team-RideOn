@@ -12,7 +12,7 @@ describe("Login Page", () => {
     const {loginWithRedirect} = useAuth0();
 
     render(<Login />);
-    const logInButton = await screen.getByText("LOGIN WITH GOOGLE");
+    const logInButton = await screen.getByText("LOGIN");
     fireEvent.click(logInButton);
 
     await waitFor(() => expect(loginWithRedirect).toHaveBeenCalledTimes(1));

@@ -14,7 +14,8 @@ root.render(
       clientId={Config.AUTH0_CLIENT_ID}
       redirectUri={Config.AUTH0_REDIRECT_URI}
       scopes="roles"
-    >
+      authorizationParams={{ audience: Config.AUTH0_AUDIENCE }}
+      >
       <BrowserRouter>
         <App />
       </BrowserRouter>

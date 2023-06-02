@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import logoImage from "../assets/Logo.svg";
+import logoImage from "../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
 
@@ -21,16 +21,9 @@ const drawerWidth = 350;
 function getTypography(text) {
   return (
     <Typography
-      style={{
-        fontFamily: "Nunito",
-        fontStyle: "normal",
-        fontWeight: "500",
-        fontSize: "20px",
-        lineHeight: "36px",
-      }}
+      className= 'typography'
     >
-      {" "}
-      {text}{" "}
+      {text}
     </Typography>
   );
 }
@@ -66,29 +59,19 @@ export default function PermanentDrawerLeft() {
         <Box sx={{marginBottom: "130px"}}>
           <img
             src={logoImage}
-            style={{
-              width: "100px",
-              height: "48px",
-              marginTop: "40px",
-              marginLeft: "35px",
-            }}
+            className="logo"
           />
         </Box>
-        <Divider sx={{backgroundColor: "white", marginBottom: "40px"}} />
+        <Divider className='divider' />
         <List>
           <ListItem
             key={"Routes"}
             onClick={() => handleClick("Routes")}
-            sx={{
-              backgroundColor: selectedItem === "Routes" ? "#1976D2" : "initial",
-              "&:hover": {
-                backgroundColor: "#1976D2",
-              },
-            }}
+            className={selectedItem === "Routes" ? "listItemSelected" : "listItem"}
           >
             <ListItemButton>
               <ListItemIcon>
-                <DirectionsOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
+                <DirectionsOutlinedIcon className='icon' />
               </ListItemIcon>
               <ListItemText primary={getTypography("Routes")} />
             </ListItemButton>
@@ -96,32 +79,21 @@ export default function PermanentDrawerLeft() {
           <ListItem
             key={"Requests"}
             onClick={() => handleClick("Requests")}
-            sx={{
-              backgroundColor: selectedItem === "Requests" ? "#1976D2" : "initial",
-              "&:hover": {
-                backgroundColor: "#1976D2",
-              },
-            }}
+            className={selectedItem === "Requests" ? "listItemSelected" : "listItem"}
           >
             <ListItemButton>
               <ListItemIcon>
-                <BackHandOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
+                <BackHandOutlinedIcon className='icon' />
               </ListItemIcon>
               <ListItemText primary={getTypography("Requests")} />
             </ListItemButton>
           </ListItem>
         </List>
-        <List style={{
-         position: "absolute",
-         bottom: "0",
-         left: "0",
-         right: "0",
-         padding: "8px",
-        }}>
+        <List className='logoutButton'>
           <ListItem onClick={() => logout()}>
             <ListItemButton>
               <ListItemIcon>
-                <LogoutOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
+                <LogoutOutlinedIcon className='icon' />
               </ListItemIcon>
               <ListItemText primary={getTypography("Logout")} />
             </ListItemButton>

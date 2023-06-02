@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -13,19 +11,24 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DirectionsOutlinedIcon from '@mui/icons-material/DirectionsOutlined';
 import BackHandOutlinedIcon from '@mui/icons-material/BackHandOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import logoImage from '../assets/Logo.svg';
 
 const drawerWidth = 400;
 
+function getTypography(text) {
+    return <Typography style={{
+        fontFamily: 'Nunito',
+        fontStyle: 'normal',
+        fontWeight: '500',
+        fontSize: '24px',
+        lineHeight: '36px'
+    }}> {text} </Typography>;
+}
+
 export default function PermanentDrawerLeft() {
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-      </AppBar>
       <Drawer
         PaperProps={{
           sx: {
@@ -44,39 +47,46 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-          <img src={logoImage} className="logo" style={{width: "124px", height: "48px"}}/>
-        <Toolbar />
-        <Toolbar />
-        <Divider sx={{ backgroundColor: 'white', marginBottom: '60px' }}/>
+        <Box sx={{marginBottom: '130px'}}>
+          <img src={logoImage} style={{width: "124px", height: "48px", marginTop: '40px', marginLeft: '35px'}}/>
+        </Box>
+        <Divider sx={{ backgroundColor: 'white', marginBottom: '40px' }}/>
         <List>
-          <ListItem key={'Routes123'} sx={{
-            padding: '15px',
+          <ListItem key={'Routes'} sx={{
             '&:hover': {
               backgroundColor: '#1976D2'
             }
           }}>
             <ListItemButton>
               <ListItemIcon>
-                <DirectionsOutlinedIcon sx={{ color: 'white' }}/>
+                <DirectionsOutlinedIcon sx={{ color: 'white', fontSize: '30px' }}/>
               </ListItemIcon>
-              <ListItemText primary={'Routes123'} />
+              <ListItemText primary={getTypography('Routes')} />
             </ListItemButton>
           </ListItem>
           <ListItem key={'Requests'} sx={{
-            padding: '15px',
             '&:hover': {
               backgroundColor: '#1976D2'
             }
           }}>
             <ListItemButton>
               <ListItemIcon>
-                <BackHandOutlinedIcon sx={{ color: 'white' }}/>
+                <BackHandOutlinedIcon sx={{ color: 'white', fontSize: '30px' }}/>
               </ListItemIcon>
-              <ListItemText primary={'Requests'} />
+              <ListItemText primary={getTypography('Requests')} />
             </ListItemButton>
           </ListItem>
         </List>
-          <Typography>Footer</Typography>
+          <List style={{ position: "absolute", bottom: "0", left: "0", right: "0", padding: "8px" }}>
+            <ListItem disablePadding>
+                <ListItemButton>
+                    <ListItemIcon>
+                        <LogoutOutlinedIcon sx={{ color: 'white', fontSize: '30px' }}/>
+                    </ListItemIcon>
+                    <ListItemText primary={getTypography('Logout')} />
+                </ListItemButton>
+            </ListItem>
+          </List>
       </Drawer>
       <Box
         component="main"
@@ -84,31 +94,7 @@ export default function PermanentDrawerLeft() {
       >
         <Toolbar />
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
+          Lorem ipsum dolor sit amet.
         </Typography>
       </Box>
     </Box>

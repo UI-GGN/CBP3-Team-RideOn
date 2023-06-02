@@ -13,8 +13,10 @@ import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../assets/Logo.svg";
+import {useAuth0} from "@auth0/auth0-react";
+import "./PermanentDrawerLeft.css";
 
-const drawerWidth = 400;
+const drawerWidth = 350;
 
 function getTypography(text) {
   return (
@@ -23,7 +25,7 @@ function getTypography(text) {
         fontFamily: "Nunito",
         fontStyle: "normal",
         fontWeight: "500",
-        fontSize: "24px",
+        fontSize: "20px",
         lineHeight: "36px",
       }}
     >
@@ -34,6 +36,13 @@ function getTypography(text) {
 }
 
 export default function PermanentDrawerLeft() {
+  const {logout} = useAuth0();
+  const [selectedItem, setSelectedItem] = React.useState("Routes");
+
+  const handleClick = (text) => {
+    setSelectedItem(text);
+  };
+
   return (
     <Box sx={{display: "flex"}}>
       <Drawer
@@ -58,7 +67,7 @@ export default function PermanentDrawerLeft() {
           <img
             src={logoImage}
             style={{
-              width: "124px",
+              width: "100px",
               height: "48px",
               marginTop: "40px",
               marginLeft: "35px",
@@ -69,7 +78,9 @@ export default function PermanentDrawerLeft() {
         <List>
           <ListItem
             key={"Routes"}
+            onClick={() => handleClick("Routes")}
             sx={{
+              backgroundColor: selectedItem === "Routes" ? "#1976D2" : "initial",
               "&:hover": {
                 backgroundColor: "#1976D2",
               },
@@ -84,7 +95,9 @@ export default function PermanentDrawerLeft() {
           </ListItem>
           <ListItem
             key={"Requests"}
+            onClick={() => handleClick("Requests")}
             sx={{
+              backgroundColor: selectedItem === "Requests" ? "#1976D2" : "initial",
               "&:hover": {
                 backgroundColor: "#1976D2",
               },
@@ -98,16 +111,14 @@ export default function PermanentDrawerLeft() {
             </ListItemButton>
           </ListItem>
         </List>
-        <List
-          style={{
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            right: "0",
-            padding: "8px",
-          }}
-        >
-          <ListItem disablePadding>
+        <List style={{
+         position: "absolute",
+         bottom: "0",
+         left: "0",
+         right: "0",
+         padding: "8px",
+        }}>
+          <ListItem onClick={() => logout()}>
             <ListItemButton>
               <ListItemIcon>
                 <LogoutOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
@@ -117,7 +128,7 @@ export default function PermanentDrawerLeft() {
           </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{flexGrow: 1, bgcolor: "background.default", p: 3}}>
+      <Box component="main" sx={{flexGrow: 1, p: 3}}>
         <Toolbar />
         <Typography paragraph>Lorem ipsum dolor sit amet.</Typography>
       </Box>

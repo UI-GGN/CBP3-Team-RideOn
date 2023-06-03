@@ -4,7 +4,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import {Route, Routes as ReactRoutes} from "react-router-dom";
+import {Route, Routes as ReactRoutes, useNavigate} from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -38,9 +38,12 @@ function getTypography(text) {
 export default function PermanentDrawerLeft() {
   const {logout} = useAuth0();
   const [selectedItem, setSelectedItem] = React.useState("Routes");
+  const navigate = useNavigate();
 
   const handleClick = (text) => {
+    console.log("b");
     setSelectedItem(text);
+    navigate('/dashboard/' + text);
   };
 
   return (
@@ -87,7 +90,7 @@ export default function PermanentDrawerLeft() {
               },
             }}
           >
-            <ListItemButton onclick="window.location.href='http://localhost:3000/dashboard/routes'">
+            <ListItemButton >
               <ListItemIcon>
                 <DirectionsOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
               </ListItemIcon>
@@ -104,7 +107,7 @@ export default function PermanentDrawerLeft() {
               },
             }}
           >
-            <ListItemButton onclick="window.location.href='http://localhost:3000/dashboard/requests'">
+            <ListItemButton >
               <ListItemIcon>
                 <BackHandOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
               </ListItemIcon>

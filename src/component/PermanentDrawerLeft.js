@@ -1,10 +1,10 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import {Route, Routes as ReactRoutes} from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -15,6 +15,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
+import DashboardBreadCrump from "../pages/login/DashboardBreadCrump";
 
 const drawerWidth = 350;
 
@@ -34,7 +35,6 @@ function getTypography(text) {
     </Typography>
   );
 }
-
 export default function PermanentDrawerLeft() {
   const {logout} = useAuth0();
   const [selectedItem, setSelectedItem] = React.useState("Routes");
@@ -44,6 +44,7 @@ export default function PermanentDrawerLeft() {
   };
 
   return (
+      <div>
     <Box sx={{display: "flex"}}>
       <Drawer
         PaperProps={{
@@ -86,7 +87,7 @@ export default function PermanentDrawerLeft() {
               },
             }}
           >
-            <ListItemButton>
+            <ListItemButton onclick="window.location.href='http://localhost:3000/dashboard/routes'">
               <ListItemIcon>
                 <DirectionsOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
               </ListItemIcon>
@@ -103,7 +104,7 @@ export default function PermanentDrawerLeft() {
               },
             }}
           >
-            <ListItemButton>
+            <ListItemButton onclick="window.location.href='http://localhost:3000/dashboard/requests'">
               <ListItemIcon>
                 <BackHandOutlinedIcon sx={{color: "white", fontSize: "30px"}} />
               </ListItemIcon>
@@ -112,11 +113,11 @@ export default function PermanentDrawerLeft() {
           </ListItem>
         </List>
         <List style={{
-         position: "absolute",
-         bottom: "0",
-         left: "0",
-         right: "0",
-         padding: "8px",
+          position: "absolute",
+          bottom: "0",
+          left: "0",
+          right: "0",
+          padding: "8px",
         }}>
           <ListItem onClick={() => logout()}>
             <ListItemButton>
@@ -128,10 +129,11 @@ export default function PermanentDrawerLeft() {
           </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{flexGrow: 1, p: 3}}>
-        <Toolbar />
-        <Typography paragraph>Lorem ipsum dolor sit amet.</Typography>
-      </Box>
     </Box>
-  );
+    <ReactRoutes>
+        <Route path='/' element={<DashboardBreadCrump type="Routes" />} />
+        <Route path='requests' element={<DashboardBreadCrump type="Requests" />} />
+        <Route path='routes' element={<DashboardBreadCrump type="Routes" />} />
+    </ReactRoutes>
+      </div>);
 }

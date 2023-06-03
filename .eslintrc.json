@@ -17,7 +17,8 @@
     "comma-dangle": "off",
     "object-curly-spacing": "off",
     "quotes": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {

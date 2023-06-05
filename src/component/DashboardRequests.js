@@ -1,10 +1,9 @@
 import React from "react";
-import DashboardBreadCrump from "./DashboardBreadCrump";
+import BreadCrumb from "./BreadCrumb";
 
-function DashboardRoutes() {
-  return (
-      <DashboardBreadCrump type="Requests"/>
-  );
+function DashboardRequests() {
+  const obj = {name: 'Dashboard', type: 'Requests'};
+  return <BreadCrumb data={obj} />;
 }
 
-export default DashboardRoutes;
+export default DashboardRequests;

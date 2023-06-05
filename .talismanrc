@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: src/component/PermanentDrawerLeft.js
   checksum: 7ebdc940f9604c3c02ca31f7cc2df12c518aaf5d0467afa1c8ce5f6f5241bb11
+- filename: src/component/BreadCrumb.js
+  checksum: 84631c1b2550c5568bb2a2d0b47ed32011f798b17ed680da866a164ce68e335b
 version: ""

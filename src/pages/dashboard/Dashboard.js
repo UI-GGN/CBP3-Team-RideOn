@@ -1,14 +1,9 @@
-import {useAuth0} from "@auth0/auth0-react";
 import "./Dasboard.css";
 import PermanentDrawerLeft from "../../component/PermanentDrawerLeft";
 
 function Dashboard() {
-  const {user, isAuthenticated} = useAuth0();
   return (
-    isAuthenticated &&
-    user && (
-        <PermanentDrawerLeft />
-    )
+    <PermanentDrawerLeft />
   );
 }
 

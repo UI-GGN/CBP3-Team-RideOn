@@ -4,7 +4,9 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import {Route, Routes as ReactRoutes, useNavigate} from "react-router-dom";
+import {
+  useNavigate, Outlet
+} from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -15,8 +17,8 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
-import DashboardRoutes from "./DashboardRoutes";
-import DashboardRequests from "./DashboardRequests";
+// import DashboardRoutes from "./DashboardRoutes";
+// import DashboardRequests from "./DashboardRequests";
 
 const drawerWidth = 350;
 
@@ -82,7 +84,7 @@ export default function PermanentDrawerLeft() {
           <List>
             <ListItem
               key={"Routes"}
-              onClick={() => handleClick("Routes")}
+              onClick={() => handleClick("routes")}
               sx={{
                 backgroundColor: selectedItem === "Routes" ? "#1976D2" : "initial",
                 "&:hover": {
@@ -99,7 +101,7 @@ export default function PermanentDrawerLeft() {
             </ListItem>
             <ListItem
               key={"Requests"}
-              onClick={() => handleClick("Requests")}
+              onClick={() => handleClick("requests")}
               sx={{
                 backgroundColor: selectedItem === "Requests" ? "#1976D2" : "initial",
                 "&:hover": {
@@ -135,11 +137,7 @@ export default function PermanentDrawerLeft() {
           </List>
         </Drawer>
       </Box>
-      <ReactRoutes>
-        <Route path="/" element={<DashboardRoutes/>} />
-        <Route path="requests" element={<DashboardRequests/>} />
-        <Route path="routes" element={<DashboardRoutes/>} />
-      </ReactRoutes>
+      <Outlet />
     </div>
   );
 }

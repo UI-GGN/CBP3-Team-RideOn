@@ -17,8 +17,6 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
-// import DashboardRoutes from "./DashboardRoutes";
-// import DashboardRequests from "./DashboardRequests";
 
 const drawerWidth = 350;
 

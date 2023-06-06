@@ -15,6 +15,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
+import {NavLink} from "react-router-dom";
 
 const drawerWidth = 350;
 
@@ -24,11 +25,6 @@ function getTypography(text) {
 
 export default function PermanentDrawerLeft() {
   const {logout} = useAuth0();
-  const [selectedItem, setSelectedItem] = React.useState("Routes");
-
-  const handleClick = (text) => {
-    setSelectedItem(text);
-  };
 
   return (
     <Box sx={{display: "flex"}}>
@@ -55,30 +51,26 @@ export default function PermanentDrawerLeft() {
         </Box>
         <Divider className="divider" />
         <List>
-          <ListItem
-            key={"Routes"}
-            onClick={() => handleClick("Routes")}
-            className={selectedItem === "Routes" ? "listItemSelected" : "listItem"}
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <DirectionsOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Routes")} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem
-            key={"Requests"}
-            onClick={() => handleClick("Requests")}
-            className={selectedItem === "Requests" ? "listItemSelected" : "listItem"}
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <BackHandOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Requests")} />
-            </ListItemButton>
-          </ListItem>
+          <NavLink to={"/"} className="navLink">
+            <ListItem key={"Routes"} classes={{selected: "selected", root: "listItem"}}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <DirectionsOutlinedIcon className="icon" />
+                </ListItemIcon>
+                <ListItemText primary={getTypography("Routes")} />
+              </ListItemButton>
+            </ListItem>
+          </NavLink>
+          <NavLink to="/routes" className="navLink">
+            <ListItem key={"Requests"} classes={{selected: "selected", root: "listItem"}}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <BackHandOutlinedIcon className="icon" />
+                </ListItemIcon>
+                <ListItemText primary={getTypography("Requests")} />
+              </ListItemButton>
+            </ListItem>
+          </NavLink>
         </List>
         <List className="logoutButton">
           <ListItem onClick={() => logout()}>

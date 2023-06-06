@@ -19,13 +19,7 @@ import "./PermanentDrawerLeft.css";
 const drawerWidth = 350;
 
 function getTypography(text) {
-  return (
-    <Typography
-      className= 'typography'
-    >
-      {text}
-    </Typography>
-  );
+  return <Typography className="typography">{text}</Typography>;
 }
 
 export default function PermanentDrawerLeft() {
@@ -57,12 +51,9 @@ export default function PermanentDrawerLeft() {
         anchor="left"
       >
         <Box sx={{marginBottom: "130px"}}>
-          <img
-            src={logoImage}
-            className="logo"
-          />
+          <img src={logoImage} className="logo" />
         </Box>
-        <Divider className='divider' />
+        <Divider className="divider" />
         <List>
           <ListItem
             key={"Routes"}
@@ -71,7 +62,7 @@ export default function PermanentDrawerLeft() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <DirectionsOutlinedIcon className='icon' />
+                <DirectionsOutlinedIcon className="icon" />
               </ListItemIcon>
               <ListItemText primary={getTypography("Routes")} />
             </ListItemButton>
@@ -83,17 +74,17 @@ export default function PermanentDrawerLeft() {
           >
             <ListItemButton>
               <ListItemIcon>
-                <BackHandOutlinedIcon className='icon' />
+                <BackHandOutlinedIcon className="icon" />
               </ListItemIcon>
               <ListItemText primary={getTypography("Requests")} />
             </ListItemButton>
           </ListItem>
         </List>
-        <List className='logoutButton'>
+        <List className="logoutButton">
           <ListItem onClick={() => logout()}>
             <ListItemButton>
               <ListItemIcon>
-                <LogoutOutlinedIcon className='icon' />
+                <LogoutOutlinedIcon className="icon" />
               </ListItemIcon>
               <ListItemText primary={getTypography("Logout")} />
             </ListItemButton>

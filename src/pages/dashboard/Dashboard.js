@@ -4,12 +4,7 @@ import PermanentDrawerLeft from "../../component/drawer/PermanentDrawerLeft";
 
 function Dashboard() {
   const {user, isAuthenticated} = useAuth0();
-  return (
-    isAuthenticated &&
-    user && (
-        <PermanentDrawerLeft />
-    )
-  );
+  return isAuthenticated && user && <PermanentDrawerLeft />;
 }
 
 export default Dashboard;

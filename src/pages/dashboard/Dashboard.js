@@ -1,10 +1,8 @@
 import "./Dasboard.css";
-import PermanentDrawerLeft from "../../component/PermanentDrawerLeft";
+import PermanentDrawerLeft from "../../component/drawer/PermanentDrawerLeft";
 
 function Dashboard() {
-  return (
-    <PermanentDrawerLeft />
-  );
+  return <PermanentDrawerLeft />;
 }
 
 export default Dashboard;

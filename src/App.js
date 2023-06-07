@@ -12,7 +12,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={ <ProtectedComponent component={Dashboard} />} >
+        <Route path="/dashboard" element={<ProtectedComponent component={Dashboard} />}>
           <Route index element={<DashboardRoutes />} />
           <Route path="requests" element={<DashboardRequests />} />
           <Route path="routes" element={<DashboardRoutes />} />

@@ -14,12 +14,11 @@
 .body-left {
   width: 37rem;
 }
+
 .body-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: Nunito;
-  font-style: normal;
   letter-spacing: 0.07rem;
   width: 34rem;
 }

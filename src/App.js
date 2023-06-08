@@ -4,6 +4,7 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {Route, Routes, Navigate} from "react-router-dom";
 import DashboardRoutes from "./pages/dashboard/Routes";
+import DashboardRequests from "./pages/dashboard/Requests";
 import {createTheme, ThemeProvider} from "@mui/material";
 
 const theme = createTheme({

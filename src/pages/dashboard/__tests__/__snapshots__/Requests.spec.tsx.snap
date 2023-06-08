@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Requests test renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="breadcrumb"
+    />
+  </div>
+</body>
+`;

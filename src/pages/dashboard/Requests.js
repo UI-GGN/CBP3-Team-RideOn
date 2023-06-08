@@ -3,7 +3,7 @@ import BreadCrumb from "../../component/BreadCrumb";
 import "./Dasboard.css";
 
 function DashboardRequests() {
-  const obj = {name: 'Dashboard', type: 'Requests'};
+  const obj = {name: "Dashboard", type: "Requests"};
   return (
     <>
       <div className="breadcrumb">

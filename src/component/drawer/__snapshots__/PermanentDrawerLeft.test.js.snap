@@ -27,9 +27,8 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
           class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
         >
           <a
-            aria-current="page"
-            class="navLink active"
-            href="/"
+            class="navLink"
+            href="/routes"
           >
             <li
               class="MuiListItem-root listItem MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
@@ -71,7 +70,7 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
           </a>
           <a
             class="navLink"
-            href="/routes"
+            href="/requests"
           >
             <li
               class="MuiListItem-root listItem MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
@@ -161,11 +160,6 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
       <div
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
       />
-      <p
-        class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-z2eky3-MuiTypography-root"
-      >
-        Lorem ipsum dolor sit amet.
-      </p>
     </main>
   </div>
    

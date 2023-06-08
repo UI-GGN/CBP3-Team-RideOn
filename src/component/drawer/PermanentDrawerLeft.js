@@ -13,9 +13,9 @@ import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
-import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
 import {NavLink, Outlet} from "react-router-dom";
+import {useAuth0} from "@auth0/auth0-react";
 
 const drawerWidth = 350;
 
@@ -51,7 +51,7 @@ export default function PermanentDrawerLeft() {
         </Box>
         <Divider className="divider" />
         <List>
-          <NavLink to={"routes"} className="navLink">
+          <NavLink to="routes" className="navLink">
             <ListItem key={"Routes"} classes={{selected: "selected", root: "listItem"}}>
               <ListItemButton>
                 <ListItemIcon>
@@ -61,7 +61,7 @@ export default function PermanentDrawerLeft() {
               </ListItemButton>
             </ListItem>
           </NavLink>
-          <NavLink to={"requests"} className="navLink">
+          <NavLink to="requests" className="navLink">
             <ListItem key={"Requests"} classes={{selected: "selected", root: "listItem"}}>
               <ListItemButton>
                 <ListItemIcon>

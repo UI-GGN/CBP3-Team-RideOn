@@ -7,7 +7,13 @@ function BreadCrumb({data}) {
     <div>
       <Breadcrumbs
         aria-label="breadcrumbs"
-        sx={{Weight: 400, Size: "24px", Lineheight: "20px", Letter: "0.25 px"}}
+        sx={{
+          Weight: 400,
+          fontSize: "1.5rem",
+          Size: "1.5rem",
+          lineHeight: "2.25rem",
+          Letter: "0.25 px",
+        }}
       >
         {[...values].map((item) => (
           <Typography

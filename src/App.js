@@ -16,16 +16,16 @@ const theme = createTheme({
 function App() {
   return (
     <div>
-    <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard/>} >
-          <Route index element={ <Navigate to="/dashboard/routes" />} />
-          <Route path="requests" element={<DashboardRequests />} />
-          <Route path="routes" element={<DashboardRoutes />} />
-        </Route>
-      </Routes>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<Navigate to="/dashboard/routes" />} />
+            <Route path="requests" element={<DashboardRequests />} />
+            <Route path="routes" element={<DashboardRoutes />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
     </div>
   );
 }

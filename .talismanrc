@@ -3,10 +3,7 @@ fileignoreconfig:
   checksum: 7ebdc940f9604c3c02ca31f7cc2df12c518aaf5d0467afa1c8ce5f6f5241bb11
 - filename: src/component/BreadCrumb.js
   checksum: 84631c1b2550c5568bb2a2d0b47ed32011f798b17ed680da866a164ce68e335b
-version: ""
 - filename: src/component/drawer/PermanentDrawerLeft.js
   checksum: 602bc07ad3145bec2a4f0cc080658d8e53723d384736a9afd47f6abb17a531c7
+checksum: 5399e1e5ecc0daea239393325b8c835bb56791ad3f6eb1885a1dbded3d88dfe8
 version: "1.0"
-
-  checksum: 5399e1e5ecc0daea239393325b8c835bb56791ad3f6eb1885a1dbded3d88dfe8
-version: ""

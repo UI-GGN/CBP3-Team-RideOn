@@ -15,7 +15,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 
 const drawerWidth = 350;
 
@@ -51,7 +51,7 @@ export default function PermanentDrawerLeft() {
         </Box>
         <Divider className="divider" />
         <List>
-          <NavLink to={"/"} className="navLink">
+          <NavLink to={"routes"} className="navLink">
             <ListItem key={"Routes"} classes={{selected: "selected", root: "listItem"}}>
               <ListItemButton>
                 <ListItemIcon>
@@ -61,7 +61,7 @@ export default function PermanentDrawerLeft() {
               </ListItemButton>
             </ListItem>
           </NavLink>
-          <NavLink to="/routes" className="navLink">
+          <NavLink to={"requests"} className="navLink">
             <ListItem key={"Requests"} classes={{selected: "selected", root: "listItem"}}>
               <ListItemButton>
                 <ListItemIcon>
@@ -85,7 +85,7 @@ export default function PermanentDrawerLeft() {
       </Drawer>
       <Box component="main" sx={{flexGrow: 1, p: 3}}>
         <Toolbar />
-        <Typography paragraph>Lorem ipsum dolor sit amet.</Typography>
+        <Outlet />
       </Box>
     </Box>
   );

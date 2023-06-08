@@ -4,11 +4,18 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import {Route, Routes, Navigate} from "react-router-dom";
 import DashboardRoutes from "./pages/dashboard/Routes";
-import DashboardRequests from "./pages/dashboard/Requests";
+import {createTheme, ThemeProvider} from "@mui/material";
 
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Nunito", "sans-serif"].join(","),
+    fontWeightMedium: "bold",
+  },
+});
 function App() {
   return (
     <div>
+    <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard/>} >
@@ -17,6 +24,7 @@ function App() {
           <Route path="routes" element={<DashboardRoutes />} />
         </Route>
       </Routes>
+    </ThemeProvider>
     </div>
   );
 }

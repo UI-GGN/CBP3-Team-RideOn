@@ -5,14 +5,6 @@
   margin-left: 35px;
 }
 
-.listItemSelected {
-  background-color: #1976d2;
-}
-
-.listItem:hover {
-  background-color: #1976d2;
-}
-
 .logoutButton {
   position: absolute !important;
   bottom: 0 !important;
@@ -39,13 +31,19 @@
   font-size: 30px;
 }
 
-.navLink {
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
-.listItem {
-  &.selected {
-    background-color: #1976d2;
-  }
+.sidebar-option.active {
+  background-color: #1976d2;
+  color: white;
+}
+
+.sidebar-option:hover {
+  background-color: #1976d2;
 }

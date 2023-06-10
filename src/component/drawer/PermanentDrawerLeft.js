@@ -46,7 +46,7 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-        <Box sx={{marginBottom: "130px"}}>
+        <Box sx={{marginBottom: "8rem"}}>
           <img src={logoImage} className="logo" />
         </Box>
         <Divider className="divider" />

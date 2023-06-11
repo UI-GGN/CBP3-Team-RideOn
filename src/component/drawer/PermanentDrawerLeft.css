@@ -1,16 +1,8 @@
 .logo {
-  width: 100px;
-  height: 48px;
-  margin-top: 40px;
-  margin-left: 35px;
-}
-
-.listItemSelected {
-  background-color: #1976d2;
-}
-
-.listItem:hover {
-  background-color: #1976d2;
+  width: 6.25rem;
+  height: 3rem;
+  margin-top: 2.5rem;
+  margin-left: 2.9rem;
 }
 
 .logoutButton {
@@ -18,34 +10,39 @@
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  padding: 8px !important;
+  padding: 0.5rem !important;
 }
 
 .divider {
   background-color: white;
-  margin-bottom: 40px !important;
+  margin-bottom: 2.5rem !important;
 }
 
 .typography {
-  font-family: Nunito !important;
   font-style: normal !important;
   font-weight: 500 !important;
-  font-size: 20px !important;
-  line-height: 36px !important;
+  font-size: 1.25rem !important;
+  line-height: 2.25rem !important;
 }
 
 .icon {
   color: white;
-  font-size: 30px;
+  font-size: 2rem;
 }
 
-.navLink {
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
-.listItem {
-  &.selected {
-    background-color: #1976d2;
-  }
+.sidebar-option.active {
+  background-color: #1976d2;
+  color: white;
+}
+
+.sidebar-option:hover {
+  background-color: #1976d2;
 }

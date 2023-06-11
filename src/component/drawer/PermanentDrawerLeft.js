@@ -46,31 +46,39 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-        <Box sx={{marginBottom: "130px"}}>
+        <Box sx={{marginBottom: "8rem"}}>
           <img src={logoImage} className="logo" />
         </Box>
         <Divider className="divider" />
         <List>
-          <NavLink to="routes" className="navLink">
-            <ListItem key={"Routes"} classes={{selected: "selected", root: "listItem"}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DirectionsOutlinedIcon className="icon" />
-                </ListItemIcon>
-                <ListItemText primary={getTypography("Routes")} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
-          <NavLink to="requests" className="navLink">
-            <ListItem key={"Requests"} classes={{selected: "selected", root: "listItem"}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <BackHandOutlinedIcon className="icon" />
-                </ListItemIcon>
-                <ListItemText primary={getTypography("Requests")} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
+          <ListItem
+            key={"Routes"}
+            component={NavLink}
+            to={"routes"}
+            activeClassName="active"
+            className="sidebar-option"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <DirectionsOutlinedIcon className="icon" />
+              </ListItemIcon>
+              <ListItemText primary={getTypography("Routes")} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key={"Requests"}
+            component={NavLink}
+            to={"requests"}
+            activeClassName="active"
+            className="sidebar-option"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <BackHandOutlinedIcon className="icon" />
+              </ListItemIcon>
+              <ListItemText primary={getTypography("Requests")} />
+            </ListItemButton>
+          </ListItem>
         </List>
         <List className="logoutButton">
           <ListItem onClick={() => logout()}>

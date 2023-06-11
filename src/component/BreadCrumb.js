@@ -13,13 +13,13 @@ function BreadCrumb({values}) {
           Letter: "0.25 px",
         }}
       >
-        {values.length && values.map((item) => (
+        {values.length && values.map((item, index) => (
           <Typography
             key={item.length}
             fontSize="inherit"
             Font="Roboto"
             Align="Center"
-            color={values.indexOf(item) === values.length - 1 && "text.primary"}
+            color={ index === values.length - 1 ? "text.primary" : ""}
           >
             {item}
           </Typography>

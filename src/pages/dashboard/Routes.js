@@ -3,11 +3,11 @@ import BreadCrumb from "../../component/BreadCrumb";
 import "./Dasboard.css";
 
 function DashboardRoutes() {
-  const obj = {name: "Dashboard", type: "Routes"};
+  const obj = ["Dashboard", "Routes"];
   return (
     <>
       <div className="breadcrumb">
-        <BreadCrumb data={obj} />
+        <BreadCrumb values={obj} />
       </div>
     </>
   );

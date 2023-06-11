@@ -7,7 +7,7 @@ describe("Requests test", () => {
   test("renders the component", async () => {
     render(<DashboardRequests />);
 
-    expect(Breadcrumb).toBeCalledWith({data: {name: "Dashboard", type: "Requests"}}, {});
+    expect(Breadcrumb).toBeCalledWith({values: ["Dashboard", "Requests"]}, {});
   });
 
   it("renders correctly", () => {

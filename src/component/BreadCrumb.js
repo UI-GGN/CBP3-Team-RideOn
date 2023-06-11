@@ -1,10 +1,8 @@
 import React from "react";
 import {Breadcrumbs, Typography} from "@mui/material";
 
-function BreadCrumb({data}) {
-  const values = Object.values(data);
+function BreadCrumb({values}) {
   return (
-    <div>
       <Breadcrumbs
         aria-label="breadcrumbs"
         sx={{
@@ -15,7 +13,7 @@ function BreadCrumb({data}) {
           Letter: "0.25 px",
         }}
       >
-        {[...values].map((item) => (
+        {values.map((item) => (
           <Typography
             key={item.length}
             fontSize="inherit"
@@ -27,7 +25,6 @@ function BreadCrumb({data}) {
           </Typography>
         ))}
       </Breadcrumbs>
-    </div>
   );
 }
 

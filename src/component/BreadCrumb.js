@@ -13,7 +13,7 @@ function BreadCrumb({values}) {
           Letter: "0.25 px",
         }}
       >
-        {values.map((item) => (
+        {values.length && values.map((item) => (
           <Typography
             key={item.length}
             fontSize="inherit"

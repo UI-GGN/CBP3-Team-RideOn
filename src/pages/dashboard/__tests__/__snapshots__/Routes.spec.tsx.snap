@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes test renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="breadcrumb"
+    >
+      <nav
+        aria-label="breadcrumbs"
+        class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-1hitbeq-MuiTypography-root-MuiBreadcrumbs-root"
+      >
+        <ol
+          class="MuiBreadcrumbs-ol css-4pdmu4-MuiBreadcrumbs-ol"
+        >
+          <li
+            class="MuiBreadcrumbs-li"
+          >
+            <p
+              align="Center"
+              class="MuiTypography-root MuiTypography-body1 css-4y6wiu-MuiTypography-root"
+              font="Roboto"
+            >
+              Dashboard
+            </p>
+          </li>
+          <li
+            aria-hidden="true"
+            class="MuiBreadcrumbs-separator css-1wuw8dw-MuiBreadcrumbs-separator"
+          >
+            /
+          </li>
+          <li
+            class="MuiBreadcrumbs-li"
+          >
+            <p
+              align="Center"
+              class="MuiTypography-root MuiTypography-body1 css-136mgio-MuiTypography-root"
+              font="Roboto"
+            >
+              Routes
+            </p>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</body>
+`;

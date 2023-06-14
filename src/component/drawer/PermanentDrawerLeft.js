@@ -13,9 +13,9 @@ import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
-import {useAuth0} from "@auth0/auth0-react";
 import "./PermanentDrawerLeft.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
+import {useAuth0} from "@auth0/auth0-react";
 
 const drawerWidth = 350;
 
@@ -46,31 +46,39 @@ export default function PermanentDrawerLeft() {
         variant="permanent"
         anchor="left"
       >
-        <Box sx={{marginBottom: "130px"}}>
+        <Box sx={{marginBottom: "8rem"}}>
           <img src={logoImage} className="logo" />
         </Box>
         <Divider className="divider" />
         <List>
-          <NavLink to={"/"} className="navLink">
-            <ListItem key={"Routes"} classes={{selected: "selected", root: "listItem"}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <DirectionsOutlinedIcon className="icon" />
-                </ListItemIcon>
-                <ListItemText primary={getTypography("Routes")} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
-          <NavLink to="/routes" className="navLink">
-            <ListItem key={"Requests"} classes={{selected: "selected", root: "listItem"}}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <BackHandOutlinedIcon className="icon" />
-                </ListItemIcon>
-                <ListItemText primary={getTypography("Requests")} />
-              </ListItemButton>
-            </ListItem>
-          </NavLink>
+          <ListItem
+            key={"Routes"}
+            component={NavLink}
+            to={"routes"}
+            activeClassName="active"
+            className="sidebar-option"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <DirectionsOutlinedIcon className="icon" />
+              </ListItemIcon>
+              <ListItemText primary={getTypography("Routes")} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key={"Requests"}
+            component={NavLink}
+            to={"requests"}
+            activeClassName="active"
+            className="sidebar-option"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <BackHandOutlinedIcon className="icon" />
+              </ListItemIcon>
+              <ListItemText primary={getTypography("Requests")} />
+            </ListItemButton>
+          </ListItem>
         </List>
         <List className="logoutButton">
           <ListItem onClick={() => logout()}>
@@ -85,7 +93,7 @@ export default function PermanentDrawerLeft() {
       </Drawer>
       <Box component="main" sx={{flexGrow: 1, p: 3}}>
         <Toolbar />
-        <Typography paragraph>Lorem ipsum dolor sit amet.</Typography>
+        <Outlet />
       </Box>
     </Box>
   );

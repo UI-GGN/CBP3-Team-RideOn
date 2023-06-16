@@ -105,47 +105,30 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
             </div>
           </a>
         </ul>
-        <ul
-          class="MuiList-root MuiList-padding logoutButton css-h4y409-MuiList-root"
+        <div
+          class="logoutButton"
         >
-          <li
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1p823my-MuiListItem-root"
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+            data-testid="LogoutOutlinedIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <div
-              class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-              role="button"
-              tabindex="0"
+            <path
+              d="m17 8-1.41 1.41L17.17 11H9v2h8.17l-1.58 1.58L17 16l4-4-4-4zM5 5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2H5V5z"
+            />
+          </svg>
+          <div
+            class="logoutText"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 typography css-ahj2mt-MuiTypography-root"
             >
-              <div
-                class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
-                  data-testid="LogoutOutlinedIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="m17 8-1.41 1.41L17.17 11H9v2h8.17l-1.58 1.58L17 16l4-4-4-4zM5 5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2H5V5z"
-                  />
-                </svg>
-              </div>
-              <div
-                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-              >
-                <p
-                  class="MuiTypography-root MuiTypography-body1 typography css-ahj2mt-MuiTypography-root"
-                >
-                  Logout
-                </p>
-              </div>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </div>
-          </li>
-        </ul>
+              Logout
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <main

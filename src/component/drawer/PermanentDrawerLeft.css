@@ -6,11 +6,20 @@
 }
 
 .logoutButton {
+  display: flex;
+  align-items: center !important;
+  justify-content: start !important;
   position: absolute !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   padding: 0.5rem !important;
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.logoutText {
+  margin-left: 1.5rem;
 }
 
 .divider {

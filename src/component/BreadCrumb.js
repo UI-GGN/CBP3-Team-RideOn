@@ -3,28 +3,29 @@ import {Breadcrumbs, Typography} from "@mui/material";
 
 function BreadCrumb({values}) {
   return (
-      <Breadcrumbs
-        aria-label="breadcrumbs"
-        sx={{
-          Weight: 400,
-          fontSize: "1.5rem",
-          Size: "1.5rem",
-          lineHeight: "2.25rem",
-          Letter: "0.25 px",
-        }}
-      >
-        {values.length && values.map((item, index) => (
+    <Breadcrumbs
+      aria-label="breadcrumbs"
+      sx={{
+        Weight: 400,
+        fontSize: "1.5rem",
+        Size: "1.5rem",
+        lineHeight: "2.25rem",
+        Letter: "0.25 px",
+      }}
+    >
+      {values.length &&
+        values.map((item, index) => (
           <Typography
             key={item.length}
             fontSize="inherit"
             Font="Roboto"
             Align="Center"
-            color={ index === values.length - 1 ? "text.primary" : ""}
+            color={index === values.length - 1 ? "text.primary" : ""}
           >
             {item}
           </Typography>
         ))}
-      </Breadcrumbs>
+    </Breadcrumbs>
   );
 }
 

@@ -9,13 +9,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
-import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import "./PermanentDrawerLeft.css";
 import {NavLink, Outlet} from "react-router-dom";
-import {useAuth0} from "@auth0/auth0-react";
 
 const drawerWidth = 350;
 
@@ -23,9 +20,7 @@ function getTypography(text) {
   return <Typography className="typography">{text}</Typography>;
 }
 
-export default function PermanentDrawerLeft() {
-  const {logout} = useAuth0();
-
+export default function PermanentDrawerLeft({logout, navItems}) {
   return (
     <Box sx={{display: "flex"}}>
       <Drawer
@@ -51,45 +46,26 @@ export default function PermanentDrawerLeft() {
         </Box>
         <Divider className="divider" />
         <List>
-          <ListItem
-            key={"Routes"}
-            component={NavLink}
-            to={"routes"}
-            activeClassName="active"
-            className="sidebar-option"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <DirectionsOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Routes")} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem
-            key={"Requests"}
-            component={NavLink}
-            to={"requests"}
-            activeClassName="active"
-            className="sidebar-option"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <BackHandOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Requests")} />
-            </ListItemButton>
-          </ListItem>
+          {navItems.map((navItem) => (
+            <ListItem
+              key={navItem.title}
+              component={NavLink}
+              to={navItem.to}
+              activeClassName="active"
+              className="sidebar-option"
+            >
+              <ListItemButton>
+                <ListItemIcon>{navItem.icon}</ListItemIcon>
+                <ListItemText primary={getTypography(navItem.title)} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
-        <List className="logoutButton">
-          <ListItem onClick={() => logout()}>
-            <ListItemButton>
-              <ListItemIcon>
-                <LogoutOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Logout")} />
-            </ListItemButton>
-          </ListItem>
-        </List>
+
+        <div className="logoutButton" onClick={() => logout()}>
+          <LogoutOutlinedIcon className="icon" />
+          <div className="logoutText">{getTypography("Logout")}</div>
+        </div>
       </Drawer>
       <Box component="main" sx={{flexGrow: 1, p: 3}}>
         <Toolbar />

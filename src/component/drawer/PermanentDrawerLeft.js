@@ -9,13 +9,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
-import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import "./PermanentDrawerLeft.css";
 import {NavLink, Outlet} from "react-router-dom";
-import {useAuth0} from "@auth0/auth0-react";
+import PropTypes from 'prop-types';
 
 const drawerWidth = 350;
 
@@ -23,8 +21,8 @@ function getTypography(text) {
   return <Typography className="typography">{text}</Typography>;
 }
 
-export default function PermanentDrawerLeft() {
-  const {logout} = useAuth0();
+export default function PermanentDrawerLeft({props}) {
+  const {logout, listItems} = props;
 
   return (
     <Box sx={{display: "flex"}}>
@@ -51,34 +49,25 @@ export default function PermanentDrawerLeft() {
         </Box>
         <Divider className="divider" />
         <List>
-          <ListItem
-            key={"Routes"}
-            component={NavLink}
-            to={"routes"}
-            activeClassName="active"
-            className="sidebar-option"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <DirectionsOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Routes")} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem
-            key={"Requests"}
-            component={NavLink}
-            to={"requests"}
-            activeClassName="active"
-            className="sidebar-option"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <BackHandOutlinedIcon className="icon" />
-              </ListItemIcon>
-              <ListItemText primary={getTypography("Requests")} />
-            </ListItemButton>
-          </ListItem>
+          {listItems.map((i) => {
+            return (<>
+            <ListItem
+                key={i.key}
+                component={NavLink}
+                to={i.to}
+                activeClassName="active"
+                className="sidebar-option"
+              >
+                <ListItemButton>
+                  <ListItemIcon>
+                    {i.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={getTypography(i.text)} />
+                </ListItemButton>
+              </ListItem>
+            </>);
+          }
+          )}
         </List>
         <List className="logoutButton">
           <ListItem onClick={() => logout()}>
@@ -98,3 +87,8 @@ export default function PermanentDrawerLeft() {
     </Box>
   );
 }
+
+PermanentDrawerLeft.propTypes = {
+  data: PropTypes.string,
+  listItems: PropTypes.array
+};

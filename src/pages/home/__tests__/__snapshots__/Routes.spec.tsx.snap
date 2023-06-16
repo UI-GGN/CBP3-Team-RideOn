@@ -21,7 +21,7 @@ exports[`Routes test renders correctly 1`] = `
               class="MuiTypography-root MuiTypography-body1 css-4y6wiu-MuiTypography-root"
               font="Roboto"
             >
-              Dashboard
+              Home
             </p>
           </li>
           <li

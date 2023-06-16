@@ -1,9 +1,9 @@
-import "./Dasboard.css";
+import "./Home.css";
 import {withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../component/drawer/PermanentDrawerLeft";
 
-function Dashboard() {
+function Home() {
   return <PermanentDrawerLeft />;
 }
 
-export default withAuthenticationRequired(Dashboard);
+export default withAuthenticationRequired(Home);

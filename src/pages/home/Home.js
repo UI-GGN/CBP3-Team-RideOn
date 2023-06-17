@@ -1,10 +1,10 @@
-import "./Dasboard.css";
+import "./Home.css";
 import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../component/drawer/PermanentDrawerLeft";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 
-function Dashboard() {
+function Home() {
   const {logout} = useAuth0();
   const navItems = [
     {
@@ -21,4 +21,4 @@ function Dashboard() {
   return <PermanentDrawerLeft logout={logout} navItems={navItems} />;
 }
 
-export default withAuthenticationRequired(Dashboard);
+export default withAuthenticationRequired(Home);

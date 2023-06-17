@@ -1,9 +1,9 @@
 import React from "react";
 import BreadCrumb from "../../component/BreadCrumb";
-import "./Dasboard.css";
+import "./Home.css";
 
-function DashboardRequests() {
-  const obj = ["Dashboard", "Requests"];
+function HomeRoutes() {
+  const obj = ["Home", "Routes"];
   return (
     <>
       <div className="breadcrumb">
@@ -13,4 +13,4 @@ function DashboardRequests() {
   );
 }
 
-export default DashboardRequests;
+export default HomeRoutes;

@@ -20,7 +20,7 @@ function getTypography(text) {
   return <Typography className="typography">{text}</Typography>;
 }
 
-export default function PermanentDrawerLeft({logout, navItems}) {
+export default function PermanentDrawerLeft({onLogout, navItems}) {
   return (
     <Box sx={{display: "flex"}}>
       <Drawer
@@ -62,7 +62,7 @@ export default function PermanentDrawerLeft({logout, navItems}) {
           ))}
         </List>
 
-        <div className="logoutButton" onClick={() => logout()}>
+        <div className="logoutButton" onClick={() => onLogout()}>
           <LogoutOutlinedIcon className="icon" />
           <div className="logoutText">{getTypography("Logout")}</div>
         </div>

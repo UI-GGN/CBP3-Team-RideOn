@@ -2,7 +2,6 @@ import React from "react";
 import {Auth0Provider} from "@auth0/auth0-react";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Config from "./config/config";
-import App from "./App";
 
 const theme = createTheme({
   typography: {
@@ -11,7 +10,7 @@ const theme = createTheme({
   },
 });
 
-function Provider() {
+function Provider({children}) {
   return (
     <React.StrictMode>
       <Auth0Provider
@@ -21,9 +20,7 @@ function Provider() {
         scopes="roles"
         authorizationParams={{audience: Config.AUTH0_AUDIENCE}}
       >
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </Auth0Provider>
     </React.StrictMode>
   );

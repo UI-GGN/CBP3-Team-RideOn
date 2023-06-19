@@ -1,15 +1,15 @@
 import {render} from "@testing-library/react";
-import DashboardRoutes from "../Routes";
+import HomeRoutes from "../Routes";
 
 describe("Routes test", () => {
   test("renders the component", async () => {
-    const {getByText} = render(<DashboardRoutes />);
+    const {getByText} = render(<HomeRoutes />);
 
-    expect(getByText("Dashboard")).toBeVisible();
+    expect(getByText("Home")).toBeVisible();
     expect(getByText("Routes")).toBeVisible();
   });
   it("renders correctly", () => {
-    const {baseElement} = render(<DashboardRoutes />);
+    const {baseElement} = render(<HomeRoutes />);
     expect(baseElement).toMatchSnapshot();
   });
 });

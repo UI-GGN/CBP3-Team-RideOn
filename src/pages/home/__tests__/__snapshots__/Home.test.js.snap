@@ -140,13 +140,9 @@ exports[`Home Page renders correctly 1`] = `
                 </div>
               </div>
             </div>
-            <main
-              class="MuiBox-root css-zxdg2z"
-            >
-              <div
-                class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-              />
-            </main>
+            <div
+              class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+            />
           </div>
         </div>
         <div
@@ -170,6 +166,9 @@ exports[`Home Page renders correctly 1`] = `
                 />
               </nav>
             </div>
+            <div
+              class="MuiBox-root css-0"
+            />
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import "./PermanentDrawerLeft.css";
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const drawerWidth = 350;
 
@@ -66,10 +66,7 @@ export default function PermanentDrawerLeft({onLogout, navItems}) {
           <div className="logoutText">{getTypography("Logout")}</div>
         </div>
       </Drawer>
-      <Box component="main" sx={{flexGrow: 1, p: 3}}>
-        <Toolbar />
-        <Outlet />
-      </Box>
+      <Toolbar />
     </Box>
   );
 }

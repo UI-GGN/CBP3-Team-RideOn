@@ -3,7 +3,7 @@ import {TestHome} from "../Home";
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import { useLocation, BrowserRouter } from 'react-router-dom';
 import * as BreadcrumbUtils from "../../../utils/Breadcrumbs";
-import Avatar from "../../../component/Avatar";
+import Avatar from "../../../components/Avatar";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -16,7 +16,7 @@ jest.mock('@auth0/auth0-react', () => ({
   useAuth0: jest.fn(),
 }));
 
-jest.mock(".../../../component/Avatar");
+jest.mock(".../../../components/Avatar");
 describe("Home Page", () => {
   beforeEach(() => {
     const mockLocation = {

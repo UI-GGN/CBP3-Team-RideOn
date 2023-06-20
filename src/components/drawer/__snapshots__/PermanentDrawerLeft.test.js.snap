@@ -131,9 +131,6 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-    />
   </div>
    
 </DocumentFragment>

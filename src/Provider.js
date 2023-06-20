@@ -8,6 +8,13 @@ const theme = createTheme({
     fontFamily: ["Nunito", "sans-serif"].join(","),
     fontWeightMedium: "bold",
   },
+  components: {
+    MuiStack: {
+      defaultProps: {
+        useFlexGap: true,
+      }
+    }
+  }
 });
 
 function Provider({children}) {

@@ -22,7 +22,7 @@ function getTypography(text) {
 
 export default function PermanentDrawerLeft({onLogout, navItems}) {
   return (
-    <Box sx={{display: "flex"}}>
+    <Box sx={{display: "flex", width: drawerWidth}}>
       <Drawer
         PaperProps={{
           sx: {
@@ -31,7 +31,6 @@ export default function PermanentDrawerLeft({onLogout, navItems}) {
           },
         }}
         sx={{
-          width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,

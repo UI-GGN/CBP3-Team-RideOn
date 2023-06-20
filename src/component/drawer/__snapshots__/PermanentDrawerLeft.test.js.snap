@@ -4,10 +4,10 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
 <DocumentFragment>
    
   <div
-    class="MuiBox-root css-k008qs"
+    class="MuiBox-root css-92v238"
   >
     <div
-      class="MuiDrawer-root MuiDrawer-docked css-1ll17n5-MuiDrawer-docked"
+      class="MuiDrawer-root MuiDrawer-docked css-l0dv7o-MuiDrawer-docked"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-1n76a5x-MuiPaper-root-MuiDrawer-paper"

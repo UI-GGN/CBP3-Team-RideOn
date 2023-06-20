@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-uwwqev"
+    >
+      <div
+        class="MuiStack-root css-e53awj-MuiStack-root"
+      >
+        <div
+          class="MuiBox-root css-0"
+        >
+          <div
+            class="MuiBox-root css-92v238"
+          >
+            <div
+              class="MuiDrawer-root MuiDrawer-docked css-l0dv7o-MuiDrawer-docked"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft css-1n76a5x-MuiPaper-root-MuiDrawer-paper"
+              >
+                <div
+                  class="MuiBox-root css-1wfgzy0"
+                >
+                  <img
+                    class="logo"
+                    src="Logo.svg"
+                  />
+                </div>
+                <hr
+                  class="MuiDivider-root MuiDivider-fullWidth divider css-9mgopn-MuiDivider-root"
+                />
+                <ul
+                  class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+                >
+                  <a
+                    activeclassname="active"
+                    class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-1p823my-MuiListItem-root"
+                    href="/routes"
+                  >
+                    <div
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+                          data-testid="DirectionsOutlinedIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m22.43 10.59-9.01-9.01c-.75-.75-2.07-.76-2.83 0l-9 9c-.78.78-.78 2.04 0 2.82l9 9c.39.39.9.58 1.41.58.51 0 1.02-.19 1.41-.58l8.99-8.99c.79-.76.8-2.02.03-2.82zm-10.42 10.4-9-9 9-9 9 9-9 9zM8 11v4h2v-3h4v2.5l3.5-3.5L14 7.5V10H9c-.55 0-1 .45-1 1z"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1 typography css-ahj2mt-MuiTypography-root"
+                        >
+                          Routes
+                        </p>
+                      </div>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </div>
+                  </a>
+                  <a
+                    activeclassname="active"
+                    class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-1p823my-MuiListItem-root"
+                    href="/requests"
+                  >
+                    <div
+                      class="MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+                          data-testid="BackHandOutlinedIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M21 7c0-1.38-1.12-2.5-2.5-2.5-.17 0-.34.02-.5.05V4c0-1.38-1.12-2.5-2.5-2.5-.23 0-.46.03-.67.09C14.46.66 13.56 0 12.5 0c-1.23 0-2.25.89-2.46 2.06C9.87 2.02 9.69 2 9.5 2 8.12 2 7 3.12 7 4.5v5.89c-.34-.31-.76-.54-1.22-.66l-.77-.21c-.83-.23-1.7.09-2.19.83-.38.57-.4 1.31-.15 1.95l2.56 6.43C6.49 21.91 9.57 24 13 24c4.42 0 8-3.58 8-8V7zm-2 9c0 3.31-2.69 6-6 6-2.61 0-4.95-1.59-5.91-4.01l-2.6-6.54.53.14c.46.12.83.46 1 .9L7 15h2V4.5c0-.28.22-.5.5-.5s.5.22.5.5V12h2V2.5c0-.28.22-.5.5-.5s.5.22.5.5V12h2V4c0-.28.22-.5.5-.5s.5.22.5.5v8h2V7c0-.28.22-.5.5-.5s.5.22.5.5v9z"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1 typography css-ahj2mt-MuiTypography-root"
+                        >
+                          Requests
+                        </p>
+                      </div>
+                      <span
+                        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                      />
+                    </div>
+                  </a>
+                </ul>
+                <div
+                  class="logoutButton"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium icon css-i4bv87-MuiSvgIcon-root"
+                    data-testid="LogoutOutlinedIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="m17 8-1.41 1.41L17.17 11H9v2h8.17l-1.58 1.58L17 16l4-4-4-4zM5 5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h7v-2H5V5z"
+                    />
+                  </svg>
+                  <div
+                    class="logoutText"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1 typography css-ahj2mt-MuiTypography-root"
+                    >
+                      Logout
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <main
+              class="MuiBox-root css-zxdg2z"
+            >
+              <div
+                class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
+              />
+            </main>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1q6u1fn"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <div
+              class="MuiBox-root css-15ixr81"
+            />
+            <div
+              class="MuiBox-root css-h8m1q6"
+            >
+              <nav
+                aria-label="breadcrumbs"
+                class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-1hitbeq-MuiTypography-root-MuiBreadcrumbs-root"
+              >
+                <ol
+                  class="MuiBreadcrumbs-ol css-4pdmu4-MuiBreadcrumbs-ol"
+                />
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

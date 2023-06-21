@@ -4,9 +4,16 @@ import loginImage from "../../assets/Login.svg";
 import logoImage from "../../assets/Logo.svg";
 import "./Login.css";
 import {useAuth0} from "@auth0/auth0-react";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
-  const {loginWithRedirect} = useAuth0();
+  const {loginWithRedirect, isAuthenticated} = useAuth0();
+
+  const navigate = useNavigate();
+  if (isAuthenticated) {
+    navigate("/home", {replace: true});
+  }
+
   return (
     <div>
       <img src={logoImage} className="logo" />

@@ -1,8 +1,8 @@
 import {render} from "@testing-library/react";
-import {TestHome} from "../Home";
-import {withAuthenticationRequired, useAuth0} from "@auth0/auth0-react";
-import {useLocation, BrowserRouter} from "react-router-dom";
+import Home from "../Home";
+import { BrowserRouter, useLocation} from "react-router-dom";
 import * as BreadcrumbUtils from "../../../utils/Breadcrumbs";
+import {useAuth0} from "@auth0/auth0-react";
 import Avatar from "../../../components/Avatar";
 
 jest.mock("react-router-dom", () => ({
@@ -12,7 +12,7 @@ jest.mock("react-router-dom", () => ({
 
 jest.mock("@auth0/auth0-react", () => ({
   ...jest.requireActual("@auth0/auth0-react"),
-  withAuthenticationRequired: jest.fn(),
+  withAuthenticationRequired: jest.fn((component) => component),
   useAuth0: jest.fn(),
 }));
 
@@ -22,16 +22,13 @@ describe("Home Page", () => {
     const mockLocation = {
       pathname: "/home/routes",
     };
-    withAuthenticationRequired.mockImplementation((component) => component);
+
     const mockUser = {name: "John Doe", email: "john@example.com", picture: "somelink"};
-    const mockIsAuthenticated = true;
-    const mockLogin = jest.fn();
-    const mockLogout = jest.fn();
     const mockAuth0Context = {
-      isAuthenticated: mockIsAuthenticated,
+      isAuthenticated: true,
       user: mockUser,
-      loginWithRedirect: mockLogin,
-      logout: mockLogout,
+      loginWithRedirect: jest.fn(),
+      logout: jest.fn(),
     };
 
     useAuth0.mockReturnValue(mockAuth0Context);
@@ -40,31 +37,19 @@ describe("Home Page", () => {
   });
 
   it("renders correctly", () => {
-    const {baseElement} = render(
-      <BrowserRouter>
-        <TestHome />
-      </BrowserRouter>
-    );
+    const {baseElement} = render(<Home />, {wrapper: BrowserRouter});
 
     expect(baseElement).toMatchSnapshot();
   });
 
   it("should called breadcrubms with pathname", () => {
-    render(
-      <BrowserRouter>
-        <TestHome />
-      </BrowserRouter>
-    );
+    render(<Home />, {wrapper: BrowserRouter});
 
     expect(BreadcrumbUtils.getBreadcrumbsValues).toBeCalledWith("/home/routes");
   });
 
   it("should called avatar with imageLink", () => {
-    render(
-      <BrowserRouter>
-        <TestHome />
-      </BrowserRouter>
-    );
+    render(<Home />, {wrapper: BrowserRouter});
 
     expect(Avatar).toBeCalledWith({imageLink: "somelink"}, {});
   });

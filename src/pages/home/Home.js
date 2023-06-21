@@ -58,4 +58,3 @@ function Home() {
 }
 
 export default withAuthenticationRequired(Home);
-export {Home as TestHome};

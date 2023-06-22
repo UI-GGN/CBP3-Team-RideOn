@@ -26,12 +26,40 @@ export const columns = [
   {
     id: "action",
     label: "Action",
-  }
+  },
 ];
 
 export const rows = [
-  {employee: "Khushboo", projectCode: "hpb", pickup: "42 metro", drop: "55-56 metro", pickupTime: "9:30", status: "Approved"},
-  {employee: "KP", projectCode: "hpb", pickup: "42 metro", drop: "55-56 metro", pickupTime: "9:30", status: "Decline"},
-  {employee: "Evanjalin", projectCode: "hpb", pickup: "42 metro", drop: "55-56 metro", pickupTime: "9:30", status: "Approved"},
-  {employee: "Anjali", projectCode: "hpb", pickup: "42 metro", drop: "55-56 metro", pickupTime: "9:30", status: "Declined"},
+  {
+    employee: "Khushboo",
+    projectCode: "hpb",
+    pickup: "42 metro",
+    drop: "55-56 metro",
+    pickupTime: "9:30",
+    status: "Approved",
+  },
+  {
+    employee: "KP",
+    projectCode: "hpb",
+    pickup: "42 metro",
+    drop: "55-56 metro",
+    pickupTime: "9:30",
+    status: "Decline",
+  },
+  {
+    employee: "Evanjalin",
+    projectCode: "hpb",
+    pickup: "42 metro",
+    drop: "55-56 metro",
+    pickupTime: "9:30",
+    status: "Approved",
+  },
+  {
+    employee: "Anjali",
+    projectCode: "hpb",
+    pickup: "42 metro",
+    drop: "55-56 metro",
+    pickupTime: "9:30",
+    status: "Declined",
+  },
 ];

@@ -10,7 +10,7 @@ function HomeRequests() {
       <div className="breadcrumb">
         <BreadCrumb values={obj} />
       </div>
-      <BasicTable/>
+      <BasicTable />
     </>
   );
 }

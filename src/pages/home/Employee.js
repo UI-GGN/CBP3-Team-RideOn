@@ -6,13 +6,16 @@ import {
   AccordionSummary,
   Button,
   FormControl,
-  Input,
   TextField,
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {useAuth0} from "@auth0/auth0-react";
 import Box from "@mui/material/Box";
+import {DemoContainer} from '@mui/x-date-pickers/internals/demo';
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
+import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
+import {DateTimePicker} from "@mui/x-date-pickers";
 
 function Employee() {
   const {user} = useAuth0();
@@ -26,7 +29,7 @@ function Employee() {
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (!pickupLocation) {
@@ -48,71 +51,76 @@ function Employee() {
 
   return (
     <>
-        <img src={logoImage} className="logo"/>
-      <h4 style={{
-        color: "rgba(0, 0, 0, 0.60)",
-        marginTop: "70px",
-        marginLeft: "90px",
-        fontSize: "24px",
-        fontFamily: "Roboto",
-        fontWeight: 500,
-        lineHeight: "20px",
-        letterSpacing: "0.5px"
-      }}>{msg}</h4>
+        <img src={logoImage} className="logo" />
+      <h4
+        style={{
+          color: "rgba(0, 0, 0, 0.60)",
+          marginTop: "70px",
+          marginLeft: "90px",
+          fontSize: "24px",
+          fontFamily: "Roboto",
+          fontWeight: 500,
+          lineHeight: "20px",
+          letterSpacing: "0.5px",
+        }}
+      >
+        {msg}
+      </h4>
       <Box sx={{marginLeft: "90px"}}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          onClick={() => setOpen(!isOpen)}
-        >
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+            onClick={() => setOpen(!isOpen)}
+          >
             <Typography>
               {isOpen
                 ? "Planning an upcoming travel, create your travel request here"
                 : "Fill the form to create a new travel request"}
-              </Typography>
-        </AccordionSummary>
-        <AccordionDetails onFocus={() => setOpen(false)}>
-          <Typography>
-            <FormControl className="form-control-container">
-              <div>
-                <TextField
-                 variant="standard"
-                  type="text"
-                  required
-                  placeholder="Project Code"
-                  id="projectCode"
-                  name="projectCode"
-                  className="text-field"
-                  value={projectCode}
-                  error={!!projectCodeErrorText}
-                  helperText={projectCodeErrorText}
-                  onChange={e => setProjectCode(e.target.value)}
-                />
-                <Input
-                  type="text"
-                  required
-                  className="text-field"
-                  placeholder="Pickup Time"
-                  name="Pickup Time"
-                />
-              </div>
-              <div>
-               <TextField
-                  variant="standard"
-                  type="text"
-                  required
-                  placeholder="Pickup Location"
-                  id="pickupLocation"
-                  className="text-field"
-                  name="pickupLocation"
-                  value={pickupLocation}
-                  error={!!pickupLocationErrorText}
-                  helperText={pickupLocationErrorText}
-                  onChange={e => setPickupLocation(e.target.value)}
-              />
-                <TextField
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails onFocus={() => setOpen(false)}>
+            <Typography>
+              <FormControl className="form-control-container">
+                <div>
+                  <TextField
+                    sx={{marginRight: "65px", width: "653px"}}
+                    variant="standard"
+                    type="text"
+                    required
+                    placeholder="Project Code"
+                    id="projectCode"
+                    name="projectCode"
+                    className="text-field"
+                    value={projectCode}
+                    error={!!projectCodeErrorText}
+                    helperText={projectCodeErrorText}
+                    onChange={(e) => setProjectCode(e.target.value)}
+                  />
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={['DatePicker']}>
+                            <DateTimePicker sx={{marginLeft: "715px", marginTop: "1px", width: "653px"}}/>
+                        </DemoContainer>
+                    </LocalizationProvider>
+                </div>
+                <div>
+                  <TextField
+                    sx={{marginRight: "65px", width: "653px"}}
+                    variant="standard"
+                    type="text"
+                    required
+                    placeholder="Pickup Location"
+                    id="pickupLocation"
+                    className="text-field"
+                    name="pickupLocation"
+                    value={pickupLocation}
+                    error={!!pickupLocationErrorText}
+                    helperText={pickupLocationErrorText}
+                    onChange={(e) => setPickupLocation(e.target.value)}
+                  />
+                  <TextField
+                    sx={{width: "653px"}}
                     variant="standard"
                     type="text"
                     required
@@ -123,16 +131,16 @@ function Employee() {
                     value={dropLocation}
                     error={!!dropLocationErrorText}
                     helperText={dropLocationErrorText}
-                    onChange={e => setDropLocation(e.target.value)}
-                />
-              </div>
-              <Button variant="contained" size="large" onClick={onSubmit}>
-                Submit Request
-              </Button>
-            </FormControl>
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+                    onChange={(e) => setDropLocation(e.target.value)}
+                  />
+                </div>
+                <Button variant="contained" size="large" sx={{display: "flex", width: "175px", height: "44px", alignItems: "center", gap: "16px", flexShrink: "0", marginLeft: "1200px", marginTop: "35px"}} onClick={onSubmit}>
+                  Submit Request
+                </Button>
+              </FormControl>
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       </Box>
     </>
   );

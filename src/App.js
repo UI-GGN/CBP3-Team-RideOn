@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/employee" element={<Employee />} />
-        <Route path="/home" element={(userRole === "employee") ? <Employee/> : <Home/>}>
-          <Route index element={<Home/>} />
+        <Route path="/home" element={userRole === "employee" ? <Employee /> : <Home />}>
+          <Route index element={<Home />} />
           <Route path="requests" element={<HomeRequests />} />
           <Route path="routes" element={<HomeRoutes />} />
         </Route>

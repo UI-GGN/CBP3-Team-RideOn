@@ -11,11 +11,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "dayjs": "^1.11.8",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "engines": {
@@ -55,19 +56,21 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.3",
+    "@commitlint/cli": "^6.1.0",
     "@commitlint/config-conventional": "^17.6.3",
+    "@mui/x-date-pickers": "^6.9.0",
     "@svgr/webpack": "^8.0.1",
     "eslint": "^8.40.0",
     "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react": "^7.25.3",
     "husky": "^8.0.3"
   },
   "overrides": {
-    "@svgr/webpack": "$@svgr/webpack"
+    "@svgr/webpack": "$@svgr/webpack",
+    "trim-newlines": "4.0.2"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

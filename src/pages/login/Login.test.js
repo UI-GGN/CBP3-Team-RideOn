@@ -1,6 +1,7 @@
 import {render, screen, fireEvent, waitFor} from "@testing-library/react";
 import Login from "./Login";
 import {useAuth0} from "@auth0/auth0-react";
+import {BrowserRouter} from "react-router-dom";
 
 jest.mock("@auth0/auth0-react");
 
@@ -11,7 +12,11 @@ describe("Login Page", () => {
     });
     const {loginWithRedirect} = useAuth0();
 
-    render(<Login />);
+    render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
     const logInButton = await screen.getByText("LOGIN");
     fireEvent.click(logInButton);
 

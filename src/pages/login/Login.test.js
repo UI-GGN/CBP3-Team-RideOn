@@ -9,7 +9,7 @@ describe("Login Page", () => {
     useAuth0.mockReturnValue({
       loginWithRedirect: jest.fn(),
     });
-    const {loginWithRedirect, user} = useAuth0();
+    const {loginWithRedirect} = useAuth0();
 
     render(<Login />);
     const logInButton = await screen.getByText("LOGIN");

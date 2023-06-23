@@ -1,0 +1,19 @@
+.downloadContainer {
+    text-align: center;
+    font-weight: 400;
+    display: flex;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    flex-direction: row;
+    margin: 2rem;
+    width: 93%;
+    border-radius: 5px;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.downloadButton {
+    background-color: #1976D20A !important;
+    color: #1976d2 !important;
+    box-shadow: none !important;
+    padding: 2px !important;
+}

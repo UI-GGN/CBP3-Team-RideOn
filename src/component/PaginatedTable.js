@@ -4,6 +4,7 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
 import {Divider, Button, Chip, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
+import "./PaginatedTable.css";
 
 export const columns = [
   {id: "employee", label: "Employee"},
@@ -59,26 +60,22 @@ export default function PaginatedTable() {
   };
 
   return (
-      <Paper
-          className="table"
-          sx={{width: "95%", overflow: "hidden", marginTop: "2rem", marginLeft: "2.3rem"}}
-      >
-        <TableContainer sx={{maxHeight: 800}}>
-          <Table stickyHeader aria-label="sticky table" sx={{ '& .MuiTableCell-root': { padding: '0.25rem', paddingLeft: '1rem' } }}>
+      <Paper className="table">
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table" sx={{ '& .MuiTableCell-root': { padding: '0.13rem', paddingLeft: '1rem' } }}>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
                     <TableCell
                         key={column.id}
                         className="tableHeader"
-                        sx={{color: "#757575", fontWeight: "700", fontSize: "15px"}}
                     >
                       {column.label}
                     </TableCell>
                 ))}
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody className="tableBody">
               {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
@@ -104,12 +101,10 @@ export default function PaginatedTable() {
                                   horizontal: 'center',
                                 }}
                                 PaperProps={{
-                                  sx: {
-                                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-                                  },
+                                  className: 'popOver',
                                 }}
                             >
-                              <div style={{ display: 'flex', flexDirection: 'column'}}>
+                              <div className='popOverButton'>
                                 <Button variant="text" onClick={handleApprove}>Approve</Button>
                                 <Divider/>
                                 <Button variant="text" >Reject</Button>
@@ -129,7 +124,7 @@ export default function PaginatedTable() {
             page={page}
             onPageChange={handleChangePage}
             labelRowsPerPage={null}
-            SelectProps={{style: {display: "none"}}}
+            SelectProps={{className: 'tablePagination'}}
         />
       </Paper>
   );

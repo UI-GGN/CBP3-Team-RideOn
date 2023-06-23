@@ -1,0 +1,26 @@
+.logo {
+  width: 6.25rem;
+  height: 3rem;
+  margin-top: 2.5rem;
+  margin-left: 2.9rem;
+  margin-bottom: 2.5rem;
+}
+.welcomeMessage {
+  margin-top: 150px;
+  margin-left: 150px;
+  text-align: center;
+  font-size: 30px;
+  font-family: Roboto;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+.form-control-container {
+  display: grid !important;
+  grid-template-columns: repeat(2, 2fr) !important;
+  grid-gap: 10px; /* Add the desired space between the text fields */
+}
+
+.text-field {
+  width: 500px;
+}

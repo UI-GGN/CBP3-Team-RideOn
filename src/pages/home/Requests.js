@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import PaginatedTable from "../../component/PaginatedTable";
+import PaginatedTable from "../../components/PaginatedTable";
 import {Box, Button} from "@mui/material";
 import GetAppIcon from '@mui/icons-material/GetApp';
 import './Request.css';
@@ -24,7 +24,7 @@ function HomeRequests() {
   };
 
   return (
-    <>
+    <Box className="requestMain">
       <PaginatedTable />
       <Box className="downloadContainer">
          <span>Export Requests Report</span>
@@ -32,7 +32,7 @@ function HomeRequests() {
            Download <GetAppIcon />
          </Button>
       </Box>
-    </>
+    </Box>
   );
 }
 

@@ -1,0 +1,32 @@
+.table {
+    width: 95% !important;
+    overflow: hidden !important;
+    margin-top: 2rem !important;
+    margin-left: 2.3rem !important;
+    max-height: 800px !important;
+}
+
+.tableHeader {
+    color: #757575 !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    padding: 2rem;
+}
+
+.tableBody {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+}
+
+.popOver {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.popOverButton {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.tablePagination {
+    display: none !important;
+}

@@ -20,6 +20,7 @@ function BreadCrumb({values}) {
             fontSize="inherit"
             Font="Roboto"
             Align="Center"
+            textTransform={"capitalize"}
             color={index === values.length - 1 ? "text.primary" : ""}
           >
             {item}

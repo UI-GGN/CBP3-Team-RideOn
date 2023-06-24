@@ -4,8 +4,7 @@
     display: flex;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     flex-direction: row;
-    margin: 2rem;
-    width: 93%;
+    margin: 2rem 0;
     border-radius: 5px;
     padding: 1rem;
     justify-content: space-between;
@@ -16,4 +15,8 @@
     color: #1976d2 !important;
     box-shadow: none !important;
     padding: 2px !important;
+}
+
+.requestMain {
+    width: 98% !important;
 }

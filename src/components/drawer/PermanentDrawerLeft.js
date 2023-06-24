@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -12,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import logoImage from "../../assets/Logo.svg";
 import "./PermanentDrawerLeft.css";
-import {NavLink, Outlet} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const drawerWidth = 350;
 
@@ -22,7 +21,7 @@ function getTypography(text) {
 
 export default function PermanentDrawerLeft({onLogout, navItems}) {
   return (
-    <Box sx={{display: "flex"}}>
+    <Box sx={{display: "flex", width: drawerWidth}}>
       <Drawer
         PaperProps={{
           sx: {
@@ -31,7 +30,6 @@ export default function PermanentDrawerLeft({onLogout, navItems}) {
           },
         }}
         sx={{
-          width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
@@ -67,10 +65,6 @@ export default function PermanentDrawerLeft({onLogout, navItems}) {
           <div className="logoutText">{getTypography("Logout")}</div>
         </div>
       </Drawer>
-      <Box component="main" sx={{flexGrow: 1, p: 3}}>
-        <Toolbar />
-        <Outlet />
-      </Box>
     </Box>
   );
 }

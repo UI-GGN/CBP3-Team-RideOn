@@ -1,8 +1,6 @@
 .table {
-    width: 95% !important;
     overflow: hidden !important;
     margin-top: 2rem !important;
-    margin-left: 2.3rem !important;
     max-height: 800px !important;
 }
 

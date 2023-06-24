@@ -1,7 +1,6 @@
 import React from "react";
-import BreadCrumb from "../../component/BreadCrumb";
 import "./Home.css";
-import PaginatedTable from "../../component/PaginatedTable";
+import PaginatedTable from "../../components/PaginatedTable";
 import {Box, Button} from "@mui/material";
 import GetAppIcon from '@mui/icons-material/GetApp';
 import './Request.css';
@@ -10,8 +9,6 @@ import {saveAs} from 'file-saver';
 import {rows} from '../../constants';
 
 function HomeRequests() {
-  const obj = ["Home", "Requests"];
-
   const convertJsonToWorkbook = (json) => {
     const worksheet = XLSX.utils.json_to_sheet(json);
     const workbook = XLSX.utils.book_new();
@@ -27,10 +24,7 @@ function HomeRequests() {
   };
 
   return (
-    <>
-      <div className="breadcrumb">
-        <BreadCrumb values={obj} />
-      </div>
+    <Box className="requestMain">
       <PaginatedTable />
       <Box className="downloadContainer">
          <span>Export Requests Report</span>
@@ -38,7 +32,7 @@ function HomeRequests() {
            Download <GetAppIcon />
          </Button>
       </Box>
-    </>
+    </Box>
   );
 }
 

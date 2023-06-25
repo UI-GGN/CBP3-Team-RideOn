@@ -1,7 +1,19 @@
 import * as React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
-import {Divider, Button, Chip, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow} from "@mui/material";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEllipsisV} from "@fortawesome/free-solid-svg-icons/faEllipsisV";
+import {
+  Divider,
+  Button,
+  Chip,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
 import "./PaginatedTable.css";
@@ -29,7 +41,7 @@ export default function PaginatedTable({columns, rows}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-  const isAdminFlow = columns.slice(-1)[0].id === 'action';
+  const isAdminFlow = columns.slice(-1)[0].id === "action";
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -49,65 +61,80 @@ export default function PaginatedTable({columns, rows}) {
   }
 
   let columnsWithoutActionAndStatus = columns;
-  columnsWithoutActionAndStatus = isAdminFlow ? columns.slice(0, -2) : columns.slice(0, -1);
+  columnsWithoutActionAndStatus = isAdminFlow
+    ? columns.slice(0, -2)
+    : columns.slice(0, -1);
 
   return (
-      <Paper className="table">
-        <TableContainer>
-          <Table stickyHeader aria-label="sticky table" sx={{ '& .MuiTableCell-root': { padding: '0.59rem', paddingLeft: '1rem' } }}>
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                    <TableCell
-                        key={column.id}
-                        className="tableHeader"
-                    >
-                      {column.label}
+    <Paper className="table">
+      <TableContainer>
+        <Table
+          stickyHeader
+          aria-label="sticky table"
+          sx={{"& .MuiTableCell-root": {padding: "0.59rem", paddingLeft: "1rem"}}}
+        >
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell key={column.id} className="tableHeader">
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody className="tableBody">
+            {paginatedRows.map((row) => {
+              return (
+                <TableRow className="tableRows" hover key={row.id}>
+                  {columnsWithoutActionAndStatus.map((column) => {
+                    return (
+                      <TableCell className="tableCell" key={column.id}>
+                        {row[column.id]}
+                      </TableCell>
+                    );
+                  })}
+                  <TableCell align="left" className="chip">
+                    <Chip
+                      label={row.status}
+                      color={row.status === "Approved" ? "primary" : "error"}
+                      size="small"
+                    />
+                  </TableCell>
+                  {isAdminFlow && (
+                    <TableCell align="justify">
+                      <IconButton aria-label="Example">
+                        <FontAwesomeIcon icon={faEllipsisV} onClick={handleActionClick} />
+                      </IconButton>
+                      <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "center",
+                        }}
+                        PaperProps={{
+                          className: "popOver",
+                        }}
+                      >
+                        <div className="popOverButton">
+                          <Button variant="text" onClick={handleApprove}>
+                            Approve
+                          </Button>
+                          <Divider />
+                          <Button variant="text">Reject</Button>
+                        </div>
+                      </Popover>
                     </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody className="tableBody">
-              {paginatedRows
-                .map((row) => {
-                  return (
-                        <TableRow className = "tableRows" hover key={row.id}>
-                          {columnsWithoutActionAndStatus.map((column) => {
-                            return <TableCell className = "tableCell" key={column.id}>{row[column.id]}</TableCell>;
-                          })}
-                          <TableCell align="left" className="chip"><Chip label={row.status} color={row.status === 'Approved' ? 'primary' : 'error'} size="small"/></TableCell>
-                          {isAdminFlow && <TableCell align="justify">
-                            <IconButton aria-label="Example">
-                              <FontAwesomeIcon icon={faEllipsisV} onClick={handleActionClick} />
-                            </IconButton>
-                            <Popover
-                                id={id}
-                                open={open}
-                                anchorEl={anchorEl}
-                                onClose={handleClose}
-                                anchorOrigin={{
-                                  vertical: 'bottom',
-                                  horizontal: 'center',
-                                }}
-                                PaperProps={{
-                                  className: 'popOver',
-                                }}
-                            >
-                              <div className='popOverButton'>
-                                <Button variant="text" onClick={handleApprove}>Approve</Button>
-                                <Divider/>
-                                <Button variant="text" >Reject</Button>
-                              </div>
-                            </Popover>
-                          </TableCell>}
-                        </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-
-        </TableContainer>
-        <TablePagination
+                  )}
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
         rowsPerPageOptions={[5, 10, 25]} // Options for rows per page
         component="div"
         count={rows.length} // Total number of rows
@@ -116,6 +143,6 @@ export default function PaginatedTable({columns, rows}) {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      </Paper>
+    </Paper>
   );
 }

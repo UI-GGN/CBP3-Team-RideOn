@@ -1,9 +1,9 @@
-import PaginatedTable from '../components/PaginatedTable';
-import React, { useState } from 'react';
-import { Tab, Tabs, Box } from '@mui/material';
-import { employeeReqColumns, employeeReqRows } from "../data";
+import PaginatedTable from "../components/PaginatedTable";
+import React, {useState} from "react";
+import {Tab, Tabs, Box} from "@mui/material";
+import {employeeReqColumns, employeeReqRows} from "../data";
 
-const TabPanel = ({ children, value, index }) => {
+const TabPanel = ({children, value, index}) => {
   return (
     <div
       role="tabpanel"
@@ -31,11 +31,11 @@ const App = () => {
       </Tabs>
 
       <TabPanel value={tabIndex} index={0}>
-        <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows}/>
+        <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
       </TabPanel>
 
       <TabPanel value={tabIndex} index={1}>
-        <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows}/>
+        <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
       </TabPanel>
     </div>
   );

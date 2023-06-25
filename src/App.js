@@ -17,7 +17,7 @@ function App() {
           <Route path="requests" element={<HomeRequests />} />
           <Route path="routes" element={<HomeRoutes />} />
         </Route>
-        <Route path = "/employee" element={< EmployeeReq/>}/>
+        <Route path="/employee" element={<EmployeeReq />} />
       </Routes>
     </div>
   );

@@ -28,7 +28,7 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
         >
           <a
             activeclassname="active"
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-1p823my-MuiListItem-root"
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-12wasq7-MuiListItem-root"
             href="/routes"
           >
             <div
@@ -67,7 +67,7 @@ exports[`PermanentDrawerLeft should match snapshot 1`] = `
           </a>
           <a
             activeclassname="active"
-            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-1p823my-MuiListItem-root"
+            class="MuiListItem-root MuiListItem-gutters MuiListItem-padding sidebar-option css-12wasq7-MuiListItem-root"
             href="/requests"
           >
             <div

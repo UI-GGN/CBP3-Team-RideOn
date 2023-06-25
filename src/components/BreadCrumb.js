@@ -1,7 +1,10 @@
 import React from "react";
 import {Breadcrumbs, Typography} from "@mui/material";
 
-function BreadCrumb({values}) {
+function BreadCrumb({values, isHomePage}) {
+  if (isHomePage) {
+    values = [...values, "routes"];
+  }
   return (
     <Breadcrumbs
       aria-label="breadcrumbs"

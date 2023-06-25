@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import {Route, Routes, Navigate} from "react-router-dom";
 import HomeRoutes from "./pages/home/Routes";
 import HomeRequests from "./pages/home/Requests";
+import EmployeeReq from "./components/EmployeeReq";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="requests" element={<HomeRequests />} />
           <Route path="routes" element={<HomeRoutes />} />
         </Route>
+        <Route path = "/employee" element={< EmployeeReq/>}/>
       </Routes>
     </div>
   );

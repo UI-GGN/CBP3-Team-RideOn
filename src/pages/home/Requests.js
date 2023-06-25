@@ -7,6 +7,7 @@ import './Request.css';
 import * as XLSX from 'xlsx';
 import {saveAs} from 'file-saver';
 import {rows} from '../../constants';
+import { adminReqColumns, adminReqRow } from "../../data";
 
 function HomeRequests() {
   const convertJsonToWorkbook = (json) => {
@@ -25,7 +26,7 @@ function HomeRequests() {
 
   return (
     <Box className="requestMain">
-      <PaginatedTable />
+      <PaginatedTable columns={adminReqColumns} rows={adminReqRow}/>
       <Box className="downloadContainer">
          <span>Export Requests Report</span>
          <Button className="downloadButton" variant="contained" size="medium" onClick={handleDownload}>

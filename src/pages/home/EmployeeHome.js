@@ -4,7 +4,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {Box, Tab, Tabs} from "@mui/material";
 import PaginatedTable from "../../components/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../data";
-
+import "./EmployeeHome.css";
 const TabPanel = ({children, value, index}) => {
   return (
         <div
@@ -28,16 +28,7 @@ function EmployeeHome() {
   return (
     <>
       <img src={logoImage} className="logo"/>
-      <h4 className="welcomeMessage" style={{
-        color: "rgba(0, 0, 0, 0.60)",
-        marginTop: "70px",
-        marginLeft: "90px",
-        fontSize: "24px",
-        fontFamily: "Roboto",
-        fontWeight: 500,
-        lineHeight: "20px",
-        letterSpacing: "0.5px"
-      }}>{msg}</h4>
+      <h4 className="welcomeMessage">{msg}</h4>
       <Box
           sx={{
             display: "flex",

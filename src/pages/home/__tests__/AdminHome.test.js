@@ -1,5 +1,5 @@
 import {render} from "@testing-library/react";
-import Home from "../Home";
+import Home from "../AdminHome";
 import {BrowserRouter, useLocation} from "react-router-dom";
 import * as BreadcrumbUtils from "../../../utils/Breadcrumbs";
 import {useAuth0} from "@auth0/auth0-react";

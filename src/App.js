@@ -1,23 +1,25 @@
 import React from "react";
 import "./App.css";
 import Login from "./pages/login/Login";
-import Home from "./pages/home/Home";
-import {Route, Routes, Navigate} from "react-router-dom";
+import AdminHome from "./pages/home/AdminHome";
+import {Route, Routes} from "react-router-dom";
 import HomeRoutes from "./pages/home/Routes";
 import HomeRequests from "./pages/home/Requests";
-import EmployeeReq from "./components/EmployeeReq";
+import EmployeeHome from "./pages/home/EmployeeHome";
+import {useAuth0} from "@auth0/auth0-react";
 
 function App() {
+  const {user} = useAuth0();
+  const userRole = user?.my_roles[0];
   return (
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />}>
-          <Route index element={<Navigate to="/home/routes" />} />
+        <Route path="/home" element={(userRole === "employee") ? <EmployeeHome/> : <AdminHome/>}>
+          <Route index element={<HomeRoutes />} />
           <Route path="requests" element={<HomeRequests />} />
           <Route path="routes" element={<HomeRoutes />} />
         </Route>
-        <Route path="/employee" element={<EmployeeReq />} />
       </Routes>
     </div>
   );

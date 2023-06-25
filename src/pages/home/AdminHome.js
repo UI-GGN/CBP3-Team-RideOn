@@ -1,4 +1,4 @@
-import "./Home.css";
+import "./AdminHome.css";
 import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../components/drawer/PermanentDrawerLeft";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
@@ -22,15 +22,16 @@ const navItems = [
   },
 ];
 
-function Home() {
+function AdminHome() {
   const {logout, user} = useAuth0();
   const location = useLocation();
+  const isHomePage = getBreadcrumbsValues(location.pathname).length === 1;
 
   return (
     <Box sx={{width: "100%", height: "100%"}}>
       <Stack direction={"row"} spacing={2}>
         <Box>
-          <PermanentDrawerLeft onLogout={logout} navItems={navItems} />
+          <PermanentDrawerLeft onLogout={logout} navItems={navItems} isHomePage={isHomePage}/>
         </Box>
         <Box sx={{width: "80%", marginLeft: 2}}>
           <Stack direction={"column"} useFlexGap>
@@ -45,7 +46,7 @@ function Home() {
               <Avatar imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
-              <BreadCrumb values={getBreadcrumbsValues(location.pathname)} />
+              <BreadCrumb values={getBreadcrumbsValues(location.pathname)} isHomePage={isHomePage}/>
             </Box>
             <Box>
               <Outlet />
@@ -57,4 +58,4 @@ function Home() {
   );
 }
 
-export default withAuthenticationRequired(Home);
+export default withAuthenticationRequired(AdminHome);

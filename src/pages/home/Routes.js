@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "./AdminHome.css";
 
 function HomeRoutes() {
   return (

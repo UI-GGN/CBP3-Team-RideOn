@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import "./AdminHome.css";
 import PaginatedTable from "../../components/PaginatedTable";
 import {Box, Button} from "@mui/material";
 import GetAppIcon from "@mui/icons-material/GetApp";

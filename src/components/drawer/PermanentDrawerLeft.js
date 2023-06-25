@@ -19,7 +19,7 @@ function getTypography(text) {
   return <Typography className="typography">{text}</Typography>;
 }
 
-export default function PermanentDrawerLeft({onLogout, navItems}) {
+export default function PermanentDrawerLeft({onLogout, navItems, isHomePage}) {
   return (
     <Box sx={{display: "flex", width: drawerWidth}}>
       <Drawer
@@ -51,6 +51,7 @@ export default function PermanentDrawerLeft({onLogout, navItems}) {
               to={navItem.to}
               activeClassName="active"
               className="sidebar-option"
+              sx={{backgroundColor: (isHomePage && navItems.indexOf(navItem) === 0) ? "#1976d2" : ""}}
             >
               <ListItemButton>
                 <ListItemIcon>{navItem.icon}</ListItemIcon>

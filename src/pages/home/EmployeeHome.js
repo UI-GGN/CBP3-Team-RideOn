@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import logoImage from "../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
-import {Box, Tab, Tabs} from "@mui/material";
+import {Box, Tab, Tabs, Stack} from "@mui/material";
 import PaginatedTable from "../../components/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../data";
 import "./EmployeeHome.css";
+import Avatar from "../../components/Avatar";
 const TabPanel = ({children, value, index}) => {
   return (
         <div
@@ -27,7 +28,20 @@ function EmployeeHome() {
   };
   return (
     <>
-      <img src={logoImage} className="logo"/>
+      <Stack direction={"row"} spacing={2}>
+         <img src={logoImage} className="logo"/>
+         <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                marginTop: 4,
+                marginRight: 4,
+                marginLeft: "auto"
+              }}
+         >
+           <Avatar imageLink={user?.picture} />
+         </Box>
+      </Stack>
       <h4 className="welcomeMessage">{msg}</h4>
       <Box
           sx={{

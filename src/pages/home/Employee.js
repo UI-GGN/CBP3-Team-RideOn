@@ -12,10 +12,6 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {useAuth0} from "@auth0/auth0-react";
 import Box from "@mui/material/Box";
-import {DemoContainer} from '@mui/x-date-pickers/internals/demo';
-import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
-import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
-import {DateTimePicker} from "@mui/x-date-pickers";
 
 function Employee() {
   const {user} = useAuth0();
@@ -28,6 +24,8 @@ function Employee() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
+  const [pickupDateAndTime, setPickupDateAndTime] = React.useState("");
+  const [pickupDateAndTimeErrorText, setPickupDateAndTimeErrorText] = React.useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -46,6 +44,11 @@ function Employee() {
       setDropLocationErrorText("Please enter drop location");
     } else {
       setDropLocationErrorText("");
+    }
+    if (!pickupDateAndTime) {
+      setPickupDateAndTimeErrorText("Please enter valid date in form of MM/DD/YYYY hh:mm aa");
+    } else {
+      setPickupDateAndTimeErrorText("");
     }
   };
 
@@ -98,11 +101,20 @@ function Employee() {
                     helperText={projectCodeErrorText}
                     onChange={(e) => setProjectCode(e.target.value)}
                   />
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer components={['DatePicker']}>
-                            <DateTimePicker sx={{marginLeft: "715px", marginTop: "1px", width: "653px"}}/>
-                        </DemoContainer>
-                    </LocalizationProvider>
+                    <TextField
+                        sx={{width: "653px"}}
+                        variant="standard"
+                        type="text"
+                        required
+                        placeholder="Pickup Date and Time"
+                        id="pickupDateAndTime"
+                        name="pickupDateAndTime"
+                        className="text-field"
+                        value={pickupDateAndTime}
+                        error={!!pickupDateAndTimeErrorText}
+                        helperText={pickupDateAndTimeErrorText}
+                        onChange={(e) => setPickupDateAndTime(e.target.value)}
+                    />
                 </div>
                 <div>
                   <TextField

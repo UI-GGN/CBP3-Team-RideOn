@@ -16,7 +16,7 @@
   letter-spacing: 0.5px;
 }
 
-.submitButton{
+.submitButton {
   display: flex !important;
   width: 175px !important;
   height: 44px !important;
@@ -31,4 +31,3 @@ input {
   border-bottom: 1px solid #ccc;
   outline: none;
 }
-

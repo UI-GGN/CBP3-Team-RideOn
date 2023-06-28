@@ -51,7 +51,7 @@ function Employee() {
 
   return (
     <>
-        <img src={logoImage} className="logo" />
+      <img src={logoImage} className="logo" />
       <h4
         style={{
           color: "rgba(0, 0, 0, 0.60)",
@@ -98,7 +98,10 @@ function Employee() {
                     helperText={projectCodeErrorText}
                     onChange={(e) => setProjectCode(e.target.value)}
                   />
-                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  />
                 </div>
                 <div>
                   <TextField
@@ -129,7 +132,12 @@ function Employee() {
                     onChange={(e) => setDropLocation(e.target.value)}
                   />
                 </div>
-                <Button className="submitButton" variant="contained" size="large" onClick={onSubmit}>
+                <Button
+                  className="submitButton"
+                  variant="contained"
+                  size="large"
+                  onClick={onSubmit}
+                >
                   Submit Request
                 </Button>
               </FormControl>

@@ -12,6 +12,9 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {useAuth0} from "@auth0/auth0-react";
 import Box from "@mui/material/Box";
+import "./Employee.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Employee() {
   const {user} = useAuth0();
@@ -24,8 +27,7 @@ function Employee() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [pickupDateAndTime, setPickupDateAndTime] = React.useState("");
-  const [pickupDateAndTimeErrorText, setPickupDateAndTimeErrorText] = React.useState("");
+  const [startDate, setStartDate] = useState(new Date());
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -44,11 +46,6 @@ function Employee() {
       setDropLocationErrorText("Please enter drop location");
     } else {
       setDropLocationErrorText("");
-    }
-    if (!pickupDateAndTime) {
-      setPickupDateAndTimeErrorText("Please enter valid date in form of MM/DD/YYYY hh:mm aa");
-    } else {
-      setPickupDateAndTimeErrorText("");
     }
   };
 
@@ -69,7 +66,7 @@ function Employee() {
       >
         {msg}
       </h4>
-      <Box sx={{marginLeft: "90px"}}>
+      <Box sx={{marginLeft: "90px", marginRight: "90px"}}>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -88,7 +85,7 @@ function Employee() {
               <FormControl className="form-control-container">
                 <div>
                   <TextField
-                    sx={{marginRight: "65px", width: "653px"}}
+                    sx={{marginRight: "65px"}}
                     variant="standard"
                     type="text"
                     required
@@ -101,24 +98,11 @@ function Employee() {
                     helperText={projectCodeErrorText}
                     onChange={(e) => setProjectCode(e.target.value)}
                   />
-                    <TextField
-                        sx={{width: "653px"}}
-                        variant="standard"
-                        type="text"
-                        required
-                        placeholder="Pickup Date and Time"
-                        id="pickupDateAndTime"
-                        name="pickupDateAndTime"
-                        className="text-field"
-                        value={pickupDateAndTime}
-                        error={!!pickupDateAndTimeErrorText}
-                        helperText={pickupDateAndTimeErrorText}
-                        onChange={(e) => setPickupDateAndTime(e.target.value)}
-                    />
+                  <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                 </div>
                 <div>
                   <TextField
-                    sx={{marginRight: "65px", width: "653px"}}
+                    sx={{marginRight: "65px"}}
                     variant="standard"
                     type="text"
                     required
@@ -132,7 +116,6 @@ function Employee() {
                     onChange={(e) => setPickupLocation(e.target.value)}
                   />
                   <TextField
-                    sx={{width: "653px"}}
                     variant="standard"
                     type="text"
                     required
@@ -146,7 +129,7 @@ function Employee() {
                     onChange={(e) => setDropLocation(e.target.value)}
                   />
                 </div>
-                <Button variant="contained" size="large" sx={{display: "flex", width: "175px", height: "44px", alignItems: "center", gap: "16px", flexShrink: "0", marginLeft: "1200px", marginTop: "35px"}} onClick={onSubmit}>
+                <Button className="submitButton" variant="contained" size="large" onClick={onSubmit}>
                   Submit Request
                 </Button>
               </FormControl>

@@ -15,12 +15,20 @@
   line-height: 24px;
   letter-spacing: 0.5px;
 }
-.form-control-container {
-  display: grid !important;
-  grid-template-columns: repeat(2, 2fr) !important;
-  grid-gap: 10px; /* Add the desired space between the text fields */
+
+.submitButton{
+  display: flex !important;
+  width: 175px !important;
+  height: 44px !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-top: 35px !important;
 }
 
-.text-field {
-  width: 500px;
+input {
+  width: 600px !important;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
 }
+

@@ -1,0 +1,776 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiStack-root css-e53awj-MuiStack-root"
+    >
+      <img
+        class="logo"
+        src="Logo.svg"
+      />
+      <div
+        class="MuiBox-root css-l7fqm6"
+      />
+    </div>
+    <h4
+      class="welcomeMessage"
+    >
+      Hello John,
+    </h4>
+    <div
+      class="MuiBox-root css-18dlys6"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
+      >
+        <div
+          aria-controls="panel1a-content"
+          aria-expanded="false"
+          class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+          id="panel1a-header"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Planning an upcoming travel, create your travel request here
+            </p>
+          </div>
+          <div
+            class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ExpandMoreIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+          style="min-height: 0px;"
+        >
+          <div
+            class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+          >
+            <div
+              class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+            >
+              <div
+                aria-labelledby="panel1a-header"
+                class="MuiAccordion-region"
+                id="panel1a-content"
+                role="region"
+              >
+                <div
+                  class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+                  >
+                    <div
+                      class="MuiFormControl-root form-control-container css-1nrlq1o-MuiFormControl-root"
+                    >
+                      <div>
+                        <div
+                          class="MuiFormControl-root MuiTextField-root text-field css-1mkwtpl-MuiFormControl-root-MuiTextField-root"
+                        >
+                          <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
+                          >
+                            <input
+                              aria-invalid="false"
+                              class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                              id="projectCode"
+                              name="projectCode"
+                              placeholder="Project Code"
+                              required=""
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="react-datepicker-wrapper"
+                        >
+                          <div
+                            class="react-datepicker__input-container "
+                          >
+                            <span
+                              aria-live="polite"
+                              class="react-datepicker__aria-live"
+                              role="alert"
+                            />
+                            <input
+                              class=""
+                              placeholder="Select a date and time"
+                              type="text"
+                              value="08/02/2023"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div
+                          class="MuiFormControl-root MuiTextField-root text-field css-1mkwtpl-MuiFormControl-root-MuiTextField-root"
+                        >
+                          <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
+                          >
+                            <input
+                              aria-invalid="false"
+                              class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                              id="pickupLocation"
+                              name="pickupLocation"
+                              placeholder="Pickup Location"
+                              required=""
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="MuiFormControl-root MuiTextField-root text-field css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+                        >
+                          <div
+                            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
+                          >
+                            <input
+                              aria-invalid="false"
+                              class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+                              id="dropLocation"
+                              name="dropLocation"
+                              placeholder="Drop Location"
+                              required=""
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge submitButton css-jh47zj-MuiButtonBase-root-MuiButton-root"
+                        tabindex="0"
+                        type="button"
+                      >
+                        Submit Request
+                        <span
+                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-15ixr81"
+    />
+    <div>
+      <div
+        class="MuiTabs-root css-1ujnqem-MuiTabs-root"
+      >
+        <div
+          class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
+          style="overflow: hidden; margin-bottom: 0px;"
+        >
+          <div
+            aria-label="tabs"
+            class="MuiTabs-flexContainer css-heg063-MuiTabs-flexContainer"
+            role="tablist"
+          >
+            <button
+              aria-selected="true"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+              id="tab-0"
+              role="tab"
+              tabindex="0"
+              type="button"
+            >
+              Upcoming Requests
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <button
+              aria-selected="false"
+              class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1h9z7r5-MuiButtonBase-root-MuiTab-root"
+              id="tab-1"
+              role="tab"
+              tabindex="-1"
+              type="button"
+            >
+              Past Requests
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+          <span
+            class="MuiTabs-indicator css-1aquho2-MuiTabs-indicator"
+            style="left: 0px; width: 0px;"
+          />
+        </div>
+      </div>
+      <div
+        aria-labelledby="tab-0"
+        id="tabpanel-0"
+        role="tabpanel"
+      >
+        <div
+          class="MuiBox-root css-19kzrtu"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 table css-1ps6pg7-MuiPaper-root"
+          >
+            <div
+              class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
+            >
+              <table
+                aria-label="sticky table"
+                class="MuiTable-root MuiTable-stickyHeader css-11xs1i5-MuiTable-root"
+              >
+                <thead
+                  class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
+                      scope="col"
+                    >
+                      Pickup
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
+                      scope="col"
+                    >
+                      Drop
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
+                      scope="col"
+                    >
+                      PickupTime
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
+                      scope="col"
+                    >
+                      ProjectCode
+                    </th>
+                    <th
+                      class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
+                      scope="col"
+                    >
+                      Status
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="MuiTableBody-root tableBody css-apqrd9-MuiTableBody-root"
+                >
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      HPB
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      32 avenue
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      zerotech
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      HPB
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorError MuiChip-filledError css-lwe8th-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Rejected
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      sikandarpur
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      55-56
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      09:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      zerotech
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorError MuiChip-filledError css-lwe8th-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Rejected
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      zerotech
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      sikandarpur
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      zerotech
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      HPB
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorError MuiChip-filledError css-lwe8th-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Rejected
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      sikandarpur
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      55-56
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      09:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      HPB
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorError MuiChip-filledError css-lwe8th-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Rejected
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      HPB
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="MuiTableRow-root MuiTableRow-hover tableRows css-1q1u3t4-MuiTableRow-root"
+                  >
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      42-43
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      TW office
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      10:00 am
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium tableCell css-1ex1afd-MuiTableCell-root"
+                    >
+                      zerotech
+                    </td>
+                    <td
+                      class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium chip css-1ex1afd-MuiTableCell-root"
+                    >
+                      <div
+                        class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-filledPrimary css-174hymm-MuiChip-root"
+                      >
+                        <span
+                          class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+                        >
+                          Approved
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="MuiTablePagination-root css-jtlhu6-MuiTablePagination-root"
+            >
+              <div
+                class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar"
+              >
+                <div
+                  class="MuiTablePagination-spacer css-1psng7p-MuiTablePagination-spacer"
+                />
+                <p
+                  class="MuiTablePagination-selectLabel css-pdct74-MuiTablePagination-selectLabel"
+                  id=":r4:"
+                >
+                  Rows per page:
+                </p>
+                <div
+                  class="MuiInputBase-root MuiInputBase-colorPrimary css-16c50h-MuiInputBase-root-MuiTablePagination-select"
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-labelledby=":r4: :r3:"
+                    class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-194a1fa-MuiSelect-select-MuiInputBase-input"
+                    id=":r3:"
+                    role="button"
+                    tabindex="0"
+                  >
+                    10
+                  </div>
+                  <input
+                    aria-hidden="true"
+                    aria-invalid="false"
+                    class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                    tabindex="-1"
+                    value="10"
+                  />
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon"
+                    data-testid="ArrowDropDownIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="MuiTablePagination-displayedRows css-levciy-MuiTablePagination-displayedRows"
+                >
+                  1–10 of 16
+                </p>
+                <div
+                  class="MuiTablePagination-actions"
+                >
+                  <button
+                    aria-label="Go to previous page"
+                    class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-colorInherit MuiIconButton-sizeMedium css-zylse7-MuiButtonBase-root-MuiIconButton-root"
+                    disabled=""
+                    tabindex="-1"
+                    title="Go to previous page"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="KeyboardArrowLeftIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    aria-label="Go to next page"
+                    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-zylse7-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    title="Go to next page"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="KeyboardArrowRightIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
+                      />
+                    </svg>
+                    <span
+                      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-labelledby="tab-1"
+        hidden=""
+        id="tabpanel-1"
+        role="tabpanel"
+      />
+    </div>
+  </div>
+</body>
+`;

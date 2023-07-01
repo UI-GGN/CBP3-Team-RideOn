@@ -1,9 +1,9 @@
 import {render} from "@testing-library/react";
 import Home from "../AdminHome";
 import {BrowserRouter, useLocation} from "react-router-dom";
-import * as BreadcrumbUtils from "../../../utils/Breadcrumbs";
+import * as BreadcrumbUtils from "../../../../utils/Breadcrumbs";
 import {useAuth0} from "@auth0/auth0-react";
-import Avatar from "../../../components/Avatar";
+import Avatar from "../../../../components/Avatar";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),

@@ -66,7 +66,8 @@ export default function PaginatedTable({columns, rows}) {
     : columns.slice(0, -1);
 
   return (
-    <Paper className="table">
+    // <Paper className={(isAdminFlow) ? "adminTable" : "employeeTable"}>
+    <Paper className="table" elevation={(isAdminFlow) ? 2 : 0}>
       <TableContainer>
         <Table
           stickyHeader

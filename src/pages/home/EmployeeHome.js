@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import logoImage from "../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
-import {Box, Tab, Tabs, Stack} from "@mui/material";
+import {Box, Tab, Tabs, Stack, Paper} from "@mui/material";
 import PaginatedTable from "../../components/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../data";
 import "./EmployeeHome.css";
@@ -52,8 +52,21 @@ function EmployeeHome() {
           }}
       >
       </Box>
-        <div>
-            <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs">
+        <Paper elevation={2} variant="outlined"
+          sx={{
+            // display: "flex",
+            // justifyContent: "flex-end",
+            marginLeft: 9,
+            marginRight: 9,
+          }}
+        >
+            <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs"
+            sx={{
+              marginLeft: 4,
+              marginRight: 4,
+              marginTop: 2,
+            }}
+            >
                 <Tab label="Upcoming Requests" id="tab-0" />
                 <Tab label="Past Requests" id="tab-1" />
             </Tabs>
@@ -65,7 +78,7 @@ function EmployeeHome() {
             <TabPanel value={tabIndex} index={1}>
                 <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
             </TabPanel>
-        </div>
+        </Paper>
     </>
   );
 }

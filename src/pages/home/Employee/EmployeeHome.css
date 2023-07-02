@@ -1,20 +1,19 @@
 .logo {
-  width: 6.25rem;
-  height: 3rem;
-  margin-top: 2.5rem;
-  margin-left: 2.9rem;
-  margin-bottom: 2.5rem;
+  margin-left: 70px;
+  margin-top: 40px;
 }
-.welcomeMessage {
-  margin-top: 150px;
-  margin-left: 150px;
-  text-align: center;
-  font-size: 30px;
+
+.welcomeMessage{
+  color: rgba(0, 0, 0, 0.60);
+  margin-top: 70px;
+  margin-left: 90px;
+  font-size: 24px;
   font-family: Roboto;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 20px;
   letter-spacing: 0.5px;
 }
+
 
 .submitButton{
   display: flex !important;

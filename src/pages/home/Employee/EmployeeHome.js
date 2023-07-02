@@ -117,7 +117,7 @@ function EmployeeHome() {
                                     helperText={projectCodeErrorText}
                                     onChange={(e) => setProjectCode(e.target.value)}
                                 />
-                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} />
+                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} dateFormat="Pp" showTimeSelect timeFormat="p" />
                             </div>
                             <div>
                                 <TextField

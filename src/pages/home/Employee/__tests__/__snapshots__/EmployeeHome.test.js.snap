@@ -117,7 +117,7 @@ exports[`Home Page renders correctly 1`] = `
                               class=""
                               placeholder="Select a date and time"
                               type="text"
-                              value="08/02/2023"
+                              value="08/02/2023, 12:00 AM"
                             />
                           </div>
                         </div>

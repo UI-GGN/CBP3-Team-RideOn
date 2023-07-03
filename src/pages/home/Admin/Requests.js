@@ -1,13 +1,13 @@
 import React from "react";
 import "./AdminHome.css";
-import PaginatedTable from "../../components/PaginatedTable";
+import PaginatedTable from "../../../components/PaginatedTable";
 import {Box, Button} from "@mui/material";
 import GetAppIcon from "@mui/icons-material/GetApp";
 import "./Request.css";
 import * as XLSX from "xlsx";
 import {saveAs} from "file-saver";
-import {rows} from "../../constants";
-import {adminReqColumns, adminReqRow} from "../../data";
+import {rows} from "../../../constants";
+import {adminReqColumns, adminReqRow} from "../../../data";
 
 function HomeRequests() {
   const convertJsonToWorkbook = (json) => {

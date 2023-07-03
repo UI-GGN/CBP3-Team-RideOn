@@ -30,3 +30,17 @@ input {
   border-bottom: 1px solid #ccc;
   outline: none;
 }
+
+.react-datepicker__input-container input {
+ margin-top: 15px;
+}
+
+.accordianMessage{
+  color: rgba(0, 0, 0, 0.60);
+  font-family: Roboto;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}

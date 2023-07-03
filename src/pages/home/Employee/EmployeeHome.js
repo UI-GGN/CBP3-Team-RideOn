@@ -93,7 +93,7 @@ function EmployeeHome() {
                     id="panel1a-header"
                     onClick={() => setOpen(!isOpen)}
                 >
-                    <Typography>
+                    <Typography className="accordianMessage">
                         {isOpen
                           ? "Planning an upcoming travel, create your travel request here"
                           : "Fill the form to create a new travel request"}
@@ -117,11 +117,11 @@ function EmployeeHome() {
                                     helperText={projectCodeErrorText}
                                     onChange={(e) => setProjectCode(e.target.value)}
                                 />
-                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} dateFormat="Pp" showTimeSelect timeFormat="p" />
+                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
                             </div>
                             <div>
                                 <TextField
-                                    sx={{marginRight: "65px"}}
+                                    sx={{marginRight: "65px", marginTop: "30px"}}
                                     variant="standard"
                                     type="text"
                                     required
@@ -135,6 +135,7 @@ function EmployeeHome() {
                                     onChange={(e) => setPickupLocation(e.target.value)}
                                 />
                                 <TextField
+                                    sx={{marginTop: "30px"}}
                                     variant="standard"
                                     type="text"
                                     required

@@ -37,7 +37,7 @@ exports[`Home Page renders correctly 1`] = `
             class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
           >
             <p
-              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+              class="MuiTypography-root MuiTypography-body1 accordianMessage css-ahj2mt-MuiTypography-root"
             >
               Planning an upcoming travel, create your travel request here
             </p>
@@ -124,7 +124,7 @@ exports[`Home Page renders correctly 1`] = `
                       </div>
                       <div>
                         <div
-                          class="MuiFormControl-root MuiTextField-root text-field css-1mkwtpl-MuiFormControl-root-MuiTextField-root"
+                          class="MuiFormControl-root MuiTextField-root text-field css-7afxgd-MuiFormControl-root-MuiTextField-root"
                         >
                           <div
                             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"
@@ -142,7 +142,7 @@ exports[`Home Page renders correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          class="MuiFormControl-root MuiTextField-root text-field css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+                          class="MuiFormControl-root MuiTextField-root text-field css-1fmuncz-MuiFormControl-root-MuiTextField-root"
                         >
                           <div
                             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-v4u5dn-MuiInputBase-root-MuiInput-root"

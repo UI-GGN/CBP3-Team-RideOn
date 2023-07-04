@@ -2,7 +2,6 @@ import "./AdminHome.css";
 import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../../components/drawer/PermanentDrawerLeft";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
-import DirectionsOutlinedIcon from "@mui/icons-material/DirectionsOutlined";
 import {Box, Stack} from "@mui/material";
 import Avatar from "../../../components/Avatar";
 import BreadCrumb from "../../../components/BreadCrumb";
@@ -10,11 +9,6 @@ import {useLocation, Outlet} from "react-router-dom";
 import {getBreadcrumbsValues} from "../../../utils/Breadcrumbs";
 
 const navItems = [
-  {
-    title: "Routes",
-    icon: <DirectionsOutlinedIcon className="icon" />,
-    to: "routes",
-  },
   {
     title: "Requests",
     icon: <BackHandOutlinedIcon className="icon" />,
@@ -31,7 +25,11 @@ function AdminHome() {
     <Box sx={{width: "100%", height: "100%"}}>
       <Stack direction={"row"} spacing={2}>
         <Box>
-          <PermanentDrawerLeft onLogout={logout} navItems={navItems} isHomePage={isHomePage}/>
+          <PermanentDrawerLeft
+            onLogout={logout}
+            navItems={navItems}
+            isHomePage={isHomePage}
+          />
         </Box>
         <Box sx={{width: "80%", marginLeft: 2}}>
           <Stack direction={"column"} useFlexGap>
@@ -46,7 +44,10 @@ function AdminHome() {
               <Avatar imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
-              <BreadCrumb values={getBreadcrumbsValues(location.pathname)} isHomePage={isHomePage}/>
+              <BreadCrumb
+                values={getBreadcrumbsValues(location.pathname)}
+                isHomePage={isHomePage}
+              />
             </Box>
             <Box>
               <Outlet />

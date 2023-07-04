@@ -3,7 +3,7 @@ import {Breadcrumbs, Typography} from "@mui/material";
 
 function BreadCrumb({values, isHomePage}) {
   if (isHomePage) {
-    values = [...values, "routes"];
+    values = [...values, "requests"];
   }
   return (
     <Breadcrumbs

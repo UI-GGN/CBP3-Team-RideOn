@@ -20,7 +20,7 @@ exports[`Home Page renders correctly 1`] = `
       Hello John,
     </h4>
     <div
-      class="MuiBox-root css-18dlys6"
+      class="MuiBox-root css-1rhrdda"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
@@ -182,9 +182,11 @@ exports[`Home Page renders correctly 1`] = `
     <div
       class="MuiBox-root css-15ixr81"
     />
-    <div>
+    <div
+      class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-1rjkdgk-MuiPaper-root"
+    >
       <div
-        class="MuiTabs-root css-1ujnqem-MuiTabs-root"
+        class="MuiTabs-root css-1lmpred-MuiTabs-root"
       >
         <div
           class="MuiTabs-scroller MuiTabs-fixed css-jpln7h-MuiTabs-scroller"
@@ -237,7 +239,7 @@ exports[`Home Page renders correctly 1`] = `
           class="MuiBox-root css-19kzrtu"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 table css-1ps6pg7-MuiPaper-root"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 table css-ee20y-MuiPaper-root"
           >
             <div
               class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"

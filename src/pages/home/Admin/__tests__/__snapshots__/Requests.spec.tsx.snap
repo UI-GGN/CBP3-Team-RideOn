@@ -7,7 +7,7 @@ exports[`Requests test renders correctly 1`] = `
       class="requestMain MuiBox-root css-0"
     >
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 table css-1ps6pg7-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 table css-1mbunh-MuiPaper-root"
       >
         <div
           class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
@@ -25,42 +25,49 @@ exports[`Requests test renders correctly 1`] = `
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Employee
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Project Code
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Pickup
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Drop
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Pickup Time
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Status
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Action
                 </th>

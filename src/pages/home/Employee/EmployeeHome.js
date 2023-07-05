@@ -11,15 +11,17 @@ import {
   AccordionSummary,
   Typography,
   AccordionDetails,
-  FormControl, TextField
+  FormControl, TextField,
+  Paper
 } from "@mui/material";
-import PaginatedTable from "../../../components/PaginatedTable";
+import PaginatedTable from "../../../components/table/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../../data";
 import "./EmployeeHome.css";
 import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { styled } from '@mui/material/styles';
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -33,6 +35,12 @@ const TabPanel = ({children, value, index}) => {
         </div>
   );
 };
+
+const StyledTab = styled(Tab)({
+  textTransform: 'none',
+  fontSize: '18px'
+});
+
 function EmployeeHome() {
   const {user} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
@@ -85,7 +93,7 @@ function EmployeeHome() {
          </Box>
       </Stack>
       <h4 className="welcomeMessage">{msg}</h4>
-        <Box sx={{marginLeft: "90px", marginRight: "90px"}}>
+        <Box sx={{marginLeft: 9, marginRight: 9}}>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -166,10 +174,21 @@ function EmployeeHome() {
           }}
       >
       </Box>
-        <div>
-            <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs">
-                <Tab label="Upcoming Requests" id="tab-0" />
-                <Tab label="Past Requests" id="tab-1" />
+        <Paper elevation={2} variant="outlined"
+          sx={{
+            marginLeft: 9,
+            marginRight: 9,
+          }}
+        >
+            <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs"
+            sx={{
+              marginLeft: 4,
+              marginRight: 4,
+              marginTop: 2,
+              marginBottom: -3
+            }}>
+                <StyledTab label="Upcoming Requests" id="tab-0"/>
+                <StyledTab label="Past Requests" id="tab-1" />
             </Tabs>
 
             <TabPanel value={tabIndex} index={0}>
@@ -179,7 +198,7 @@ function EmployeeHome() {
             <TabPanel value={tabIndex} index={1}>
                 <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
             </TabPanel>
-        </div>
+        </Paper>
     </>
   );
 }

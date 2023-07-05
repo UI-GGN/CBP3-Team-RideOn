@@ -4,10 +4,22 @@
   max-height: 800px !important;
 }
 
+.adminTable{
+    /* overflow: hidden !important; */
+    margin-top: 2rem !important;
+    max-height: 800px !important;
+}
+
+.employeeTable{
+  /* overflow: hidden !important; */
+  margin-top: 2rem !important;
+  max-height: 800px !important;
+}
+
 .tableHeader {
   color: #757575 !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 18px !important;
   padding: 2rem;
   margin-top: 2rem;
 }

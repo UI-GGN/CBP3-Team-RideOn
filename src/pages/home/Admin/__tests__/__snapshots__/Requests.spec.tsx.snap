@@ -25,42 +25,49 @@ exports[`Requests test renders correctly 1`] = `
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Employee
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Project Code
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Pickup
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 20%;"
                 >
                   Drop
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Pickup Time
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Status
                 </th>
                 <th
                   class="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeMedium tableHeader css-y8ay40-MuiTableCell-root"
                   scope="col"
+                  style="width: 10%;"
                 >
                   Action
                 </th>

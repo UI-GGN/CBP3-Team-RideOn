@@ -21,6 +21,7 @@ import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { styled } from '@mui/material/styles';
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -34,6 +35,12 @@ const TabPanel = ({children, value, index}) => {
         </div>
   );
 };
+
+const StyledTab = styled(Tab)({
+  textTransform: 'none',
+  fontSize: '18px'
+});
+
 function EmployeeHome() {
   const {user} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
@@ -180,8 +187,8 @@ function EmployeeHome() {
               marginTop: 2,
               marginBottom: -3
             }}>
-                <Tab label="Upcoming Requests" id="tab-0" />
-                <Tab label="Past Requests" id="tab-1" />
+                <StyledTab label="Upcoming Requests" id="tab-0"/>
+                <StyledTab label="Past Requests" id="tab-1" />
             </Tabs>
 
             <TabPanel value={tabIndex} index={0}>

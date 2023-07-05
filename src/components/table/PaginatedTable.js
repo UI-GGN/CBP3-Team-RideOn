@@ -18,7 +18,26 @@ import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
 import "./PaginatedTable.css";
 
+const columnAdminWidths = {
+  employee: '20%',
+  projectCode: '10%',
+  pickup: '20%',
+  drop: '20%',
+  pickupTime: '10%',
+  status: '10%',
+  action: '10%',
+};
+
+const columnEmployeeWidths = {
+  pickup: '30%',
+  drop: '30%',
+  pickupTime: '10%',
+  projectCode: '20%',
+  status: '10%'
+};
+
 export default function PaginatedTable({columns, rows}) {
+  // const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10); // Number of rows to display per page
 
@@ -65,6 +84,9 @@ export default function PaginatedTable({columns, rows}) {
     ? columns.slice(0, -2)
     : columns.slice(0, -1);
 
+  // const needWidth30 = ["drop", "status"];
+  // const needWidth70 = ["employee", "projectCode", "pickup"];
+
   return (
     // <Paper className={(isAdminFlow) ? "adminTable" : "employeeTable"}>
     <Paper className="table" elevation={(isAdminFlow) ? 2 : 0}>
@@ -77,7 +99,12 @@ export default function PaginatedTable({columns, rows}) {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id} className="tableHeader">
+                <TableCell key={column.id}
+                style={{
+                  width:
+                  (isAdminFlow) ? columnAdminWidths[column.id] : columnEmployeeWidths[column.id]
+                }}
+                  className="tableHeader">
                   {column.label}
                 </TableCell>
               ))}

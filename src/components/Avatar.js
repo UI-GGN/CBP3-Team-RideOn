@@ -62,7 +62,8 @@ export default function Avatar({imageLink, logout, email, name}) {
              lineHeight: '36px',
              textTransform: "none",
              letterSpacing: '1.25px',
-             marginLeft: "16px"
+             paddingLeft: "16px",
+             paddingBottom: "4px"
            }}
           >
             Logout

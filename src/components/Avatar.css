@@ -1,0 +1,25 @@
+.popper {
+    width: 260px;
+    height: 122px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid rgba(102, 102, 102, 0.20);
+    background: #FFF;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+    color:#66666633;
+    margin-top: 4px;
+    margin-right: 32px;
+}
+
+.name {
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    margin-top: 16px;
+    margin-left: 16px;
+}

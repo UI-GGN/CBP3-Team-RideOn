@@ -5,8 +5,9 @@ import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import {Box, Stack} from "@mui/material";
 import Avatar from "../../../components/Avatar";
 import BreadCrumb from "../../../components/BreadCrumb";
-import {useLocation, Outlet} from "react-router-dom";
+import {useLocation, Outlet, useNavigate} from "react-router-dom";
 import {getBreadcrumbsValues} from "../../../utils/Breadcrumbs";
+import {useEffect} from "react";
 
 const navItems = [
   {
@@ -19,7 +20,14 @@ const navItems = [
 function AdminHome() {
   const {logout, user} = useAuth0();
   const location = useLocation();
-  const isHomePage = getBreadcrumbsValues(location.pathname).length === 1;
+  const navigate = useNavigate();
+  const breadcrumbsValues = getBreadcrumbsValues(location.pathname);
+  const length = breadcrumbsValues.length;
+  const isHomePage = length === 1;
+
+  useEffect(() => {
+    navigate("/home/requests", {replace: true});
+  }, []);
 
   return (
     <Box sx={{width: "100%", height: "100%"}}>
@@ -44,10 +52,7 @@ function AdminHome() {
               <Avatar imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
-              <BreadCrumb
-                values={getBreadcrumbsValues(location.pathname)}
-                isHomePage={isHomePage}
-              />
+              <BreadCrumb values={breadcrumbsValues[length - 1]} />
             </Box>
             <Box>
               <Outlet />

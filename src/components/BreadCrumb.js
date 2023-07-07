@@ -1,10 +1,7 @@
 import React from "react";
 import {Breadcrumbs, Typography} from "@mui/material";
 
-function BreadCrumb({values, isHomePage}) {
-  if (isHomePage) {
-    values = [...values, "requests"];
-  }
+function BreadCrumb({values}) {
   return (
     <Breadcrumbs
       aria-label="breadcrumbs"
@@ -16,19 +13,15 @@ function BreadCrumb({values, isHomePage}) {
         Letter: "0.25 px",
       }}
     >
-      {values.length &&
-        values.map((item, index) => (
-          <Typography
-            key={item.length}
-            fontSize="inherit"
-            Font="Roboto"
-            Align="Center"
-            textTransform={"capitalize"}
-            color={index === values.length - 1 ? "text.primary" : ""}
-          >
-            {item}
-          </Typography>
-        ))}
+      <Typography
+        fontSize="inherit"
+        Font="Roboto"
+        Align="Center"
+        textTransform={"capitalize"}
+        color={"text.primary"}
+      >
+        {values}
+      </Typography>
     </Breadcrumbs>
   );
 }

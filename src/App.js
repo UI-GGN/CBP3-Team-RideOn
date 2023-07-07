@@ -18,7 +18,6 @@ function App() {
           path="/home"
           element={userRole === "employee" ? <EmployeeHome /> : <AdminHome />}
         >
-          <Route index element={<HomeRequests />} />
           <Route path="requests" element={<HomeRequests />} />
         </Route>
       </Routes>

@@ -121,7 +121,17 @@ exports[`Home Page renders correctly 1`] = `
               >
                 <ol
                   class="MuiBreadcrumbs-ol css-4pdmu4-MuiBreadcrumbs-ol"
-                />
+                >
+                  <li
+                    class="MuiBreadcrumbs-li"
+                  >
+                    <p
+                      align="Center"
+                      class="MuiTypography-root MuiTypography-body1 css-jp05r1-MuiTypography-root"
+                      font="Roboto"
+                    />
+                  </li>
+                </ol>
               </nav>
             </div>
             <div

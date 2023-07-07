@@ -12,7 +12,7 @@ import {
   Typography,
   AccordionDetails,
   FormControl, TextField,
-  Paper
+  Paper, Container
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../../data";
@@ -78,6 +78,7 @@ function EmployeeHome() {
   };
   return (
     <>
+      <Container maxWidth='lg'>
       <Stack direction={"row"} spacing={2}>
          <img src={logoImage} className="logo"/>
          <Box
@@ -93,7 +94,7 @@ function EmployeeHome() {
          </Box>
       </Stack>
       <h4 className="welcomeMessage">{msg}</h4>
-        <Box sx={{marginLeft: 9, marginRight: 9}}>
+      <Box sx={{marginLeft: 9, marginRight: 9}}>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -108,71 +109,63 @@ function EmployeeHome() {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails onFocus={() => setOpen(false)}>
-                    <Typography>
-                        <FormControl className="form-control-container">
-                            <div>
-                                <TextField
-                                    sx={{marginRight: "65px"}}
-                                    variant="standard"
-                                    type="text"
-                                    required
-                                    placeholder="Project Code"
-                                    id="projectCode"
-                                    name="projectCode"
-                                    className="text-field"
-                                    value={projectCode}
-                                    error={!!projectCodeErrorText}
-                                    helperText={projectCodeErrorText}
-                                    onChange={(e) => setProjectCode(e.target.value)}
-                                />
-                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
-                            </div>
-                            <div>
-                                <TextField
-                                    sx={{marginRight: "65px", marginTop: "30px"}}
-                                    variant="standard"
-                                    type="text"
-                                    required
-                                    placeholder="Pickup Location"
-                                    id="pickupLocation"
-                                    className="text-field"
-                                    name="pickupLocation"
-                                    value={pickupLocation}
-                                    error={!!pickupLocationErrorText}
-                                    helperText={pickupLocationErrorText}
-                                    onChange={(e) => setPickupLocation(e.target.value)}
-                                />
-                                <TextField
-                                    sx={{marginTop: "30px"}}
-                                    variant="standard"
-                                    type="text"
-                                    required
-                                    className="text-field"
-                                    placeholder="Drop Location"
-                                    id="dropLocation"
-                                    name="dropLocation"
-                                    value={dropLocation}
-                                    error={!!dropLocationErrorText}
-                                    helperText={dropLocationErrorText}
-                                    onChange={(e) => setDropLocation(e.target.value)}
-                                />
-                            </div>
-                            <Button className="submitButton" variant="contained" size="large" onClick={onSubmit}>
-                                Submit Request
-                            </Button>
-                        </FormControl>
-                    </Typography>
+                    <FormControl className="create-request-form">
+                        <div style={{ display: 'flex' }}>
+                            <TextField
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                                variant="standard"
+                                type="text"
+                                required
+                                label="Project Code"
+                                id="projectCode"
+                                name="projectCode"
+                                className="text-field"
+                                value={projectCode}
+                                error={!!projectCodeErrorText}
+                                helperText={projectCodeErrorText}
+                                onChange={(e) => setProjectCode(e.target.value)}
+                            />
+                            <DatePicker wrapperClassName="datePicker" label="Pickup DateTime" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
+                        </div>
+                        <div style={{ display: 'flex' }}>
+                            <TextField
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                                variant="standard"
+                                required
+                                label="Pickup Location"
+                                id="pickupLocation"
+                                name="pickupLocation"
+                                value={pickupLocation}
+                                error={!!pickupLocationErrorText}
+                                helperText={pickupLocationErrorText}
+                                onChange={(e) => setPickupLocation(e.target.value)}
+                            />
+                            <TextField
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                                variant="standard"
+                                required
+                                label="Drop Location"
+                                id="dropLocation"
+                                name="dropLocation"
+                                value={dropLocation}
+                                error={!!dropLocationErrorText}
+                                helperText={dropLocationErrorText}
+                                onChange={(e) => setDropLocation(e.target.value)}
+                            />
+                        </div>
+                        <Button className="submitButton" variant="contained" size="large" onClick={onSubmit}>
+                            Submit Request
+                        </Button>
+                    </FormControl>
                 </AccordionDetails>
             </Accordion>
-        </Box>
-      <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: 4,
-            marginRight: 4,
-          }}
-      >
+      </Box>
+      <Box sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: 4,
+        marginRight: 4,
+      }}>
       </Box>
         <Paper elevation={2} variant="outlined"
           sx={{
@@ -199,6 +192,7 @@ function EmployeeHome() {
                 <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
             </TabPanel>
         </Paper>
+      </Container>
     </>
   );
 }

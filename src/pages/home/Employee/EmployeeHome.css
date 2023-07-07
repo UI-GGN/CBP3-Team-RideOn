@@ -1,46 +1,58 @@
 .logo {
-  margin-left: 70px;
-  margin-top: 40px;
+    margin-left: 70px;
+    margin-top: 40px;
 }
 
-.welcomeMessage{
-  color: rgba(0, 0, 0, 0.60);
-  margin-top: 70px;
-  margin-left: 90px;
-  font-size: 24px;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 20px;
-  letter-spacing: 0.5px;
+.welcomeMessage {
+    color: rgba(0, 0, 0, 0.60);
+    margin-top: 70px;
+    margin-left: 90px;
+    font-size: 24px;
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.5px;
 }
 
-
-.submitButton{
-  display: flex !important;
-  width: 175px !important;
-  height: 44px !important;
-  align-items: center !important;
-  margin-left: auto !important;
-  margin-top: 35px !important;
+.submitButton {
+    display: flex !important;
+    width: 175px !important;
+    height: 44px !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    margin-top: 35px !important;
 }
 
 input {
-  width: 600px !important;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.accordianMessage {
+    color: rgba(0, 0, 0, 0.60);
+    font-family: Roboto;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+.create-request-form {
+    width: 100%;
+    text-align: center;
+}
+
+.datePicker {
+    flex: 1;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .react-datepicker__input-container input {
- margin-top: 15px;
-}
-
-.accordianMessage{
-  color: rgba(0, 0, 0, 0.60);
-  font-family: Roboto;
-  text-align: center;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.5px;
+    justify-content: flex-end;
+    width: 95%;
+    padding: 10px !important;
 }

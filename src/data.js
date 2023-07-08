@@ -174,10 +174,10 @@ export const adminReqRow = [
 ];
 
 export const employeeReqColumns = [
-  {id: "pickup", label: "Pickup"},
+  {id: "pickup", label: "Pick up"},
   {id: "drop", label: "Drop"},
-  {id: "pickupTime", label: "PickupTime"},
-  {id: "projectCode", label: "ProjectCode"},
+  {id: "pickupTime", label: "Pickup Time"},
+  {id: "projectCode", label: "Project Code"},
   {id: "status", label: "Status"},
 ];
 

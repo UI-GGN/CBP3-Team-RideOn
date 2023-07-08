@@ -49,10 +49,22 @@ input {
     flex: 1;
     margin-right: 30px;
     margin-left: 30px;
+    margin-top: 13px;
 }
 
 .react-datepicker__input-container input {
     justify-content: flex-end;
     width: 95%;
     padding: 10px !important;
+    border: none;
+    border-bottom: 1px solid #ccc !important;
+    outline: none;
+    color: rgba(0, 0, 0, 0.70);
+    font-size: 15px;
+}
+.react-datepicker__month { margin: 0.4em 1em !important}
+.react-datepicker__day-name, .react-datepicker__day {
+    width: 2.5em !important;
+    line-height: 1.5em !important;
+    margin: 0.166em !important;
 }

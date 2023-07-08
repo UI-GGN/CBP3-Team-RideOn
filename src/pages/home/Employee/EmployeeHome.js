@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import logoImage from "../../assets/Logo.svg";
+import logoImage from "../../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import {Box, Tab, Tabs, Stack} from "@mui/material";
-import PaginatedTable from "../../components/PaginatedTable";
-import {employeeReqColumns, employeeReqRows} from "../../data";
+import PaginatedTable from "../../../components/PaginatedTable";
+import {employeeReqColumns, employeeReqRows} from "../../../data";
 import "./EmployeeHome.css";
-import Avatar from "../../components/Avatar";
+import Avatar from "../../../components/Avatar";
 const TabPanel = ({children, value, index}) => {
   return (
     <div

@@ -207,7 +207,7 @@ describe("Home Page", () => {
       id: 1,
       pickupLocation: "42-43",
       dropLocation: "TW office",
-      pickupTime: "10:00 am",
+      pickupTime: "2023-07-09T05:22:28.000Z",
       projectCode: "HPB",
       status: "Approved",
     }];
@@ -218,7 +218,7 @@ describe("Home Page", () => {
     expect(spy).toHaveBeenCalledWith({filter: "upcomingRequest"});
     expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
-    expect(getByText(mockEmployeeRequest[0].pickupTime)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
   });
@@ -228,7 +228,7 @@ describe("Home Page", () => {
       id: 1,
       pickupLocation: "42-43",
       dropLocation: "TW office",
-      pickupTime: "10:00 am",
+      pickupTime: "2023-07-09T05:22:28.000Z",
       projectCode: "HPB",
       status: "Approved",
     }];
@@ -241,7 +241,7 @@ describe("Home Page", () => {
     expect(spy).toHaveBeenNthCalledWith(2, {filter: "pastRequest"});
     expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
-    expect(getByText(mockEmployeeRequest[0].pickupTime)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
   });

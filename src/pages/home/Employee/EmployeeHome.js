@@ -64,7 +64,7 @@ function EmployeeHome() {
     return employeeList.map((employee) => {
       return {
         ...employee,
-        pickupTime: getDateTime(employeeList.pickupTime)
+        pickupTime: getDateTime(employee.pickupTime)
       };
     });
   };

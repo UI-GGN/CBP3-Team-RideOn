@@ -18,12 +18,12 @@ jest.mock("@auth0/auth0-react", () => ({
 }));
 
 jest.mock(".../../../components/Avatar");
-describe("Home Page", () => {
+describe("Employee Home Page", () => {
   beforeEach(() => {
     const mockLocation = {
       pathname: "/home",
     };
-    const mockUser = {given_name: "John", email: "john@example.com", picture: "somelink"};
+    const mockUser = {given_name: "John", email: "john@example.com", picture: "somelink", name: "John Doe"};
     const mockAuth0Context = {
       isAuthenticated: true,
       user: mockUser,
@@ -57,7 +57,7 @@ describe("Home Page", () => {
   it("should called avatar with imageLink", () => {
     render(<Employee />);
 
-    expect(Avatar).toBeCalledWith({imageLink: "somelink"}, {});
+    expect(Avatar).toBeCalledWith({imageLink: "somelink", name: "John Doe", email: "john@example.com", logout: expect.any(Function)}, {});
   });
 
   it("should display welcome msg for user", () => {

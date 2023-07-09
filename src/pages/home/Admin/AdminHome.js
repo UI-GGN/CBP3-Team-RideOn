@@ -31,7 +31,11 @@ function AdminHome() {
     <Box sx={{width: "100%", height: "100%"}}>
       <Stack direction={"row"} spacing={2}>
         <Box>
-          <PermanentDrawerLeft onLogout={logout} navItems={navItems} isHomePage={isHomePage}/>
+          <PermanentDrawerLeft
+            onLogout={logout}
+            navItems={navItems}
+            isHomePage={isHomePage}
+          />
         </Box>
         <Box sx={{width: "80%", marginLeft: 2}}>
           <Stack direction={"column"} useFlexGap>
@@ -46,7 +50,10 @@ function AdminHome() {
               <Avatar imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
-              <BreadCrumb values={getBreadcrumbsValues(location.pathname)} isHomePage={isHomePage}/>
+              <BreadCrumb
+                values={getBreadcrumbsValues(location.pathname)}
+                isHomePage={isHomePage}
+              />
             </Box>
             <Box>
               <Outlet />

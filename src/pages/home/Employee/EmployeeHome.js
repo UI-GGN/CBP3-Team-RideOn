@@ -42,7 +42,7 @@ const StyledTab = styled(Tab)({
 });
 
 function EmployeeHome() {
-  const {user} = useAuth0();
+  const {user, logout} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpen, setOpen] = useState(true);
@@ -89,7 +89,7 @@ function EmployeeHome() {
                 marginLeft: "auto"
               }}
          >
-           <Avatar imageLink={user?.picture} />
+           <Avatar imageLink={user?.picture} logout={logout} email={user?.email} name={user?.name} />
          </Box>
       </Stack>
       <h4 className="welcomeMessage">{msg}</h4>
@@ -170,7 +170,7 @@ function EmployeeHome() {
             display: "flex",
             justifyContent: "flex-end",
             marginTop: 4,
-            marginRight: 4,
+            marginRight: 4
           }}
       >
       </Box>

@@ -2,8 +2,16 @@ name: merge main workflow
 
 on:
   push:
-    branches: [main]
+    branches: [main, backendSetup]
 jobs:
+  print:
+    name: Printtt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print env var
+        run: |
+          echo "1: ${{vars.REACT_APP_BASE_URL}}"
+          echo "2: ${{ secrets.REACT_APP_AUTH0_AUDIENCE }}"
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -72,6 +80,7 @@ jobs:
           REACT_APP_AUTH0_CLIENT_ID: ${{ secrets.REACT_APP_AUTH0_CLIENT_ID }}
           REACT_APP_REDIRECT_URI: ${{ secrets.REACT_APP_REDIRECT_URI }}
           REACT_APP_AUTH0_AUDIENCE: ${{ secrets.REACT_APP_AUTH0_AUDIENCE }}
+          REACT_APP_BASE_URL: ${{vars.REACT_APP_BASE_URL}}
         run: npm run build --if-present
       - name: Netlify Deploy
         # uses: jsmrcaga/action-netlify-deploy@v1.7.1

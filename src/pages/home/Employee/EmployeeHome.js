@@ -15,13 +15,15 @@ import {
   Paper
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
-import {employeeReqColumns, employeeReqRows} from "../../../data";
+import {employeeReqColumns} from "../../../data";
 import "./EmployeeHome.css";
 import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from '@mui/material/styles';
+import { useGetAllRequest } from "../../../services/Request/useGetAllRequest";
+import { APIStatus } from "../../../reducers/api-reducer";
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -53,8 +55,11 @@ function EmployeeHome() {
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
   const [startDate, setStartDate] = useState(new Date());
+  const [params, setParams] = React.useState({filter: "upcomingRequest"});
 
-  const onSubmit = (e) => {
+  const {data: employeeList, status} = useGetAllRequest(params);
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!pickupLocation) {
@@ -73,9 +78,13 @@ function EmployeeHome() {
       setDropLocationErrorText("");
     }
   };
+
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue);
+    if (newValue === 0) { setParams({filter: "upcomingRequest"}); }
+    if (newValue === 1) { setParams({filter: "pastRequest"}); }
   };
+
   return (
     <>
       <Stack direction={"row"} spacing={2}>
@@ -192,11 +201,14 @@ function EmployeeHome() {
             </Tabs>
 
             <TabPanel value={tabIndex} index={0}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+              {status === APIStatus.LOADING
+                ? <p> loading.....</p>
+                : <PaginatedTable columns={employeeReqColumns} rows={employeeList} />
+        }
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+                <PaginatedTable columns={employeeReqColumns} rows={employeeList} />
             </TabPanel>
         </Paper>
     </>

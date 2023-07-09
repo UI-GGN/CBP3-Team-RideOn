@@ -19,7 +19,7 @@ export const AxiosProvider = ({children}) => {
     return config;
   });
 
-  return (<axiosContext.Provider value={{axiosInstance}}>
+  return (<axiosContext.Provider value={axiosInstance}>
     {children}
   </axiosContext.Provider>);
 };

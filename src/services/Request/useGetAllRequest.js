@@ -4,7 +4,7 @@ import { reducer, initialState, fetching, success, error } from "../../reducers/
 
 export const useGetAllRequest = (params) => {
   const [state, dispatch] = useReducer(reducer, {...initialState, data: []});
-  const {axiosInstance} = useAxios();
+  const axiosInstance = useAxios();
 
   const fetchData = async () => {
     dispatch(fetching());

@@ -23,7 +23,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from '@mui/material/styles';
 import { useGetAllRequest } from "../../../services/Request/useGetAllRequest";
-import { APIStatus } from "../../../reducers/api-reducer";
 import { getDateTime } from "../../../utils/DateTimeConvertor";
 
 const TabPanel = ({children, value, index}) => {
@@ -58,7 +57,7 @@ function EmployeeHome() {
   const [startDate, setStartDate] = useState(new Date());
   const [params, setParams] = React.useState({filter: "upcomingRequest"});
 
-  const {data: employeeList, status} = useGetAllRequest(params);
+  const {data: employeeList } = useGetAllRequest(params);
 
   const getEmployeeRowData = () => {
     return employeeList.map((employee) => {
@@ -197,6 +196,7 @@ function EmployeeHome() {
           sx={{
             marginLeft: 9,
             marginRight: 9,
+            marginBottom: 9,
           }}
         >
             <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs"
@@ -211,10 +211,7 @@ function EmployeeHome() {
             </Tabs>
 
             <TabPanel value={tabIndex} index={0}>
-              {status === APIStatus.LOADING
-                ? <p> loading.....</p>
-                : <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
-        }
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>

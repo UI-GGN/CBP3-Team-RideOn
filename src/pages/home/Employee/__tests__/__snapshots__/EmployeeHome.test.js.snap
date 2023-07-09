@@ -183,7 +183,7 @@ exports[`Home Page renders correctly 1`] = `
       class="MuiBox-root css-15ixr81"
     />
     <div
-      class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-1rjkdgk-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-l9nekf-MuiPaper-root"
     >
       <div
         class="MuiTabs-root css-1lmpred-MuiTabs-root"

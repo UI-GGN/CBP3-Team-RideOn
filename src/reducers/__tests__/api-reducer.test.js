@@ -1,4 +1,4 @@
-import { reducer } from "./api-reducer";
+import { reducer } from "../api-reducer";
 
 describe("API Reducer", () => {
   const initialState = {

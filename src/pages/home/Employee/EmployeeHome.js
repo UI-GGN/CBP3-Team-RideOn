@@ -24,6 +24,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from '@mui/material/styles';
 import { useGetAllRequest } from "../../../services/Request/useGetAllRequest";
 import { APIStatus } from "../../../reducers/api-reducer";
+import { getDateTime } from "../../../utils/DateTimeConvertor";
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -58,6 +59,15 @@ function EmployeeHome() {
   const [params, setParams] = React.useState({filter: "upcomingRequest"});
 
   const {data: employeeList, status} = useGetAllRequest(params);
+
+  const getEmployeeRowData = () => {
+    return employeeList.map((employee) => {
+      return {
+        ...employee,
+        pickupTime: getDateTime(employeeList.pickupTime)
+      };
+    });
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -203,12 +213,12 @@ function EmployeeHome() {
             <TabPanel value={tabIndex} index={0}>
               {status === APIStatus.LOADING
                 ? <p> loading.....</p>
-                : <PaginatedTable columns={employeeReqColumns} rows={employeeList} />
+                : <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
         }
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeList} />
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
             </TabPanel>
         </Paper>
     </>

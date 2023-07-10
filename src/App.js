@@ -15,7 +15,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={(userRole === "employee") ? <EmployeeHome/> : <AdminHome/>}>
+        <Route path="/home" element={(userRole === "employee") ? <EmployeeHome/> : <EmployeeHome/>}>
           <Route index element={<HomeRoutes />} />
           <Route path="requests" element={<HomeRequests />} />
           <Route path="routes" element={<HomeRoutes />} />

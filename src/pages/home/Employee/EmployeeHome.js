@@ -2,26 +2,30 @@ import React, {useState} from "react";
 import logoImage from "../../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
+  Button,
+  FormControl,
+  Paper,
+  Stack,
   Tab,
   Tabs,
-  Stack,
-  Button,
-  Accordion,
-  AccordionSummary,
-  Typography,
-  AccordionDetails,
-  FormControl, TextField,
-  Paper
+  TextField,
+  Typography
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
-import {employeeReqColumns, employeeReqRows} from "../../../data";
+import {employeeReqColumns} from "../../../data";
 import "./EmployeeHome.css";
 import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { styled } from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
+import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
+import {getDateTime} from "../../../utils/DateTimeConvertor";
+import {useCreateRequest} from "../../../services/Request/RequestService";
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -52,9 +56,20 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [pickupTime, setPickupTime] = useState(new Date());
+  const [params, setParams] = React.useState({filter: "upcomingRequest"});
+  const {data: employeeList } = useGetAllRequest(params);
 
-  const onSubmit = (e) => {
+  const getEmployeeRowData = () => {
+    return employeeList.map((employee) => {
+      return {
+        ...employee,
+        pickupTime: getDateTime(employee.pickupTime)
+      };
+    });
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!pickupLocation) {
@@ -72,10 +87,16 @@ function EmployeeHome() {
     } else {
       setDropLocationErrorText("");
     }
+    await useCreateRequest({'pickupLocation': pickupLocation, 'dropLocation':dropLocation, 'projectCode':projectCode,'pickupTime':pickupTime
+    });
   };
+
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue);
+    if (newValue === 0) { setParams({filter: "upcomingRequest"}); }
+    if (newValue === 1) { setParams({filter: "pastRequest"}); }
   };
+
   return (
     <>
       <Stack direction={"row"} spacing={2}>
@@ -125,7 +146,7 @@ function EmployeeHome() {
                                     helperText={projectCodeErrorText}
                                     onChange={(e) => setProjectCode(e.target.value)}
                                 />
-                                <DatePicker placeholderText="Select a date and time" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
+                                <DatePicker placeholderText="Select a date and time" selected={pickupTime} onChange={(date) => setPickupTime(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
                             </div>
                             <div>
                                 <TextField
@@ -178,6 +199,7 @@ function EmployeeHome() {
           sx={{
             marginLeft: 9,
             marginRight: 9,
+            marginBottom: 9,
           }}
         >
             <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs"
@@ -192,11 +214,11 @@ function EmployeeHome() {
             </Tabs>
 
             <TabPanel value={tabIndex} index={0}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
             </TabPanel>
 
             <TabPanel value={tabIndex} index={1}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
             </TabPanel>
         </Paper>
     </>

@@ -3,8 +3,8 @@
   margin-top: 40px;
 }
 
-.welcomeMessage{
-  color: rgba(0, 0, 0, 0.60);
+.welcomeMessage {
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 70px;
   margin-left: 90px;
   font-size: 24px;
@@ -14,8 +14,7 @@
   letter-spacing: 0.5px;
 }
 
-
-.submitButton{
+.submitButton {
   display: flex !important;
   width: 175px !important;
   height: 44px !important;
@@ -32,11 +31,11 @@ input {
 }
 
 .react-datepicker__input-container input {
- margin-top: 15px;
+  margin-top: 15px;
 }
 
-.accordianMessage{
-  color: rgba(0, 0, 0, 0.60);
+.accordianMessage {
+  color: rgba(0, 0, 0, 0.6);
   font-family: Roboto;
   text-align: center;
   font-style: normal;

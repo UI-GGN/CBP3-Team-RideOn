@@ -51,7 +51,10 @@ export default function PermanentDrawerLeft({onLogout, navItems, isHomePage}) {
               to={navItem.to}
               activeClassName="active"
               className="sidebar-option"
-              sx={{backgroundColor: (isHomePage && navItems.indexOf(navItem) === 0) ? "#1976d2" : ""}}
+              sx={{
+                backgroundColor:
+                  isHomePage && navItems.indexOf(navItem) === 0 ? "#1976d2" : "",
+              }}
             >
               <ListItemButton>
                 <ListItemIcon>{navItem.icon}</ListItemIcon>

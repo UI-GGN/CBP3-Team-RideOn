@@ -20,7 +20,7 @@ jest.mock(".../../../components/Avatar");
 describe("Home Page", () => {
   beforeEach(() => {
     const mockLocation = {
-      pathname: "/home/routes",
+      pathname: "/home/requests",
     };
 
     const mockUser = {name: "John Doe", email: "john@example.com", picture: "somelink"};
@@ -45,7 +45,7 @@ describe("Home Page", () => {
   it("should called breadcrubms with pathname", () => {
     render(<Home />, {wrapper: BrowserRouter});
 
-    expect(BreadcrumbUtils.getBreadcrumbsValues).toBeCalledWith("/home/routes");
+    expect(BreadcrumbUtils.getBreadcrumbsValues).toBeCalledWith("/home/requests");
   });
 
   it("should called avatar with imageLink", () => {

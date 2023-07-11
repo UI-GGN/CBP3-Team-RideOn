@@ -1,17 +1,14 @@
 .table {
-  /* overflow: hidden !important; */
   margin-top: 2rem !important;
   max-height: 800px !important;
 }
 
-.adminTable{
-    /* overflow: hidden !important; */
-    margin-top: 2rem !important;
-    max-height: 800px !important;
+.adminTable {
+  margin-top: 2rem !important;
+  max-height: 800px !important;
 }
 
-.employeeTable{
-  /* overflow: hidden !important; */
+.employeeTable {
   margin-top: 2rem !important;
   max-height: 800px !important;
 }

@@ -131,7 +131,14 @@ function EmployeeHome() {
                                 helperText={projectCodeErrorText}
                                 onChange={(e) => setProjectCode(e.target.value)}
                             />
-                            <DatePicker wrapperClassName="datePicker" required placeholderText="Pickup DateTime*" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
+                            <DatePicker wrapperClassName="datePicker" required placeholderText="Pickup DateTime*"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    minDate={new Date()}
+                    dateFormat="Pp"
+                    showTimeSelect
+                    timeFormat="p"
+                  />
                         </div>
                         <div style={{ display: 'flex' }}>
                             <TextField
@@ -181,19 +188,19 @@ function EmployeeHome() {
         <Paper
           elevation={2}
           variant="outlined"
-          sx={{
-            marginLeft: 9,
-            marginRight: 9,
-          }}
-        >
+        sx={{
+          marginLeft: 9,
+          marginRight: 9,
+        }}
+      >
           <Tabs
             value={tabIndex}
             onChange={handleTabChange}
             aria-label="tabs"
-            sx={{
-              marginLeft: 4,
-              marginRight: 4,
-              marginTop: 2,
+          sx={{
+            marginLeft: 4,
+            marginRight: 4,
+            marginTop: 2,
               marginBottom: -3,
             }}
           >

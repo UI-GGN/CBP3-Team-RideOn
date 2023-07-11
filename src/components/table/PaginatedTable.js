@@ -19,21 +19,21 @@ import Popover from "@mui/material/Popover";
 import "./PaginatedTable.css";
 
 const columnAdminWidths = {
-  employee: '20%',
-  projectCode: '10%',
-  pickup: '20%',
-  drop: '20%',
-  pickupTime: '10%',
-  status: '10%',
-  action: '10%',
+  employee: "20%",
+  projectCode: "10%",
+  pickup: "20%",
+  drop: "20%",
+  pickupTime: "10%",
+  status: "10%",
+  action: "10%",
 };
 
 const columnEmployeeWidths = {
-  pickup: '30%',
-  drop: '30%',
-  pickupTime: '10%',
-  projectCode: '20%',
-  status: '10%'
+  pickup: "30%",
+  drop: "30%",
+  pickupTime: "10%",
+  projectCode: "20%",
+  status: "10%",
 };
 
 export default function PaginatedTable({columns, rows}) {
@@ -89,7 +89,7 @@ export default function PaginatedTable({columns, rows}) {
 
   return (
     // <Paper className={(isAdminFlow) ? "adminTable" : "employeeTable"}>
-    <Paper className="table" elevation={(isAdminFlow) ? 2 : 0}>
+    <Paper className="table" elevation={isAdminFlow ? 2 : 0}>
       <TableContainer>
         <Table
           stickyHeader
@@ -99,12 +99,15 @@ export default function PaginatedTable({columns, rows}) {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id}
-                style={{
-                  width:
-                  (isAdminFlow) ? columnAdminWidths[column.id] : columnEmployeeWidths[column.id]
-                }}
-                  className="tableHeader">
+                <TableCell
+                  key={column.id}
+                  style={{
+                    width: isAdminFlow
+                      ? columnAdminWidths[column.id]
+                      : columnEmployeeWidths[column.id],
+                  }}
+                  className="tableHeader"
+                >
                   {column.label}
                 </TableCell>
               ))}

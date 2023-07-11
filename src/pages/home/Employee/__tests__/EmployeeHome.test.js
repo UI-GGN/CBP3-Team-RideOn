@@ -76,9 +76,9 @@ describe("Home Page", () => {
       );
       userEvent.type(getByTestId("projectCode"), "abc");
       userEvent.type(getByTestId("pickupLocation"), "Address");
-      userEvent.type(getByTestId("dropLocation"),  "Location");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-          getByPlaceholderText("Pickup DateTime*"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -96,9 +96,9 @@ describe("Home Page", () => {
         getByText("Planning an upcoming travel, create your travel request here")
       );
       userEvent.type(getByTestId("pickupLocation"), "Address");
-      userEvent.type(getByTestId("dropLocation"),  "Location");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-          getByPlaceholderText("Pickup DateTime*"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -121,11 +121,11 @@ describe("Home Page", () => {
         getByText("Planning an upcoming travel, create your travel request here")
       );
       userEvent.type(getByTestId("projectCode"), "abc");
-      userEvent.type(getByTestId("dropLocation"),  "Location");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-          getByPlaceholderText("Pickup DateTime*"),
-          new Date(),
-          "08/02/2023"
+        getByPlaceholderText("Pickup DateTime*"),
+        new Date(),
+        "08/02/2023"
       );
     });
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
@@ -146,9 +146,9 @@ describe("Home Page", () => {
       userEvent.type(getByTestId("projectCode"), "abc");
       userEvent.type(getByTestId("pickupLocation"), "Address");
       fireChangeForInputTimeIfValid(
-          getByPlaceholderText("Pickup DateTime*"),
-          new Date(),
-          "08/02/2023"
+        getByPlaceholderText("Pickup DateTime*"),
+        new Date(),
+        "08/02/2023"
       );
     });
 
@@ -161,7 +161,7 @@ describe("Home Page", () => {
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByTestId, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByDisplayValue, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
@@ -169,11 +169,11 @@ describe("Home Page", () => {
       );
       userEvent.type(getByTestId("projectCode"), "abc");
       userEvent.type(getByTestId("pickupLocation"), "Address");
-      userEvent.type(getByTestId("dropLocation"),  "Location");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-          getByPlaceholderText("Pickup DateTime*"),
-          new Date(),
-          "08/02/2023"
+        getByPlaceholderText("Pickup DateTime*"),
+        new Date(),
+        "08/02/2023"
       );
       fireEvent.click(getByText("Submit Request"));
     });

@@ -52,7 +52,7 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -125,7 +125,7 @@ function EmployeeHome() {
                                 helperText={projectCodeErrorText}
                                 onChange={(e) => setProjectCode(e.target.value)}
                             />
-                            <DatePicker wrapperClassName="datePicker" label="Pickup DateTime" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
+                            <DatePicker wrapperClassName="datePicker" required placeholderText="Pickup DateTime*" selected={startDate} onChange={(date) => setStartDate(date)} minDate={new Date()} dateFormat="Pp" showTimeSelect timeFormat="p"/>
                         </div>
                         <div style={{ display: 'flex' }}>
                             <TextField

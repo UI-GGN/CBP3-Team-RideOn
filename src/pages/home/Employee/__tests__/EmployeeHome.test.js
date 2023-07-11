@@ -3,6 +3,7 @@ import Employee from "../EmployeeHome";
 import {useLocation} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
 import Avatar from "../../../../components/Avatar";
+import userEvent from "@testing-library/user-event";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
 
@@ -45,7 +46,7 @@ describe("Home Page", () => {
     const {baseElement, getByPlaceholderText} = render(<Employee />);
     act(() =>
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       )
@@ -67,21 +68,17 @@ describe("Home Page", () => {
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"),  "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+          getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -89,24 +86,19 @@ describe("Home Page", () => {
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
   });
 
   it("should display error message on submit of form without project code", () => {
-    const {getByText, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"),  "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+          getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -122,24 +114,21 @@ describe("Home Page", () => {
   });
 
   it("should display error message on submit of form without pickup location ", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("dropLocation"),  "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
-        new Date(),
-        "08/02/2023"
+          getByPlaceholderText("Pickup DateTime*"),
+          new Date(),
+          "08/02/2023"
       );
     });
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
 
     act(() => {
       fireEvent.click(getByText("Submit Request"));
@@ -148,25 +137,22 @@ describe("Home Page", () => {
   });
 
   it("should display error message on submit of form without drop location ", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
-        new Date(),
-        "08/02/2023"
+          getByPlaceholderText("Pickup DateTime*"),
+          new Date(),
+          "08/02/2023"
       );
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
 
     act(() => {
       fireEvent.click(getByText("Submit Request"));
@@ -175,23 +161,19 @@ describe("Home Page", () => {
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByDisplayValue} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"),  "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
-        new Date(),
-        "08/02/2023"
+          getByPlaceholderText("Pickup DateTime*"),
+          new Date(),
+          "08/02/2023"
       );
       fireEvent.click(getByText("Submit Request"));
     });

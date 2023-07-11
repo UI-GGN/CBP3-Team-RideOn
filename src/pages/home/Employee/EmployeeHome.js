@@ -124,6 +124,7 @@ function EmployeeHome() {
                                 required
                                 label="Project Code"
                                 id="projectCode"
+                                data-testid="projectCode"
                                 name="projectCode"
                                 className="text-field"
                                 value={projectCode}
@@ -147,6 +148,7 @@ function EmployeeHome() {
                                 required
                                 label="Pickup Location"
                                 id="pickupLocation"
+                                data-testid="pickupLocation"
                                 name="pickupLocation"
                                 value={pickupLocation}
                                 error={!!pickupLocationErrorText}
@@ -159,6 +161,7 @@ function EmployeeHome() {
                                 required
                                 label="Drop Location"
                                 id="dropLocation"
+                                data-testid="dropLocation"
                                 name="dropLocation"
                                 value={dropLocation}
                                 error={!!dropLocationErrorText}

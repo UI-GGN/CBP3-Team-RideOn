@@ -142,7 +142,7 @@ function EmployeeHome() {
                         </div>
                         <div style={{ display: 'flex' }}>
                             <TextField
-                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px', marginTop: '10px'}}
                                 variant="standard"
                                 required
                                 label="Pickup Location"
@@ -154,7 +154,7 @@ function EmployeeHome() {
                                 onChange={(e) => setPickupLocation(e.target.value)}
                             />
                             <TextField
-                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px', marginTop: '10px'}}
                                 variant="standard"
                                 required
                                 label="Drop Location"

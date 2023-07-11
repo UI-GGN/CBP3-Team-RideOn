@@ -11,9 +11,8 @@ import {
   AccordionSummary,
   Typography,
   AccordionDetails,
-  FormControl,
-  TextField,
-  Paper,
+  FormControl, TextField,
+  Paper, Container
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../../data";
@@ -53,7 +52,7 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -79,55 +78,60 @@ function EmployeeHome() {
   };
   return (
     <>
-      <Stack direction={"row"} spacing={2}>
-        <img src={logoImage} className="logo" />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginTop: 4,
-            marginRight: 4,
-            marginLeft: "auto",
-          }}
-        >
-          <Avatar imageLink={user?.picture} />
-        </Box>
+      <Container maxWidth="xl" sx={{marginBottom: "30px"}}>
+        <Stack direction={"row"} spacing={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
+            <img src={logoImage} className="logo" />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: 4,
+              marginLeft: "auto",
+            }}
+         >
+           <Avatar imageLink={user?.picture} />
+         </Box>
       </Stack>
       <h4 className="welcomeMessage">{msg}</h4>
       <Box sx={{marginLeft: 9, marginRight: 9}}>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            onClick={() => setOpen(!isOpen)}
-          >
-            <Typography className="accordianMessage">
-              {isOpen
-                ? "Planning an upcoming travel, create your travel request here"
-                : "Fill the form to create a new travel request"}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails onFocus={() => setOpen(false)}>
-            <Typography>
-              <FormControl className="form-control-container">
-                <div>
-                  <TextField
-                    sx={{marginRight: "65px"}}
-                    variant="standard"
-                    type="text"
-                    required
-                    placeholder="Project Code"
-                    id="projectCode"
-                    name="projectCode"
-                    className="text-field"
-                    value={projectCode}
-                    error={!!projectCodeErrorText}
-                    helperText={projectCodeErrorText}
-                    onChange={(e) => setProjectCode(e.target.value)}
-                  />
-                  <DatePicker
-                    placeholderText="Select a date and time"
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                    onClick={() => setOpen(!isOpen)}
+                >
+                    <Typography className="accordianMessage">
+                        {isOpen
+                          ? "Planning an upcoming travel, create your travel request here"
+                          : "Fill the form to create a new travel request"}
+                    </Typography>
+                </AccordionSummary>
+                <AccordionDetails onFocus={() => setOpen(false)}>
+              <FormControl className="create-request-form">
+                <div style={{display: "flex"}}>
+                            <TextField
+                    sx={{flex: 1, marginRight: "30px", marginLeft: "30px"}}
+                                variant="standard"
+                                type="text"
+                                required
+                                label="Project Code"
+                                id="projectCode"
+                                name="projectCode"
+                                className="text-field"
+                                value={projectCode}
+                                error={!!projectCodeErrorText}
+                                helperText={projectCodeErrorText}
+                                onChange={(e) => setProjectCode(e.target.value)}
+                            />
+                            <DatePicker wrapperClassName="datePicker" required placeholderText="Pickup DateTime*"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     minDate={new Date()}
@@ -135,89 +139,84 @@ function EmployeeHome() {
                     showTimeSelect
                     timeFormat="p"
                   />
-                </div>
-                <div>
-                  <TextField
-                    sx={{marginRight: "65px", marginTop: "30px"}}
-                    variant="standard"
-                    type="text"
-                    required
-                    placeholder="Pickup Location"
-                    id="pickupLocation"
-                    className="text-field"
-                    name="pickupLocation"
-                    value={pickupLocation}
-                    error={!!pickupLocationErrorText}
-                    helperText={pickupLocationErrorText}
-                    onChange={(e) => setPickupLocation(e.target.value)}
-                  />
-                  <TextField
-                    sx={{marginTop: "30px"}}
-                    variant="standard"
-                    type="text"
-                    required
-                    className="text-field"
-                    placeholder="Drop Location"
-                    id="dropLocation"
-                    name="dropLocation"
-                    value={dropLocation}
-                    error={!!dropLocationErrorText}
-                    helperText={dropLocationErrorText}
-                    onChange={(e) => setDropLocation(e.target.value)}
-                  />
-                </div>
+                        </div>
+                        <div style={{ display: 'flex' }}>
+                            <TextField
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px', marginTop: '10px'}}
+                                variant="standard"
+                                required
+                                label="Pickup Location"
+                                id="pickupLocation"
+                                name="pickupLocation"
+                                value={pickupLocation}
+                                error={!!pickupLocationErrorText}
+                                helperText={pickupLocationErrorText}
+                                onChange={(e) => setPickupLocation(e.target.value)}
+                            />
+                            <TextField
+                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px', marginTop: '10px'}}
+                                variant="standard"
+                                required
+                                label="Drop Location"
+                                id="dropLocation"
+                                name="dropLocation"
+                                value={dropLocation}
+                                error={!!dropLocationErrorText}
+                                helperText={dropLocationErrorText}
+                                onChange={(e) => setDropLocation(e.target.value)}
+                            />
+                        </div>
                 <Button
                   className="submitButton"
                   variant="contained"
                   size="large"
                   onClick={onSubmit}
                 >
-                  Submit Request
-                </Button>
-              </FormControl>
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
+                            Submit Request
+                        </Button>
+                    </FormControl>
+                </AccordionDetails>
+            </Accordion>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          marginTop: 4,
-          marginRight: 4,
-        }}
-      ></Box>
-      <Paper
-        elevation={2}
-        variant="outlined"
+      <Box sx={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: 4,
+        marginRight: 4,
+      }}
+        ></Box>
+        <Paper
+          elevation={2}
+          variant="outlined"
         sx={{
           marginLeft: 9,
           marginRight: 9,
         }}
       >
-        <Tabs
-          value={tabIndex}
-          onChange={handleTabChange}
-          aria-label="tabs"
+          <Tabs
+            value={tabIndex}
+            onChange={handleTabChange}
+            aria-label="tabs"
           sx={{
             marginLeft: 4,
             marginRight: 4,
             marginTop: 2,
             marginBottom: -3,
           }}
-        >
-          <StyledTab label="Upcoming Requests" id="tab-0" />
-          <StyledTab label="Past Requests" id="tab-1" />
-        </Tabs>
+          >
+            <StyledTab label="Upcoming Requests" id="tab-0" />
+            <StyledTab label="Past Requests" id="tab-1" />
+          </Tabs>
 
-        <TabPanel value={tabIndex} index={0}>
-          <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-        </TabPanel>
+          <TabPanel value={tabIndex} index={0}>
+            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+          </TabPanel>
 
-        <TabPanel value={tabIndex} index={1}>
-          <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-        </TabPanel>
-      </Paper>
+          <TabPanel value={tabIndex} index={1}>
+            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+          </TabPanel>
+        </Paper>
+      </Container>
     </>
   );
 }

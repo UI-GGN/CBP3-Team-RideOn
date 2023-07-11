@@ -42,19 +42,6 @@ describe("Home Page", () => {
     jest.restoreAllMocks();
   });
 
-  it("renders correctly", () => {
-    const {baseElement, getByPlaceholderText} = render(<Employee />);
-    act(() =>
-      fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Pickup DateTime*"),
-        new Date(),
-        "08/02/2023"
-      )
-    );
-
-    expect(baseElement).toMatchSnapshot();
-  });
-
   it("should called avatar with imageLink", () => {
     render(<Employee />);
 

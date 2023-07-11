@@ -21,24 +21,24 @@ import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { styled } from '@mui/material/styles';
+import {styled} from "@mui/material/styles";
 
 const TabPanel = ({children, value, index}) => {
   return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`tabpanel-${index}`}
-            aria-labelledby={`tab-${index}`}
-        >
-            {value === index && <Box p={3}>{children}</Box>}
-        </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </div>
   );
 };
 
 const StyledTab = styled(Tab)({
-  textTransform: 'none',
-  fontSize: '18px'
+  textTransform: "none",
+  fontSize: "18px",
 });
 
 function EmployeeHome() {
@@ -78,17 +78,23 @@ function EmployeeHome() {
   };
   return (
     <>
-      <Container maxWidth='lg'>
-      <Stack direction={"row"} spacing={2}>
-         <img src={logoImage} className="logo"/>
-         <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginTop: 4,
-                marginRight: 4,
-                marginLeft: "auto"
-              }}
+      <Container maxWidth="xl" sx={{marginBottom: "30px"}}>
+        <Stack direction={"row"} spacing={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
+            <img src={logoImage} className="logo" />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: 4,
+              marginLeft: "auto",
+            }}
          >
            <Avatar imageLink={user?.picture} />
          </Box>
@@ -109,10 +115,10 @@ function EmployeeHome() {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails onFocus={() => setOpen(false)}>
-                    <FormControl className="create-request-form">
-                        <div style={{ display: 'flex' }}>
+              <FormControl className="create-request-form">
+                <div style={{display: "flex"}}>
                             <TextField
-                                sx={{flex: 1, marginRight: '30px', marginLeft: '30px'}}
+                    sx={{flex: 1, marginRight: "30px", marginLeft: "30px"}}
                                 variant="standard"
                                 type="text"
                                 required
@@ -153,7 +159,12 @@ function EmployeeHome() {
                                 onChange={(e) => setDropLocation(e.target.value)}
                             />
                         </div>
-                        <Button className="submitButton" variant="contained" size="large" onClick={onSubmit}>
+                <Button
+                  className="submitButton"
+                  variant="contained"
+                  size="large"
+                  onClick={onSubmit}
+                >
                             Submit Request
                         </Button>
                     </FormControl>
@@ -165,32 +176,38 @@ function EmployeeHome() {
         justifyContent: "flex-end",
         marginTop: 4,
         marginRight: 4,
-      }}>
-      </Box>
-        <Paper elevation={2} variant="outlined"
+      }}
+        ></Box>
+        <Paper
+          elevation={2}
+          variant="outlined"
           sx={{
             marginLeft: 9,
             marginRight: 9,
           }}
         >
-            <Tabs value={tabIndex} onChange={handleTabChange} aria-label="tabs"
+          <Tabs
+            value={tabIndex}
+            onChange={handleTabChange}
+            aria-label="tabs"
             sx={{
               marginLeft: 4,
               marginRight: 4,
               marginTop: 2,
-              marginBottom: -3
-            }}>
-                <StyledTab label="Upcoming Requests" id="tab-0"/>
-                <StyledTab label="Past Requests" id="tab-1" />
-            </Tabs>
+              marginBottom: -3,
+            }}
+          >
+            <StyledTab label="Upcoming Requests" id="tab-0" />
+            <StyledTab label="Past Requests" id="tab-1" />
+          </Tabs>
 
-            <TabPanel value={tabIndex} index={0}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-            </TabPanel>
+          <TabPanel value={tabIndex} index={0}>
+            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+          </TabPanel>
 
-            <TabPanel value={tabIndex} index={1}>
-                <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-            </TabPanel>
+          <TabPanel value={tabIndex} index={1}>
+            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
+          </TabPanel>
         </Paper>
       </Container>
     </>

@@ -1,37 +1,32 @@
-.logo {
-    margin-left: 70px;
-    margin-top: 40px;
-}
-
 .welcomeMessage {
-    color: rgba(0, 0, 0, 0.60);
-    margin-top: 70px;
-    margin-left: 90px;
-    font-size: 24px;
-    font-family: Roboto;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 70px;
+  margin-left: 90px;
+  font-size: 24px;
+  font-family: Nunito;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5px;
 }
 
 .submitButton {
-    display: flex !important;
-    width: 175px !important;
-    height: 44px !important;
-    align-items: center !important;
-    margin-left: auto !important;
-    margin-top: 35px !important;
+  display: flex !important;
+  width: 175px !important;
+  height: 44px !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-top: 35px !important;
 }
 
 input {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
 }
 
 .accordianMessage {
-    color: rgba(0, 0, 0, 0.60);
-    font-family: Roboto;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Nunito;
     text-align: center;
     font-style: normal;
     font-weight: 500;
@@ -59,7 +54,7 @@ input {
     border: none;
     border-bottom: 1px solid #ccc !important;
     outline: none;
-    color: rgba(0, 0, 0, 0.70);
+    color: rgba(0, 0, 0, 0.7);
     font-size: 15px;
 }
 .react-datepicker__month { margin: 0.4em 1em !important}

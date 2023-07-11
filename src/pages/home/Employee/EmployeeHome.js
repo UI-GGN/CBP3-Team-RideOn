@@ -58,10 +58,10 @@ function EmployeeHome() {
   const [startDate, setStartDate] = useState(new Date());
   const [params, setParams] = React.useState({filter: "upcomingRequest"});
 
-  const {data: employeeList } = useGetAllRequest(params);
+  const {data: requestList } = useGetAllRequest(params);
 
   const getEmployeeRowData = () => {
-    return employeeList.map((employee) => {
+    return requestList.map((employee) => {
       return {
         ...employee,
         pickupTime: getDateTime(employee.pickupTime)
@@ -211,6 +211,7 @@ function EmployeeHome() {
         sx={{
           marginLeft: 9,
           marginRight: 9,
+          marginBottom: 9,
         }}
       >
         <Tabs

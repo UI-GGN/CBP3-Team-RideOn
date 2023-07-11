@@ -201,8 +201,8 @@ function EmployeeHome() {
             marginLeft: 4,
             marginRight: 4,
             marginTop: 2,
-              marginBottom: -3,
-            }}
+            marginBottom: -3,
+          }}
           >
             <StyledTab label="Upcoming Requests" id="tab-0" />
             <StyledTab label="Past Requests" id="tab-1" />

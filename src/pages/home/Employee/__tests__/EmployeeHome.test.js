@@ -6,6 +6,8 @@ import Avatar from "../../../../components/Avatar";
 import userEvent from "@testing-library/user-event";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
+import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest";
+import { APIStatus } from "../../../../reducers/api-reducer";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -34,12 +36,12 @@ describe("Home Page", () => {
 
     useAuth0.mockReturnValue(mockAuth0Context);
     useLocation.mockReturnValue(mockLocation);
+    jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: [], status: "none"});
   });
 
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
-    jest.restoreAllMocks();
   });
 
   it("should called avatar with imageLink", () => {
@@ -166,5 +168,49 @@ describe("Home Page", () => {
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
+  });
+
+  it("should render the records for upcomingRequest", () => {
+    const mockEmployeeRequest = [{
+      id: 1,
+      pickupLocation: "42-43",
+      dropLocation: "TW office",
+      pickupTime: "2023-07-09T05:22:28.000Z",
+      projectCode: "HPB",
+      status: "Approved",
+    }];
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+
+    const {getByText} = render(<Employee />);
+
+    expect(spy).toHaveBeenCalledWith({filter: "upcomingRequest"});
+    expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
+  });
+
+  it("should render the records for past request", () => {
+    const mockEmployeeRequest = [{
+      id: 1,
+      pickupLocation: "42-43",
+      dropLocation: "TW office",
+      pickupTime: "2023-07-09T05:22:28.000Z",
+      projectCode: "HPB",
+      status: "Approved",
+    }];
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+
+    const {getByText} = render(<Employee />);
+
+    fireEvent.click(getByText("Past Requests"));
+
+    expect(spy).toHaveBeenNthCalledWith(2, {filter: "pastRequest"});
+    expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
   });
 });

@@ -17,13 +17,15 @@ import {
   Container,
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
-import {employeeReqColumns, employeeReqRows} from "../../../data";
+import {employeeReqColumns} from "../../../data";
 import "./EmployeeHome.css";
 import Avatar from "../../../components/Avatar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {styled} from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
+import { useGetAllRequest } from "../../../services/Request/useGetAllRequest";
+import { getDateTime } from "../../../utils/DateTimeConvertor";
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -54,9 +56,21 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
+  const [params, setParams] = React.useState({filter: "upcomingRequest"});
   const [startDate, setStartDate] = useState();
 
-  const onSubmit = (e) => {
+  const {data: requestList } = useGetAllRequest(params);
+
+  const getEmployeeRowData = () => {
+    return requestList.map((employee) => {
+      return {
+        ...employee,
+        pickupTime: getDateTime(employee.pickupTime)
+      };
+    });
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!pickupLocation) {
@@ -75,9 +89,13 @@ function EmployeeHome() {
       setDropLocationErrorText("");
     }
   };
+
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue);
+    if (newValue === 0) { setParams({filter: "upcomingRequest"}); }
+    if (newValue === 1) { setParams({filter: "pastRequest"}); }
   };
+
   return (
     <>
       <Container maxWidth="xl" sx={{marginBottom: "30px"}}>
@@ -207,11 +225,11 @@ function EmployeeHome() {
         <Paper
           elevation={2}
           variant="outlined"
-          sx={{
-            marginLeft: 9,
-            marginRight: 9,
-          }}
-        >
+        sx={{
+          marginLeft: 9,
+          marginRight: 9
+        }}
+      >
           <Tabs
             value={tabIndex}
             onChange={handleTabChange}
@@ -227,13 +245,13 @@ function EmployeeHome() {
             <StyledTab label="Past Requests" id="tab-1" />
           </Tabs>
 
-          <TabPanel value={tabIndex} index={0}>
-            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-          </TabPanel>
+            <TabPanel value={tabIndex} index={0}>
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
+            </TabPanel>
 
-          <TabPanel value={tabIndex} index={1}>
-            <PaginatedTable columns={employeeReqColumns} rows={employeeReqRows} />
-          </TabPanel>
+            <TabPanel value={tabIndex} index={1}>
+                <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
+            </TabPanel>
         </Paper>
       </Container>
     </>

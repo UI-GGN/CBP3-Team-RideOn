@@ -29,10 +29,10 @@ const columnAdminWidths = {
 };
 
 const columnEmployeeWidths = {
-  pickup: "25%",
-  drop: "25%",
-  pickupTime: "25%",
-  projectCode: "15%",
+  pickup: "22%",
+  drop: "22%",
+  pickupTime: "21%",
+  projectCode: "25%",
   status: "10%",
 };
 

@@ -2,7 +2,7 @@ import {cleanup, fireEvent, render} from "@testing-library/react";
 import Employee from "../EmployeeHome";
 import {useLocation} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
-import Avatar from "../../../../components/Avatar";
+import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
 
@@ -57,7 +57,7 @@ describe("Employee Home Page", () => {
   it("should called avatar with imageLink", () => {
     render(<Employee />);
 
-    expect(Avatar).toBeCalledWith({imageLink: "somelink", name: "John Doe", email: "john@example.com", logout: expect.any(Function)}, {});
+    expect(AvatarWithPopper).toBeCalledWith({imageLink: "somelink", name: "John Doe", email: "john@example.com", logout: expect.any(Function)}, {});
   });
 
   it("should display welcome msg for user", () => {

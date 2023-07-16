@@ -3,7 +3,7 @@ import Home from "../AdminHome";
 import {BrowserRouter, useLocation} from "react-router-dom";
 import * as BreadcrumbUtils from "../../../../utils/Breadcrumbs";
 import {useAuth0} from "@auth0/auth0-react";
-import Avatar from "../../../../components/Avatar";
+import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -51,6 +51,6 @@ describe("Home Page", () => {
   it("should called avatar with imageLink", () => {
     render(<Home />, {wrapper: BrowserRouter});
 
-    expect(Avatar).toBeCalledWith({imageLink: "somelink"}, {});
+    expect(AvatarWithPopper).toBeCalledWith({imageLink: "somelink"}, {});
   });
 });

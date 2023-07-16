@@ -17,7 +17,7 @@ import {
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {employeeReqColumns, employeeReqRows} from "../../../data";
 import "./EmployeeHome.css";
-import Avatar from "../../../components/Avatar";
+import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -89,7 +89,7 @@ function EmployeeHome() {
                 marginLeft: "auto"
               }}
          >
-           <Avatar imageLink={user?.picture} logout={logout} email={user?.email} name={user?.name} />
+           <AvatarWithPopper imageLink={user?.picture} logout={logout} email={user?.email} name={user?.name} />
          </Box>
       </Stack>
       <h4 className="welcomeMessage">{msg}</h4>

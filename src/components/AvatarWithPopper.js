@@ -2,7 +2,7 @@ import * as React from "react";
 import { Avatar as MUIAvatar, Button, ClickAwayListener, Divider, Box, Popper, Typography } from '@mui/material';
 import { useRef, useState } from 'react';
 import "./Avatar.css";
-export default function Avatar({imageLink, logout, email, name}) {
+export default function AvatarWithPopper({imageLink, logout, email, name}) {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -26,14 +26,13 @@ export default function Avatar({imageLink, logout, email, name}) {
         onClick={handleToggle}
         imgProps={{referrerpolicy: "no-referrer"}}
       />
-      <ClickAwayListener onClickAway={handleClose}>
+      {logout && <ClickAwayListener onClickAway={handleClose}>
       <Popper open={open} anchorEl={anchorRef.current}>
         <Box className="popper">
         <Typography className={"name"}> {name}</Typography>
           <Typography
             sx={{
               color: "rgba(0, 0, 0, 0.60)",
-              fontFamily: "Roboto",
               fontSize: "16px",
               fontStyle: "normal",
               fontWeight: "400",
@@ -55,7 +54,6 @@ export default function Avatar({imageLink, logout, email, name}) {
             }}
            style={{
              color: "rgba(0, 0, 0, 0.60)",
-             fontFamily: 'Nunito',
              fontSize: '16px',
              fontStyle: 'normal',
              fontWeight: '500',
@@ -63,6 +61,7 @@ export default function Avatar({imageLink, logout, email, name}) {
              textTransform: "none",
              letterSpacing: '1.25px',
              paddingLeft: "16px",
+             marginBottom: "20px",
              paddingBottom: "4px"
            }}
           >
@@ -71,6 +70,7 @@ export default function Avatar({imageLink, logout, email, name}) {
         </Box>
       </Popper>
       </ClickAwayListener>
+      }
     </>
   );
 }

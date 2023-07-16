@@ -23,7 +23,12 @@ describe("Employee Home Page", () => {
     const mockLocation = {
       pathname: "/home",
     };
-    const mockUser = {given_name: "John", email: "john@example.com", picture: "somelink", name: "John Doe"};
+    const mockUser = {
+      given_name: "John",
+      email: "john@example.com",
+      picture: "somelink",
+      name: "John Doe",
+    };
     const mockAuth0Context = {
       isAuthenticated: true,
       user: mockUser,
@@ -57,7 +62,15 @@ describe("Employee Home Page", () => {
   it("should called avatar with imageLink", () => {
     render(<Employee />);
 
-    expect(AvatarWithPopper).toBeCalledWith({imageLink: "somelink", name: "John Doe", email: "john@example.com", logout: expect.any(Function)}, {});
+    expect(AvatarWithPopper).toBeCalledWith(
+      {
+        imageLink: "somelink",
+        name: "John Doe",
+        email: "john@example.com",
+        logout: expect.any(Function),
+      },
+      {}
+    );
   });
 
   it("should display welcome msg for user", () => {

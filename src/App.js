@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route
           path="/home"
-          element={userRole === "employee" ? <EmployeeHome /> : <AdminHome />}
+          element={userRole === "Employee" ? <EmployeeHome /> : <AdminHome />}
         >
           <Route path="requests" element={<HomeRequests />} />
         </Route>

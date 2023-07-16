@@ -1,15 +1,68 @@
-.logo {
-  margin-left: 70px;
-  margin-top: 40px;
-}
-
 .welcomeMessage {
   color: rgba(0, 0, 0, 0.6);
   margin-top: 70px;
   margin-left: 90px;
   font-size: 24px;
-  font-family: Roboto;
+  font-family: Nunito;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.5px;
+}
+
+.submitButton {
+  display: flex !important;
+  width: 175px !important;
+  height: 44px !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-top: 35px !important;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.accordianMessage {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Nunito;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+}
+
+.create-request-form {
+  width: 100%;
+  text-align: center;
+}
+
+.datePicker {
+  flex: 1;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 13px;
+}
+
+.react-datepicker__input-container input {
+  justify-content: flex-end;
+  width: 95%;
+  padding: 10px !important;
+  border: none;
+  border-bottom: 1px solid #ccc !important;
+  outline: none;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 15px;
+}
+.react-datepicker__month {
+  margin: 0.4em 1em !important;
+}
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 2.5em !important;
+  line-height: 1.5em !important;
+  margin: 0.166em !important;
 }

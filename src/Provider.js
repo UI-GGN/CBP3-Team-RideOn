@@ -2,6 +2,7 @@ import React from "react";
 import {Auth0Provider} from "@auth0/auth0-react";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Config from "./config/config";
+import { AxiosProvider } from "./contexts/axios-context";
 
 const theme = createTheme({
   typography: {
@@ -27,7 +28,11 @@ function Provider({children}) {
         scopes="roles"
         authorizationParams={{audience: Config.AUTH0_AUDIENCE}}
       >
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+            <AxiosProvider>
+              {children}
+            </AxiosProvider>
+        </ThemeProvider>
       </Auth0Provider>
     </React.StrictMode>
   );

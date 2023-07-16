@@ -16,11 +16,11 @@ jest.mock("@auth0/auth0-react", () => ({
   useAuth0: jest.fn(),
 }));
 
-jest.mock(".../../../components/Avatar");
+jest.mock(".../../../components/AvatarWithPopper");
 describe("Home Page", () => {
   beforeEach(() => {
     const mockLocation = {
-      pathname: "/home/routes",
+      pathname: "/home/requests",
     };
 
     const mockUser = {name: "John Doe", email: "john@example.com", picture: "somelink"};
@@ -45,7 +45,7 @@ describe("Home Page", () => {
   it("should called breadcrubms with pathname", () => {
     render(<Home />, {wrapper: BrowserRouter});
 
-    expect(BreadcrumbUtils.getBreadcrumbsValues).toBeCalledWith("/home/routes");
+    expect(BreadcrumbUtils.getBreadcrumbsValues).toBeCalledWith("/home/requests");
   });
 
   it("should called avatar with imageLink", () => {

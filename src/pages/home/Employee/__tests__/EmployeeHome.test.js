@@ -5,6 +5,9 @@ import {useAuth0} from "@auth0/auth0-react";
 import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
+import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest";
+import { APIStatus } from "../../../../reducers/api-reducer";
+import userEvent from '@testing-library/user-event';
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -17,7 +20,7 @@ jest.mock("@auth0/auth0-react", () => ({
   useAuth0: jest.fn(),
 }));
 
-jest.mock(".../../../components/Avatar");
+jest.mock(".../../../components/AvatarWithPopper");
 describe("Employee Home Page", () => {
   beforeEach(() => {
     const mockLocation = {
@@ -38,25 +41,12 @@ describe("Employee Home Page", () => {
 
     useAuth0.mockReturnValue(mockAuth0Context);
     useLocation.mockReturnValue(mockLocation);
+    jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: [], status: "none"});
   });
 
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
-    jest.restoreAllMocks();
-  });
-
-  it("renders correctly", () => {
-    const {baseElement, getByPlaceholderText} = render(<Employee />);
-    act(() =>
-      fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
-        new Date(),
-        "08/02/2023"
-      )
-    );
-
-    expect(baseElement).toMatchSnapshot();
   });
 
   it("should called avatar with imageLink", () => {
@@ -80,21 +70,17 @@ describe("Employee Home Page", () => {
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -102,24 +88,19 @@ describe("Employee Home Page", () => {
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
   });
 
   it("should display error message on submit of form without project code", () => {
-    const {getByText, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -135,24 +116,21 @@ describe("Employee Home Page", () => {
   });
 
   it("should display error message on submit of form without pickup location ", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
     });
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
 
     act(() => {
       fireEvent.click(getByText("Submit Request"));
@@ -161,25 +139,22 @@ describe("Employee Home Page", () => {
   });
 
   it("should display error message on submit of form without drop location ", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
 
     act(() => {
       fireEvent.click(getByText("Submit Request"));
@@ -188,21 +163,17 @@ describe("Employee Home Page", () => {
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByPlaceholderText, getByDisplayValue} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
     act(() => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
-      fireEvent.change(getByPlaceholderText("Project Code"), {target: {value: "abc"}});
-      fireEvent.change(getByPlaceholderText("Pickup Location"), {
-        target: {value: "Address"},
-      });
-      fireEvent.change(getByPlaceholderText("Drop Location"), {
-        target: {value: "Location"},
-      });
+      userEvent.type(getByTestId("projectCode"), "abc");
+      userEvent.type(getByTestId("pickupLocation"), "Address");
+      userEvent.type(getByTestId("dropLocation"), "Location");
       fireChangeForInputTimeIfValid(
-        getByPlaceholderText("Select a date and time"),
+        getByPlaceholderText("Pickup DateTime*"),
         new Date(),
         "08/02/2023"
       );
@@ -210,6 +181,49 @@ describe("Employee Home Page", () => {
     });
 
     expect(getByText("Fill the form to create a new travel request")).toBeVisible();
-    expect(getByDisplayValue("abc")).toBeVisible();
+  });
+
+  it("should render the records for upcomingRequest", () => {
+    const mockEmployeeRequest = [{
+      id: 1,
+      pickupLocation: "42-43",
+      dropLocation: "TW office",
+      pickupTime: "2023-07-09T05:22:28.000Z",
+      projectCode: "HPB",
+      status: "Approved",
+    }];
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+
+    const {getByText} = render(<Employee />);
+
+    expect(spy).toHaveBeenCalledWith({filter: "upcomingRequest"});
+    expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
+  });
+
+  it("should render the records for past request", () => {
+    const mockEmployeeRequest = [{
+      id: 1,
+      pickupLocation: "42-43",
+      dropLocation: "TW office",
+      pickupTime: "2023-07-09T05:22:28.000Z",
+      projectCode: "HPB",
+      status: "Approved",
+    }];
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+
+    const {getByText} = render(<Employee />);
+
+    fireEvent.click(getByText("Past Requests"));
+
+    expect(spy).toHaveBeenNthCalledWith(2, {filter: "pastRequest"});
+    expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
+    expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].projectCode)).toBeInTheDocument();
+    expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
   });
 });

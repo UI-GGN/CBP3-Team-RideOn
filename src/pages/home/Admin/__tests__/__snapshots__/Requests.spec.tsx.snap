@@ -894,11 +894,63 @@ exports[`Requests test renders correctly 1`] = `
       <div
         class="downloadContainer MuiBox-root css-0"
       >
-        <span>
+        <div
+          class="exportLabel"
+          style="flex: 2;"
+        >
           Export Requests Report
-        </span>
+        </div>
+        <div
+          class="datepickerContainer"
+          style="margin-right: 10px; flex: 1; display: flex; align-items: center;"
+        >
+          <div
+            class="react-datepicker-wrapper datePicker"
+          >
+            <div
+              class="react-datepicker__input-container "
+            >
+              <span
+                aria-live="polite"
+                class="react-datepicker__aria-live"
+                role="alert"
+              />
+              <input
+                class=""
+                placeholder="From Date"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="datepickerContainer"
+          style="flex: 1; display: flex; align-items: center;"
+        >
+          <div
+            class="react-datepicker-wrapper datePicker"
+          >
+            <div
+              class="react-datepicker__input-container "
+            >
+              <span
+                aria-live="polite"
+                class="react-datepicker__aria-live"
+                role="alert"
+              />
+              <input
+                class=""
+                placeholder="Till Date"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium downloadButton css-sghohy-MuiButtonBase-root-MuiButton-root"
+          style="flex: 1; display: flex; align-items: center;"
           tabindex="0"
           type="button"
         >

@@ -7,7 +7,9 @@ import "./Request.css";
 import * as XLSX from "xlsx";
 import {saveAs} from "file-saver";
 import {rows} from "../../../constants";
-import {adminReqColumns, adminReqRow} from "../../../data";
+import {adminReqColumns} from "../../../data";
+import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
+import {getDateTime} from "../../../utils/DateTimeConvertor";
 
 function HomeRequests() {
   const convertJsonToWorkbook = (json) => {
@@ -24,9 +26,21 @@ function HomeRequests() {
     saveAs(data, "EmployeeRequests.xlsx");
   };
 
+  const {data: requestList} = useGetAllRequest();
+
+  const getAdminRowData = () => {
+    return requestList.map((employee) => {
+      return {
+        ...employee,
+        pickupTime: getDateTime(employee.pickupTime),
+        employeeName: employee.raisedBy?.name,
+      };
+    });
+  };
+
   return (
     <Box className="requestMain">
-      <PaginatedTable columns={adminReqColumns} rows={adminReqRow} />
+      <PaginatedTable columns={adminReqColumns} rows={getAdminRowData()} />
       <Box className="downloadContainer">
         <span>Export Requests Report</span>
         <Button

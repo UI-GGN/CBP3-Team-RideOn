@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
 import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest";
-import { APIStatus } from "../../../../reducers/api-reducer";
+import {APIStatus} from "../../../../reducers/api-reducer";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -36,7 +36,9 @@ describe("Home Page", () => {
 
     useAuth0.mockReturnValue(mockAuth0Context);
     useLocation.mockReturnValue(mockLocation);
-    jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: [], status: "none"});
+    jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: [], status: "none"});
   });
 
   afterEach(() => {
@@ -171,15 +173,19 @@ describe("Home Page", () => {
   });
 
   it("should render the records for upcomingRequest", () => {
-    const mockEmployeeRequest = [{
-      id: 1,
-      pickupLocation: "42-43",
-      dropLocation: "TW office",
-      pickupTime: "2023-07-09T05:22:28.000Z",
-      projectCode: "HPB",
-      status: "Approved",
-    }];
-    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+    const mockEmployeeRequest = [
+      {
+        id: 1,
+        pickupLocation: "42-43",
+        dropLocation: "TW office",
+        pickupTime: "2023-07-09T05:22:28.000Z",
+        projectCode: "HPB",
+        status: "Approved",
+      },
+    ];
+    const spy = jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
 
     const {getByText} = render(<Employee />);
 
@@ -192,15 +198,19 @@ describe("Home Page", () => {
   });
 
   it("should render the records for past request", () => {
-    const mockEmployeeRequest = [{
-      id: 1,
-      pickupLocation: "42-43",
-      dropLocation: "TW office",
-      pickupTime: "2023-07-09T05:22:28.000Z",
-      projectCode: "HPB",
-      status: "Approved",
-    }];
-    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+    const mockEmployeeRequest = [
+      {
+        id: 1,
+        pickupLocation: "42-43",
+        dropLocation: "TW office",
+        pickupTime: "2023-07-09T05:22:28.000Z",
+        projectCode: "HPB",
+        status: "Approved",
+      },
+    ];
+    const spy = jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
 
     const {getByText} = render(<Employee />);
 

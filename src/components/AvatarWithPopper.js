@@ -32,7 +32,7 @@ export default function AvatarWithPopper({imageLink, logout, email, name}) {
         src={imageLink}
         ref={anchorRef}
         onClick={handleToggle}
-        imgProps={{referrerpolicy: "no-referrer"}}
+        imgProps={{referrerPolicy: "no-referrer"}}
       />
       {logout && (
         <ClickAwayListener onClickAway={handleClose}>

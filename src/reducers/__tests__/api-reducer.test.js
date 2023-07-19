@@ -1,9 +1,9 @@
-import { reducer } from "../api-reducer";
+import {reducer} from "../api-reducer";
 
 describe("API Reducer", () => {
   const initialState = {
     data: [],
-    status: "none"
+    status: "none",
   };
 
   it("should return state as it is when no action type matches", () => {

@@ -23,9 +23,9 @@ import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { styled } from '@mui/material/styles';
-import { useGetAllRequest } from "../../../services/Request/useGetAllRequest";
-import { getDateTime } from "../../../utils/DateTimeConvertor";
+import {styled} from "@mui/material/styles";
+import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
+import {getDateTime} from "../../../utils/DateTimeConvertor";
 
 const TabPanel = ({children, value, index}) => {
   return (
@@ -59,13 +59,13 @@ function EmployeeHome() {
   const [params, setParams] = React.useState({filter: "upcomingRequest"});
   const [startDate, setStartDate] = useState();
 
-  const {data: requestList } = useGetAllRequest(params);
+  const {data: requestList} = useGetAllRequest(params);
 
   const getEmployeeRowData = () => {
     return requestList.map((employee) => {
       return {
         ...employee,
-        pickupTime: getDateTime(employee.pickupTime)
+        pickupTime: getDateTime(employee.pickupTime),
       };
     });
   };
@@ -92,8 +92,12 @@ function EmployeeHome() {
 
   const handleTabChange = (event, newValue) => {
     setTabIndex(newValue);
-    if (newValue === 0) { setParams({filter: "upcomingRequest"}); }
-    if (newValue === 1) { setParams({filter: "pastRequest"}); }
+    if (newValue === 0) {
+      setParams({filter: "upcomingRequest"});
+    }
+    if (newValue === 1) {
+      setParams({filter: "pastRequest"});
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
-import { createContext, useContext } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import {createContext, useContext} from "react";
+import {useAuth0} from "@auth0/auth0-react";
 import axios from "axios";
 import Config from "../config/config";
 
@@ -19,7 +19,5 @@ export const AxiosProvider = ({children}) => {
     return config;
   });
 
-  return (<axiosContext.Provider value={axiosInstance}>
-    {children}
-  </axiosContext.Provider>);
+  return <axiosContext.Provider value={axiosInstance}>{children}</axiosContext.Provider>;
 };

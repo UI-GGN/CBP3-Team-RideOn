@@ -1,8 +1,8 @@
 export const adminReqColumns = [
-  {id: "employee", label: "Employee"},
+  {id: "employeeName", label: "Employee"},
   {id: "projectCode", label: "Project Code"},
-  {id: "pickup", label: "Pickup"},
-  {id: "drop", label: "Drop"},
+  {id: "pickupLocation", label: "Pickup"},
+  {id: "dropLocation", label: "Drop"},
   {id: "pickupTime", label: "Pickup Time"},
   {id: "status", label: "Status"},
   {id: "action", label: "Action"},

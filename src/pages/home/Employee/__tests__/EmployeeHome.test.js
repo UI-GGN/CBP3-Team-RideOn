@@ -41,7 +41,9 @@ describe("Employee Home Page", () => {
 
     useAuth0.mockReturnValue(mockAuth0Context);
     useLocation.mockReturnValue(mockLocation);
-    jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: [], status: "none"});
+    jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: [], status: "none"});
   });
 
   afterEach(() => {
@@ -184,15 +186,19 @@ describe("Employee Home Page", () => {
   });
 
   it("should render the records for upcomingRequest", () => {
-    const mockEmployeeRequest = [{
-      id: 1,
-      pickupLocation: "42-43",
-      dropLocation: "TW office",
-      pickupTime: "2023-07-09T05:22:28.000Z",
-      projectCode: "HPB",
-      status: "Approved",
-    }];
-    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+    const mockEmployeeRequest = [
+      {
+        id: 1,
+        pickupLocation: "42-43",
+        dropLocation: "TW office",
+        pickupTime: "2023-07-09T05:22:28.000Z",
+        projectCode: "HPB",
+        status: "Approved",
+      },
+    ];
+    const spy = jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
 
     const {getByText} = render(<Employee />);
 
@@ -205,15 +211,19 @@ describe("Employee Home Page", () => {
   });
 
   it("should render the records for past request", () => {
-    const mockEmployeeRequest = [{
-      id: 1,
-      pickupLocation: "42-43",
-      dropLocation: "TW office",
-      pickupTime: "2023-07-09T05:22:28.000Z",
-      projectCode: "HPB",
-      status: "Approved",
-    }];
-    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS });
+    const mockEmployeeRequest = [
+      {
+        id: 1,
+        pickupLocation: "42-43",
+        dropLocation: "TW office",
+        pickupTime: "2023-07-09T05:22:28.000Z",
+        projectCode: "HPB",
+        status: "Approved",
+      },
+    ];
+    const spy = jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
 
     const {getByText} = render(<Employee />);
 

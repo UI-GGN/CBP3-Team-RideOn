@@ -9,7 +9,7 @@ import {useAuth0} from "@auth0/auth0-react";
 
 function App() {
   const {user} = useAuth0();
-  const userRole = user?.my_roles[0];
+  const userRole = user?.my_roles[0].toLowerCase();
   return (
     <div>
       <Routes>

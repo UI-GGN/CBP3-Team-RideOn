@@ -19,7 +19,7 @@ import {
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {employeeReqColumns} from "../../../data";
 import "./EmployeeHome.css";
-import Avatar from "../../../components/Avatar";
+import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -46,7 +46,7 @@ const StyledTab = styled(Tab)({
 });
 
 function EmployeeHome() {
-  const {user} = useAuth0();
+  const {user, logout} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpen, setOpen] = useState(true);
@@ -120,7 +120,12 @@ function EmployeeHome() {
               marginLeft: "auto",
             }}
           >
-            <Avatar imageLink={user?.picture} />
+            <AvatarWithPopper
+              imageLink={user?.picture}
+              logout={logout}
+              email={user?.email}
+              name={user?.name}
+            />
           </Box>
         </Stack>
         <h4 className="welcomeMessage">{msg}</h4>
@@ -231,7 +236,7 @@ function EmployeeHome() {
           variant="outlined"
           sx={{
             marginLeft: 9,
-            marginRight: 9,
+            marginRight: 9
           }}
         >
           <Tabs

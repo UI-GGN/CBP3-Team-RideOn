@@ -2,12 +2,12 @@ import {cleanup, fireEvent, render} from "@testing-library/react";
 import Employee from "../EmployeeHome";
 import {useLocation} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
-import Avatar from "../../../../components/Avatar";
-import userEvent from "@testing-library/user-event";
+import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
 import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest";
-import {APIStatus} from "../../../../reducers/api-reducer";
+import { APIStatus } from "../../../../reducers/api-reducer";
+import userEvent from '@testing-library/user-event';
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -20,13 +20,18 @@ jest.mock("@auth0/auth0-react", () => ({
   useAuth0: jest.fn(),
 }));
 
-jest.mock(".../../../components/Avatar");
-describe("Home Page", () => {
+jest.mock(".../../../components/AvatarWithPopper");
+describe("Employee Home Page", () => {
   beforeEach(() => {
     const mockLocation = {
       pathname: "/home",
     };
-    const mockUser = {given_name: "John", email: "john@example.com", picture: "somelink"};
+    const mockUser = {
+      given_name: "John",
+      email: "john@example.com",
+      picture: "somelink",
+      name: "John Doe",
+    };
     const mockAuth0Context = {
       isAuthenticated: true,
       user: mockUser,
@@ -49,7 +54,15 @@ describe("Home Page", () => {
   it("should called avatar with imageLink", () => {
     render(<Employee />);
 
-    expect(Avatar).toBeCalledWith({imageLink: "somelink"}, {});
+    expect(AvatarWithPopper).toBeCalledWith(
+      {
+        imageLink: "somelink",
+        name: "John Doe",
+        email: "john@example.com",
+        logout: expect.any(Function),
+      },
+      {}
+    );
   });
 
   it("should display welcome msg for user", () => {

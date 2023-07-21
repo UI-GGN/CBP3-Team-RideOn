@@ -3,7 +3,7 @@ import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../../components/drawer/PermanentDrawerLeft";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
 import {Box, Stack} from "@mui/material";
-import Avatar from "../../../components/Avatar";
+import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import BreadCrumb from "../../../components/BreadCrumb";
 import {useLocation, Outlet, useNavigate} from "react-router-dom";
 import {getBreadcrumbsValues} from "../../../utils/Breadcrumbs";
@@ -49,7 +49,7 @@ function AdminHome() {
                 marginRight: 4,
               }}
             >
-              <Avatar imageLink={user.picture} />
+              <AvatarWithPopper imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
               <BreadCrumb values={breadcrumbsValues[length - 1]} />

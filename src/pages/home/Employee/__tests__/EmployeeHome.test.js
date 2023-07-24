@@ -6,8 +6,8 @@ import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
 import {act} from "react-dom/test-utils";
 import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest";
-import { APIStatus } from "../../../../reducers/api-reducer";
-import userEvent from '@testing-library/user-event';
+import {APIStatus} from "../../../../reducers/api-reducer";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -43,7 +43,7 @@ describe("Employee Home Page", () => {
     useLocation.mockReturnValue(mockLocation);
     jest
       .spyOn(useGetAllRequest, "useGetAllRequest")
-      .mockReturnValue({data: [], status: "none"});
+      .mockReturnValue({response: {data: [], metadata: {}}, status: "none"});
   });
 
   afterEach(() => {
@@ -196,9 +196,10 @@ describe("Employee Home Page", () => {
         status: "Approved",
       },
     ];
-    const spy = jest
-      .spyOn(useGetAllRequest, "useGetAllRequest")
-      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({
+      response: {data: mockEmployeeRequest, metadata: {}},
+      status: APIStatus.SUCCESS,
+    });
 
     const {getByText} = render(<Employee />);
 
@@ -221,9 +222,10 @@ describe("Employee Home Page", () => {
         status: "Approved",
       },
     ];
-    const spy = jest
-      .spyOn(useGetAllRequest, "useGetAllRequest")
-      .mockReturnValue({data: mockEmployeeRequest, status: APIStatus.SUCCESS});
+    const spy = jest.spyOn(useGetAllRequest, "useGetAllRequest").mockReturnValue({
+      response: {data: mockEmployeeRequest, metadata: {}},
+      status: APIStatus.SUCCESS,
+    });
 
     const {getByText} = render(<Employee />);
 

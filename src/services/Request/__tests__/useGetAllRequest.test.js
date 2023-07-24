@@ -15,13 +15,13 @@ describe("useGetAllRequest", () => {
     jest
       .spyOn(AxiosContext, "useAxios")
       .mockReturnValueOnce({axiosInstance: mockAxiosInstance});
-    const initialState = {data: [], status: "none"};
+    const initialState = {response: {data: [], metadata: {}}, status: "none"};
     const dispatch = jest.fn();
     jest.spyOn(React, "useReducer").mockReturnValueOnce([initialState, dispatch]);
 
     const {result} = renderHook(() => useGetAllRequest());
 
-    expect(result.current.data).toEqual([]);
+    expect(result.current.response.data).toEqual([]);
     expect(result.current.status).toBe("none");
   });
 });

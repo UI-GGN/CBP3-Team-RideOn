@@ -5,11 +5,6 @@ export const APIStatus = {
   FAILED: "failed",
 };
 
-export const initialState = {
-  data: null,
-  status: APIStatus.NONE,
-};
-
 const SUCCESS = "SUCCESS";
 const ERROR = "ERROR";
 const FETCHING = "FETCHING";
@@ -18,8 +13,8 @@ const SUCCESS_NO_CONTENT = "SUCCESS_NO_CONTENT";
 export const fetching = () => {
   return {type: FETCHING};
 };
-export const success = (data) => {
-  return {type: SUCCESS, payload: data};
+export const success = (response) => {
+  return {type: SUCCESS, payload: response};
 };
 export const error = (e) => {
   return {type: ERROR, payload: e};
@@ -34,7 +29,7 @@ export const reducer = (state, action) => {
       return {...state, status: APIStatus.LOADING};
     }
     case SUCCESS: {
-      return {...state, data: action.payload, status: APIStatus.SUCCESS};
+      return {...state, response: action.payload, status: APIStatus.SUCCESS};
     }
     case ERROR: {
       return {...state, status: APIStatus.FAILED};

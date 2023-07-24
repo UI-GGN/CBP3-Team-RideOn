@@ -52,7 +52,7 @@ export default function AvatarWithPopper({imageLink, logout, email, name}) {
                   marginRight: "28px",
                   marginBottom: "8px",
                   paddingRight: "12px",
-                  width: "fitContent"
+                  width: "fitContent",
                 }}
               >
                 {email}

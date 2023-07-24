@@ -45,6 +45,16 @@ const StyledTab = styled(Tab)({
   fontSize: "18px",
 });
 
+const getEmployeeRowData = (requestList) => {
+  const {data} = requestList;
+  return data?.map((employee) => {
+    return {
+      ...employee,
+      pickupTime: getDateTime(employee.pickupTime),
+    };
+  });
+};
+
 function EmployeeHome() {
   const {user, logout} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
@@ -59,16 +69,8 @@ function EmployeeHome() {
   const [params, setParams] = React.useState({filter: "upcomingRequest"});
   const [startDate, setStartDate] = useState();
 
-  const {data: requestList} = useGetAllRequest(params);
-
-  const getEmployeeRowData = () => {
-    return requestList.map((employee) => {
-      return {
-        ...employee,
-        pickupTime: getDateTime(employee.pickupTime),
-      };
-    });
-  };
+  const {response: requestList} = useGetAllRequest(params);
+  const requestRowData = getEmployeeRowData(requestList);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -236,7 +238,7 @@ function EmployeeHome() {
           variant="outlined"
           sx={{
             marginLeft: 9,
-            marginRight: 9
+            marginRight: 9,
           }}
         >
           <Tabs
@@ -255,11 +257,11 @@ function EmployeeHome() {
           </Tabs>
 
           <TabPanel value={tabIndex} index={0}>
-            <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
+            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
           </TabPanel>
 
           <TabPanel value={tabIndex} index={1}>
-            <PaginatedTable columns={employeeReqColumns} rows={getEmployeeRowData()} />
+            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
           </TabPanel>
         </Paper>
       </Container>

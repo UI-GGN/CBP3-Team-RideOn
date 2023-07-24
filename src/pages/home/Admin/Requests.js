@@ -11,7 +11,21 @@ import {adminReqColumns} from "../../../data";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 
+const getAdminRowData = (requestList) => {
+  const {data} = requestList;
+  return data?.map((employee) => {
+    return {
+      ...employee,
+      pickupTime: getDateTime(employee.pickupTime),
+      employeeName: employee.raisedBy?.name,
+    };
+  });
+};
+
 function HomeRequests() {
+  const {response: requestList} = useGetAllRequest();
+  const employeeRowData = getAdminRowData(requestList);
+
   const convertJsonToWorkbook = (json) => {
     const worksheet = XLSX.utils.json_to_sheet(json);
     const workbook = XLSX.utils.book_new();
@@ -26,21 +40,9 @@ function HomeRequests() {
     saveAs(data, "EmployeeRequests.xlsx");
   };
 
-  const {data: requestList} = useGetAllRequest();
-
-  const getAdminRowData = () => {
-    return requestList.map((employee) => {
-      return {
-        ...employee,
-        pickupTime: getDateTime(employee.pickupTime),
-        employeeName: employee.raisedBy?.name,
-      };
-    });
-  };
-
   return (
     <Box className="requestMain">
-      <PaginatedTable columns={adminReqColumns} rows={getAdminRowData()} />
+      <PaginatedTable columns={adminReqColumns} rows={employeeRowData} />
       <Box className="downloadContainer">
         <span>Export Requests Report</span>
         <Button

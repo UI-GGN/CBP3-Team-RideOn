@@ -22,7 +22,7 @@ describe("API Reducer", () => {
   it("should return API status success and data for success action type", () => {
     const result = reducer(initialState, {type: "SUCCESS", payload: [{a: "b"}]});
 
-    expect(result.data).toEqual([{a: "b"}]);
+    expect(result.response).toEqual([{a: "b"}]);
     expect(result.status).toBe("success");
   });
 

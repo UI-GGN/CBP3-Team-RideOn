@@ -25,6 +25,8 @@ import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 import {useAxios} from "../../../contexts/axios-context";
 import {HttpStatusCode} from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const getEmployeeRowData = (responseList) => {
   const {data} = responseList;
@@ -71,6 +73,14 @@ function EmployeeHome() {
     setPickupTime();
   };
 
+  const showSuccessToastMessage = () => {
+    toast.success("Request saved successfully !");
+  };
+
+  const showErrorToastMessage = () => {
+    toast.error("Failed to save request !");
+  };
+
   const date = new Date();
 
   const onSubmit = async (e) => {
@@ -107,8 +117,11 @@ function EmployeeHome() {
       };
       const saveResponse = await saveData(request);
       if (saveResponse.status === HttpStatusCode.Created) {
+        showSuccessToastMessage();
         reset();
         setParams("Render request");
+      } else {
+        showErrorToastMessage();
       }
     }
   };
@@ -258,6 +271,7 @@ function EmployeeHome() {
           <PaginatedTable columns={employeeReqColumns} rows={getAllRequestList} />
         </Paper>
       </Container>
+      <ToastContainer />
     </>
   );
 }

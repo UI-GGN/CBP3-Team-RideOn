@@ -19,4 +19,11 @@
 
 .requestMain {
   width: 98% !important;
+  border-radius: 20;
+  border-color: red;
+}
+
+.loader {
+  margin-top: 2rem !important;
+  height: 100px !important;
 }

@@ -17,6 +17,8 @@ import {
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
 import "./PaginatedTable.css";
+import CircularProgress from '@mui/material/CircularProgress';
+import { APIStatus } from "../../reducers/api-reducer";
 
 const columnAdminWidths = {
   employee: "20%",
@@ -36,31 +38,36 @@ const columnEmployeeWidths = {
   status: "10%",
 };
 
-export default function PaginatedTable({columns, rows}) {
+export default function PaginatedTable({columns, rows, page, handleChangePage, count, apiStatus, flow}) {
   // const classes = useStyles();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10); // Number of rows to display per page
+  // const [page, setPage] = React.useState(0);
+  // const [rowsPerPage, setRowsPerPage] = React.useState(10); // Number of rows to display per page
 
   // Calculate the index of the first row on the current page
-  const startIndex = page * rowsPerPage;
+  // const startIndex = page * rowsPerPage;
   // Slice the rows array based on the start index and rows per page
-  const paginatedRows = rows.slice(startIndex, startIndex + rowsPerPage);
+  // const paginatedRows = rows.slice(startIndex, startIndex + rowsPerPage);
+  // const paginatedRows = rows;
 
   // Handler for changing the page
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
   // Handler for changing the number of rows per page
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset page to the first page when changing the rows per page
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(parseInt(event.target.value, 10));
+  //   setPage(0); // Reset page to the first page when changing the rows per page
+  // };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const numberOfRowsPerPage = 10;
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const isAdminFlow = columns.slice(-1)[0].id === "action";
+  const isLoadingOrError = apiStatus === APIStatus.FAILED || apiStatus === APIStatus.LOADING;
+  const isError = apiStatus === APIStatus.FAILED;
+  const emptyRows = page > 0 ? numberOfRowsPerPage - rows.length : 0;
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -84,16 +91,13 @@ export default function PaginatedTable({columns, rows}) {
     ? columns.slice(0, -2)
     : columns.slice(0, -1);
 
-  // const needWidth30 = ["drop", "status"];
-  // const needWidth70 = ["employee", "projectCode", "pickup"];
-
   return (
-    // <Paper className={(isAdminFlow) ? "adminTable" : "employeeTable"}>
     <Paper className="table" elevation={isAdminFlow ? 2 : 0}>
       <TableContainer>
         <Table
           stickyHeader
           aria-label="sticky table"
+          style={{ tableLayout: "fixed", height: "44rem", overflowY: "auto", overflowX: "auto"}}
           sx={{"& .MuiTableCell-root": {padding: "0.59rem", paddingLeft: "1rem"}}}
         >
           <TableHead>
@@ -114,12 +118,27 @@ export default function PaginatedTable({columns, rows}) {
             </TableRow>
           </TableHead>
           <TableBody className="tableBody">
-            {paginatedRows.map((row) => {
-              return (
+          { isLoadingOrError
+            ? (
+              <TableRow>
+                <TableCell rowSpan={10} colSpan={columns.length} align="center">
+                  {isError ? <p> Something went wrong, Please try again!! </p> : <CircularProgress /> }
+                </TableCell>
+              </TableRow>
+              )
+            : rows?.length === 0
+              ? (
+            <TableRow>
+              <TableCell rowSpan={10} colSpan={columns.length} align="center">
+                 <p> Nothing Found </p>
+              </TableCell>
+            </TableRow>)
+              : rows?.map((row) => {
+                return (
                 <TableRow className="tableRows" hover key={row.id}>
                   {columnsWithoutActionAndStatus.map((column) => {
                     return (
-                      <TableCell className="tableCell" key={column.id}>
+                      <TableCell component="th" className="tableCell" key={column.id}>
                         {row[column.id]}
                       </TableCell>
                     );
@@ -160,20 +179,30 @@ export default function PaginatedTable({columns, rows}) {
                     </TableCell>
                   )}
                 </TableRow>
-              );
-            })}
+                );
+              })
+          }
+          { emptyRows > 0 && apiStatus === APIStatus.SUCCESS && (
+            <TableRow
+              style={{
+                height: 56 * emptyRows,
+              }}
+            >
+               <TableCell colSpan={columns.length}/>
+            </TableRow>
+          )}
           </TableBody>
         </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]} // Options for rows per page
+        <TablePagination
+        className="tablefooter"
+        rowsPerPageOptions={[10]}
         component="div"
-        count={rows.length} // Total number of rows
+        count={count}
         page={page}
-        rowsPerPage={rowsPerPage}
+        rowsPerPage={10}
         onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      </TableContainer>
     </Paper>
   );
 }

@@ -24,7 +24,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 import {useAxios} from "../../../contexts/axios-context";
-import {HttpStatusCode} from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -116,7 +115,7 @@ function EmployeeHome() {
         pickupTime,
       };
       const saveResponse = await saveData(request);
-      if (saveResponse.status === HttpStatusCode.Created) {
+      if (saveResponse.status === 201) {
         showSuccessToastMessage();
         reset();
         setParams("Render request");
@@ -179,7 +178,7 @@ function EmployeeHome() {
                     required
                     label="Project Code"
                     id="projectCode"
-                    data-testid="projectCode"
+                    inputProps={{"data-testid": "projectCode"}}
                     name="projectCode"
                     className="text-field"
                     value={projectCode}
@@ -190,7 +189,7 @@ function EmployeeHome() {
                   <DatePicker
                     wrapperClassName="datePicker"
                     required
-                    placeholderText="Pickup Date and Time*"
+                    placeholderText="Pickup Date and Time *"
                     selected={pickupTime}
                     onChange={(date) => setPickupTime(date)}
                     minDate={date}
@@ -214,7 +213,7 @@ function EmployeeHome() {
                     required
                     label="Pickup Location"
                     id="pickupLocation"
-                    data-testid="pickupLocation"
+                    inputProps={{"data-testid": "pickupLocation"}}
                     name="pickupLocation"
                     value={pickupLocation}
                     error={!!pickupLocationErrorText}
@@ -232,7 +231,7 @@ function EmployeeHome() {
                     required
                     label="Drop Location"
                     id="dropLocation"
-                    data-testid="dropLocation"
+                    inputProps={{"data-testid": "dropLocation"}}
                     name="dropLocation"
                     value={dropLocation}
                     error={!!dropLocationErrorText}

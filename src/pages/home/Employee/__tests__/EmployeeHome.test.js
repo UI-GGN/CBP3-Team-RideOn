@@ -245,9 +245,9 @@ describe("Employee Home Page", () => {
   it("should not save data on error", async function () {
     useAxios.mockReturnValue({
       post: jest.fn(() =>
-          Promise.resolve({
-            status: 500,
-          })
+        Promise.resolve({
+          status: 500,
+        })
       ),
     });
 

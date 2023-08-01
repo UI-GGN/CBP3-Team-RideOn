@@ -20,7 +20,6 @@ jest.mock("@auth0/auth0-react", () => ({
   useAuth0: jest.fn(),
 }));
 
-jest.mock("axios");
 jest.mock("../../../../contexts/axios-context", () => ({
   useAxios: jest.fn(),
 }));

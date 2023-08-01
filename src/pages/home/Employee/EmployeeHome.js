@@ -115,7 +115,7 @@ function EmployeeHome() {
         pickupTime,
       };
       const saveResponse = await saveData(request);
-      if (saveResponse.status === 201) {
+      if (saveResponse && saveResponse.status === 201) {
         showSuccessToastMessage();
         reset();
         setParams("Render request");

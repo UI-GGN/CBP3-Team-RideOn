@@ -217,7 +217,7 @@ describe("Employee Home Page", () => {
 
     const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
 
-    act(async () => {
+    await act(async () => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );
@@ -242,19 +242,19 @@ describe("Employee Home Page", () => {
     expect(getByText("Location B")).toBeInTheDocument();
   });
 
-  it("should not save data on error", function () {
+  it("should not save data on error", async function () {
     useAxios.mockReturnValue({
       post: jest.fn(() =>
-        Promise.resolve({
-          status: 500, // HTTP Status Code for Created
-        })
+          Promise.resolve({
+            status: 500,
+          })
       ),
     });
 
     const {getByText, getByTestId, getByPlaceholderText, queryByText} = render(
       <Employee />
     );
-    act(async () => {
+    await act(async () => {
       fireEvent.click(
         getByText("Planning an upcoming travel, create your travel request here")
       );

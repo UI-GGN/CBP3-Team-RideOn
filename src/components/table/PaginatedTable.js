@@ -38,28 +38,7 @@ const columnEmployeeWidths = {
   status: "10%",
 };
 
-export default function PaginatedTable({columns, rows, page, handleChangePage, count, apiStatus, flow}) {
-  // const classes = useStyles();
-  // const [page, setPage] = React.useState(0);
-  // const [rowsPerPage, setRowsPerPage] = React.useState(10); // Number of rows to display per page
-
-  // Calculate the index of the first row on the current page
-  // const startIndex = page * rowsPerPage;
-  // Slice the rows array based on the start index and rows per page
-  // const paginatedRows = rows.slice(startIndex, startIndex + rowsPerPage);
-  // const paginatedRows = rows;
-
-  // Handler for changing the page
-  // const handleChangePage = (event, newPage) => {
-  //   setPage(newPage);
-  // };
-
-  // Handler for changing the number of rows per page
-  // const handleChangeRowsPerPage = (event) => {
-  //   setRowsPerPage(parseInt(event.target.value, 10));
-  //   setPage(0); // Reset page to the first page when changing the rows per page
-  // };
-
+export default function PaginatedTable({columns, rows, page, handleChangePage, count, apiStatus}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const numberOfRowsPerPage = 10;
   const open = Boolean(anchorEl);

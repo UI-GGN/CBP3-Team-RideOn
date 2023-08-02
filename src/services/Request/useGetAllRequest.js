@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import {useEffect, useReducer} from "react";
 import {useAxios} from "../../contexts/axios-context";
 import {reducer, fetching, success, error, APIStatus} from "../../reducers/api-reducer";

@@ -47,11 +47,11 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [params, setParams] = React.useState("render");
+  const [render, setRender] = React.useState("");
   const [getAllRequestList, setAllRequestList] = React.useState([]);
   const [pickupTime, setPickupTime] = useState();
   const axiosInstance = useAxios();
-  const {response: responseList} = useGetAllRequest(params);
+  const {response: responseList} = useGetAllRequest(render);
 
   useEffect(() => {
     const list = getEmployeeRowData(responseList);
@@ -118,7 +118,7 @@ function EmployeeHome() {
       if (saveResponse && saveResponse.status === 201) {
         showSuccessToastMessage();
         reset();
-        setParams("Render request");
+        setRender("Render request");
       } else {
         showErrorToastMessage();
       }

@@ -76,7 +76,7 @@ describe("Admin Home Requests", () => {
 
     render(<HomeRequests></HomeRequests>);
 
-    expect(screen.getByText("Nothing Found")).toBeInTheDocument();
+    expect(screen.getByText("There are no requests to show right now")).toBeInTheDocument();
   });
 
   it("should display rows data when apistatus is SUCCESSFUL and data is not empty", () => {

@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router-dom";
 import HomeRequests from "./pages/home/Admin/Requests";
 import EmployeeHome from "./pages/home/Employee/EmployeeHome";
 import {useAuth0} from "@auth0/auth0-react";
+import HomeVendors from "./pages/home/Admin/Vendors";
 
 function App() {
   const {user} = useAuth0();
@@ -19,6 +20,7 @@ function App() {
           element={userRole === "employee" ? <EmployeeHome /> : <AdminHome />}
         >
           <Route path="requests" element={<HomeRequests />} />
+          <Route path="vendors" element={<HomeVendors />} />
         </Route>
       </Routes>
     </div>

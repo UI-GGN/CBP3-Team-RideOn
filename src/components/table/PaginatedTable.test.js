@@ -28,7 +28,7 @@ describe("Paginated Table", () => {
     handleChangePage={() => {}}>
     </PaginatedTable>);
 
-    expect(screen.getByText("Nothing Found")).toBeInTheDocument();
+    expect(screen.getByText("There are no requests to show right now")).toBeInTheDocument();
   });
 
   it("should show loader for loading scenario", () => {
@@ -46,5 +46,7 @@ describe("Paginated Table", () => {
 
     expect(screen.getByText("Row1Col1")).toBeInTheDocument();
     expect(screen.getByText("Row2Col1")).toBeInTheDocument();
+    expect(screen.getByText("Row1Col2")).toBeInTheDocument();
+    expect(screen.getByText("Row2Col2")).toBeInTheDocument();
   });
 });

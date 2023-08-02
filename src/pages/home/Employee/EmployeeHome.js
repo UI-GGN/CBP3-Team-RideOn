@@ -17,7 +17,7 @@ import {
   Container,
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
-import {employeeReqColumns} from "../../../data";
+import {employeeReqColumns} from "../../../tableHeader";
 import "./EmployeeHome.css";
 import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
@@ -100,6 +100,14 @@ function EmployeeHome() {
     if (newValue === 1) {
       setParams({filter: "pastRequest"});
     }
+  };
+
+  const columnEmployeeWidths = {
+    pickup: "22%",
+    drop: "22%",
+    pickupTime: "21%",
+    projectCode: "25%",
+    status: "10%",
   };
 
   return (
@@ -257,11 +265,11 @@ function EmployeeHome() {
           </Tabs>
 
           <TabPanel value={tabIndex} index={0}>
-            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
+            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} width={columnEmployeeWidths}/>
           </TabPanel>
 
           <TabPanel value={tabIndex} index={1}>
-            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
+            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} width={columnEmployeeWidths}/>
           </TabPanel>
         </Paper>
       </Container>

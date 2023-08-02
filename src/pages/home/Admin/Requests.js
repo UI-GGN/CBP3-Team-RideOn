@@ -7,7 +7,7 @@ import "./Request.css";
 import * as XLSX from "xlsx";
 import {saveAs} from "file-saver";
 import {rows} from "../../../constants";
-import {adminReqColumns} from "../../../data";
+import {adminReqColumns} from "../../../tableHeader";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 

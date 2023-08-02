@@ -1,10 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import logoImage from "../../../assets/Logo.svg";
 import {useAuth0} from "@auth0/auth0-react";
 import {
   Box,
-  Tab,
-  Tabs,
   Stack,
   Button,
   Accordion,
@@ -23,30 +21,14 @@ import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {styled} from "@mui/material/styles";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
+import {useAxios} from "../../../contexts/axios-context";
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const TabPanel = ({children, value, index}) => {
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </div>
-  );
-};
-
-const StyledTab = styled(Tab)({
-  textTransform: "none",
-  fontSize: "18px",
-});
-
-const getEmployeeRowData = (requestList) => {
-  const {data} = requestList;
+const getEmployeeRowData = (responseList) => {
+  const {data} = responseList;
   return data?.map((employee) => {
     return {
       ...employee,
@@ -58,7 +40,6 @@ const getEmployeeRowData = (requestList) => {
 function EmployeeHome() {
   const {user, logout} = useAuth0();
   const msg = `Hello ${user?.given_name},`;
-  const [tabIndex, setTabIndex] = useState(0);
   const [isOpen, setOpen] = useState(true);
   const [pickupLocation, setPickupLocation] = React.useState("");
   const [projectCode, setProjectCode] = React.useState("");
@@ -66,39 +47,81 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [params, setParams] = React.useState({filter: "upcomingRequest"});
-  const [startDate, setStartDate] = useState();
+  const [render, setRender] = React.useState("");
+  const [getAllRequestList, setAllRequestList] = React.useState([]);
+  const [pickupTime, setPickupTime] = useState();
+  const axiosInstance = useAxios();
+  const {response: responseList} = useGetAllRequest(render);
 
-  const {response: requestList} = useGetAllRequest(params);
-  const requestRowData = getEmployeeRowData(requestList);
+  useEffect(() => {
+    const list = getEmployeeRowData(responseList);
+    setAllRequestList(list);
+  }, [responseList]);
+
+  async function saveData(properties) {
+    try {
+      return await axiosInstance.post("/requests", {...properties});
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  const reset = () => {
+    setPickupLocation("");
+    setDropLocation("");
+    setProjectCode("");
+    setPickupTime();
+  };
+
+  const showSuccessToastMessage = () => {
+    toast.success("Request saved successfully !");
+  };
+
+  const showErrorToastMessage = () => {
+    toast.error("Failed to save request !");
+  };
+
+  const date = new Date();
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    let error = false;
 
     if (!pickupLocation) {
+      error = true;
       setPickupLocationErrorText("Please enter pickup location");
     } else {
       setPickupLocationErrorText("");
     }
     if (!projectCode) {
+      error = true;
       setProjectCodeErrorText("Please enter project code");
     } else {
       setProjectCodeErrorText("");
     }
     if (!dropLocation) {
+      error = true;
       setDropLocationErrorText("Please enter drop location");
     } else {
       setDropLocationErrorText("");
     }
-  };
-
-  const handleTabChange = (event, newValue) => {
-    setTabIndex(newValue);
-    if (newValue === 0) {
-      setParams({filter: "upcomingRequest"});
+    if (pickupTime === undefined) {
+      error = true;
     }
-    if (newValue === 1) {
-      setParams({filter: "pastRequest"});
+    if (!error) {
+      const request = {
+        pickupLocation,
+        dropLocation,
+        projectCode,
+        pickupTime,
+      };
+      const saveResponse = await saveData(request);
+      if (saveResponse && saveResponse.status === 201) {
+        showSuccessToastMessage();
+        reset();
+        setRender("Render request");
+      } else {
+        showErrorToastMessage();
+      }
     }
   };
 
@@ -155,7 +178,7 @@ function EmployeeHome() {
                     required
                     label="Project Code"
                     id="projectCode"
-                    data-testid="projectCode"
+                    inputProps={{"data-testid": "projectCode"}}
                     name="projectCode"
                     className="text-field"
                     value={projectCode}
@@ -166,10 +189,13 @@ function EmployeeHome() {
                   <DatePicker
                     wrapperClassName="datePicker"
                     required
-                    placeholderText="Pickup DateTime*"
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                    minDate={new Date()}
+                    placeholderText="Pickup Date and Time *"
+                    selected={pickupTime}
+                    onChange={(date) => setPickupTime(date)}
+                    minDate={date}
+                    minTime={date.setHours(date.getHours() + 1)}
+                    maxTime={date.setHours(23, 59, 0, 0)}
+                    timeIntervals={15}
                     dateFormat="Pp"
                     showTimeSelect
                     timeFormat="p"
@@ -187,7 +213,7 @@ function EmployeeHome() {
                     required
                     label="Pickup Location"
                     id="pickupLocation"
-                    data-testid="pickupLocation"
+                    inputProps={{"data-testid": "pickupLocation"}}
                     name="pickupLocation"
                     value={pickupLocation}
                     error={!!pickupLocationErrorText}
@@ -205,7 +231,7 @@ function EmployeeHome() {
                     required
                     label="Drop Location"
                     id="dropLocation"
-                    data-testid="dropLocation"
+                    inputProps={{"data-testid": "dropLocation"}}
                     name="dropLocation"
                     value={dropLocation}
                     error={!!dropLocationErrorText}
@@ -241,30 +267,10 @@ function EmployeeHome() {
             marginRight: 9,
           }}
         >
-          <Tabs
-            value={tabIndex}
-            onChange={handleTabChange}
-            aria-label="tabs"
-            sx={{
-              marginLeft: 4,
-              marginRight: 4,
-              marginTop: 2,
-              marginBottom: -3,
-            }}
-          >
-            <StyledTab label="Upcoming Requests" id="tab-0" />
-            <StyledTab label="Past Requests" id="tab-1" />
-          </Tabs>
-
-          <TabPanel value={tabIndex} index={0}>
-            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
-          </TabPanel>
-
-          <TabPanel value={tabIndex} index={1}>
-            <PaginatedTable columns={employeeReqColumns} rows={requestRowData} />
-          </TabPanel>
+          <PaginatedTable columns={employeeReqColumns} rows={getAllRequestList} />
         </Paper>
       </Container>
+      <ToastContainer />
     </>
   );
 }

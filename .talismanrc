@@ -6,7 +6,7 @@ fileignoreconfig:
 - filename: src/component/table/Table.js
   checksum: 235405cb4fd542a23059c2172ed3664f6077807011425e6756ca79d1b1464730
 - filename: package-lock.json
-  checksum: ba9e825820914f32f4f0d1d2e8bd83bd3b0e28afcefe51d2fbab4391a8c2e07a
+  checksum: d76f3e51742f8c174f8b2a33205eab285d4204d353dd0b806b75f1ae35600708
 - filename: package.json
   checksum: e73dae39f358593a738b34265749d084c9c6ce10a7576c60f73f75dfea941913
 version: "1.0"

@@ -66,3 +66,8 @@ input {
   line-height: 1.5em !important;
   margin: 0.166em !important;
 }
+
+.loader {
+  margin-top: 2rem !important;
+  height: 100px !important;
+}

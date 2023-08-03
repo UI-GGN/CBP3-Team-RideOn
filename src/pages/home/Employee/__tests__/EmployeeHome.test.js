@@ -9,6 +9,7 @@ import * as useGetAllRequest from "../../../../services/Request/useGetAllRequest
 import {APIStatus} from "../../../../reducers/api-reducer";
 import userEvent from "@testing-library/user-event";
 import {useAxios} from "../../../../contexts/axios-context";
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useLocation: jest.fn(),
@@ -47,7 +48,7 @@ describe("Employee Home Page", () => {
     useLocation.mockReturnValue(mockLocation);
     jest
       .spyOn(useGetAllRequest, "useGetAllRequest")
-      .mockReturnValue({response: {data: [], metadata: {}}, status: "none"});
+      .mockReturnValue({response: {}, status: ""});
   });
 
   afterEach(() => {
@@ -191,6 +192,26 @@ describe("Employee Home Page", () => {
     expect(getByText(mockEmployeeRequest[0].status)).toBeInTheDocument();
   });
 
+  it("should show loader when apiStatus is loading", () => {
+    jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({response: {}, status: APIStatus.LOADING});
+
+    const {getByRole} = render(<Employee />);
+
+    expect(getByRole("progressbar")).toBeInTheDocument();
+  });
+
+  it("should show error text when apiStatus is Failed", () => {
+    jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({response: {}, status: APIStatus.FAILED});
+
+    const {getByText} = render(<Employee />);
+
+    expect(getByText("Something went wrong, Please try again!!")).toBeInTheDocument();
+  });
+
   it("should save data when given valid request", async () => {
     useAxios.mockReturnValue({
       post: jest.fn(() =>
@@ -203,10 +224,10 @@ describe("Employee Home Page", () => {
     const mockEmployeeRequest = [
       {
         id: 1,
-        pickupLocation: "Location A",
-        dropLocation: "Location B",
-        pickupTime: "2023-08-08T05:22:28.000Z",
-        projectCode: "PROJECT-123",
+        pickupLocation: "42-43",
+        dropLocation: "TW office",
+        pickupTime: "2023-07-09T05:22:28.000Z",
+        projectCode: "HPB",
         status: "Approved",
       },
     ];
@@ -237,9 +258,41 @@ describe("Employee Home Page", () => {
       );
       fireEvent.click(getByText("Submit Request"));
     });
-    expect(getByText("PROJECT-123")).toBeInTheDocument();
-    expect(getByText("Location A")).toBeInTheDocument();
-    expect(getByText("Location B")).toBeInTheDocument();
+    expect(getByText("HPB")).toBeInTheDocument();
+    expect(getByText("42-43")).toBeInTheDocument();
+    expect(getByText("TW office")).toBeInTheDocument();
+  });
+
+  it("should call useGetAllRequest to fetch data when next arrow button is clicked", () => {
+    const mockEmployeeRequest = {
+      data: [
+        {
+          id: 1,
+          pickupLocation: "42-43",
+          dropLocation: "TW office",
+          pickupTime: "2023-07-09T05:22:28.000Z",
+          projectCode: "HPB",
+          status: "Approved",
+        },
+      ],
+      metadata: {
+        pageNumber: "1",
+        limit: "1",
+        total: 12,
+      },
+    };
+    jest
+      .spyOn(useGetAllRequest, "useGetAllRequest")
+      .mockReturnValue({response: mockEmployeeRequest, status: APIStatus.SUCCESS});
+
+    const {getByTestId} = render(<Employee />);
+
+    expect(getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
+    fireEvent.click(getByTestId("KeyboardArrowRightIcon"));
+    expect(useGetAllRequest.useGetAllRequest).toHaveBeenNthCalledWith(3, {
+      limit: 10,
+      "page-number": 2,
+    });
   });
 
   it("should not save data on error", async function () {

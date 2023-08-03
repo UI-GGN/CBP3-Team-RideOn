@@ -47,17 +47,21 @@ function EmployeeHome() {
   const [projectCodeErrorText, setProjectCodeErrorText] = React.useState("");
   const [dropLocation, setDropLocation] = React.useState("");
   const [dropLocationErrorText, setDropLocationErrorText] = React.useState("");
-  const [render, setRender] = React.useState("");
   const [getAllRequestList, setAllRequestList] = React.useState([]);
   const [pickupTime, setPickupTime] = useState();
   const axiosInstance = useAxios();
-  const {response: responseList} = useGetAllRequest(render);
+  const [page, setPage] = useState(0);
+  const [params, setParams] = useState({"page-number": 1, limit: 10});
+  const {response: responseList, status} = useGetAllRequest(params);
 
   useEffect(() => {
     const list = getEmployeeRowData(responseList);
     setAllRequestList(list);
   }, [responseList]);
-
+  const handleChangePage = async (_event, newPage) => {
+    setPage(newPage);
+    setParams({"page-number": newPage + 1, limit: 10});
+  };
   async function saveData(properties) {
     try {
       return await axiosInstance.post("/requests", {...properties});
@@ -118,7 +122,7 @@ function EmployeeHome() {
       if (saveResponse && saveResponse.status === 201) {
         showSuccessToastMessage();
         reset();
-        setRender("Render request");
+        setParams(params);
       } else {
         showErrorToastMessage();
       }
@@ -275,7 +279,15 @@ function EmployeeHome() {
             marginRight: 9,
           }}
         >
-          <PaginatedTable columns={employeeReqColumns} rows={getAllRequestList} width={columnEmployeeWidths}/>
+          <PaginatedTable
+            columns={employeeReqColumns}
+            rows={getAllRequestList}
+            page={page}
+            handleChangePage={handleChangePage}
+            count={responseList?.metadata?.total}
+            apiStatus={status}
+            width={columnEmployeeWidths}
+          />
         </Paper>
       </Container>
       <ToastContainer />

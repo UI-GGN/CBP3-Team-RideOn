@@ -21,7 +21,7 @@ export const useGetAllRequest = (params) => {
   const fetchData = async () => {
     dispatch(fetching());
     try {
-      const apiResponse = await axiosInstance.get("/requests");
+      const apiResponse = await axiosInstance.get("/requests", {params});
       dispatch(success(apiResponse.data));
     } catch (e) {
       dispatch(error(e));

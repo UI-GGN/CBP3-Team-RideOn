@@ -1,6 +1,5 @@
 .table {
   margin-top: 2rem !important;
-  max-height: 800px !important;
 }
 
 .adminTable {
@@ -47,4 +46,10 @@
 
 .chip {
   margin-top: 20rem;
+}
+
+.errorHandle {
+  color: #757575 !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
 }

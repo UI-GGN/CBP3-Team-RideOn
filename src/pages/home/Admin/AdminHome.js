@@ -2,6 +2,7 @@ import "./AdminHome.css";
 import {useAuth0, withAuthenticationRequired} from "@auth0/auth0-react";
 import PermanentDrawerLeft from "../../../components/drawer/PermanentDrawerLeft";
 import BackHandOutlinedIcon from "@mui/icons-material/BackHandOutlined";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import {Box, Stack} from "@mui/material";
 import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import BreadCrumb from "../../../components/BreadCrumb";
@@ -14,6 +15,11 @@ const navItems = [
     title: "Requests",
     icon: <BackHandOutlinedIcon className="icon" />,
     to: "requests",
+  },
+  {
+    title: "Vendors",
+    icon: <DirectionsCarIcon className="icon" />,
+    to: "vendors",
   },
 ];
 

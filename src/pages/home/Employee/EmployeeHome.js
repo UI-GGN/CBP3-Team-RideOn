@@ -15,7 +15,7 @@ import {
   Container,
 } from "@mui/material";
 import PaginatedTable from "../../../components/table/PaginatedTable";
-import {employeeReqColumns} from "../../../data";
+import {employeeReqColumns} from "../../../tableHeader";
 import "./EmployeeHome.css";
 import AvatarWithPopper from "../../../components/AvatarWithPopper";
 import DatePicker from "react-datepicker";
@@ -123,6 +123,14 @@ function EmployeeHome() {
         showErrorToastMessage();
       }
     }
+  };
+
+  const columnEmployeeWidths = {
+    pickup: "22%",
+    drop: "22%",
+    pickupTime: "21%",
+    projectCode: "25%",
+    status: "10%",
   };
 
   return (
@@ -267,7 +275,7 @@ function EmployeeHome() {
             marginRight: 9,
           }}
         >
-          <PaginatedTable columns={employeeReqColumns} rows={getAllRequestList} />
+          <PaginatedTable columns={employeeReqColumns} rows={getAllRequestList} width={columnEmployeeWidths}/>
         </Paper>
       </Container>
       <ToastContainer />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AdminHome.css";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {Box, Button} from "@mui/material";
@@ -7,7 +7,7 @@ import "./Request.css";
 import * as XLSX from "xlsx";
 import {saveAs} from "file-saver";
 import {rows} from "../../../constants";
-import {adminReqColumns} from "../../../data";
+import {adminReqColumns} from "../../../tableHeader";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 
@@ -23,7 +23,9 @@ const getAdminRowData = (requestList) => {
 };
 
 function HomeRequests() {
-  const {response: requestList} = useGetAllRequest();
+  const [page, setPage] = useState(0);
+  const [params, setParams] = useState({"page-number": 1, limit: 10});
+  const {response: requestList, status} = useGetAllRequest(params);
   const employeeRowData = getAdminRowData(requestList);
 
   const convertJsonToWorkbook = (json) => {
@@ -31,6 +33,11 @@ function HomeRequests() {
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
     return workbook;
+  };
+
+  const handleChangePage = async (_event, newPage) => {
+    setPage(newPage);
+    setParams({"page-number": newPage + 1, limit: 10});
   };
 
   const handleDownload = () => {
@@ -42,7 +49,8 @@ function HomeRequests() {
 
   return (
     <Box className="requestMain">
-      <PaginatedTable columns={adminReqColumns} rows={employeeRowData} />
+        <PaginatedTable columns={adminReqColumns} rows={employeeRowData} page={page}
+        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}/>
       <Box className="downloadContainer">
         <span>Export Requests Report</span>
         <Button

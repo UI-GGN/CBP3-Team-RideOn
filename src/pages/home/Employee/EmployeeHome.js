@@ -52,7 +52,8 @@ function EmployeeHome() {
   const axiosInstance = useAxios();
   const [page, setPage] = useState(0);
   const [params, setParams] = useState({"page-number": 1, limit: 10});
-  const {response: responseList, status} = useGetAllRequest(params);
+  const [render, setRender] = React.useState(0);
+  const {response: responseList, status} = useGetAllRequest(params, render);
 
   useEffect(() => {
     const list = getEmployeeRowData(responseList);
@@ -122,7 +123,7 @@ function EmployeeHome() {
       if (saveResponse && saveResponse.status === 201) {
         showSuccessToastMessage();
         reset();
-        setParams(params);
+        setRender(render + 1);
       } else {
         showErrorToastMessage();
       }

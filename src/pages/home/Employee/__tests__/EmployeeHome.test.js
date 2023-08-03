@@ -292,7 +292,7 @@ describe("Employee Home Page", () => {
     expect(useGetAllRequest.useGetAllRequest).toHaveBeenNthCalledWith(3, {
       limit: 10,
       "page-number": 2,
-    });
+    }, 0);
   });
 
   it("should not save data on error", async function () {

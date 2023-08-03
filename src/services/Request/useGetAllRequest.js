@@ -14,7 +14,7 @@ const initialState = {
   status: APIStatus.NONE,
 };
 
-export const useGetAllRequest = (params) => {
+export const useGetAllRequest = (params, render) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const axiosInstance = useAxios();
 
@@ -30,7 +30,7 @@ export const useGetAllRequest = (params) => {
 
   useEffect(() => {
     fetchData();
-  }, [params]);
+  }, [params, render]);
 
   return {response: state.response, status: state.status};
 };

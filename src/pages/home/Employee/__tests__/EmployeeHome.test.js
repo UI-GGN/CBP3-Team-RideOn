@@ -207,9 +207,9 @@ describe("Employee Home Page", () => {
       .spyOn(useGetAllRequest, "useGetAllRequest")
       .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
-    const {getByText} = render(<Employee />);
+    const {getByTestId} = render(<Employee />);
 
-    expect(getByText("Something went wrong, Please try again!!")).toBeInTheDocument();
+    expect(getByTestId("errorText")).toBeInTheDocument();
   });
 
   it("should save data when given valid request", async () => {

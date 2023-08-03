@@ -52,7 +52,7 @@ describe("Admin Home Vendor", () => {
 
     render(<HomeVendors></HomeVendors>);
 
-    expect(screen.getByText("Something went wrong, Please try again!!")).toBeInTheDocument();
+    expect(screen.getByTestId("errorText")).toBeInTheDocument();
   });
 
   it("should show empty row text when row is empty", () => {
@@ -60,7 +60,7 @@ describe("Admin Home Vendor", () => {
 
     render(<HomeVendors></HomeVendors>);
 
-    expect(screen.getByText("There are no requests to show right now")).toBeInTheDocument();
+    expect(screen.getByTestId("noRowText")).toBeInTheDocument();
   });
 
   it("should display rows data when apistatus is SUCCESSFUL and data is not empty", () => {

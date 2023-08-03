@@ -20,7 +20,7 @@ describe("Paginated Table", () => {
     handleChangePage={() => {}}>
     </PaginatedTable>);
 
-    expect(screen.getByText("Something went wrong, Please try again!!")).toBeInTheDocument();
+    expect(screen.getByTestId("errorText")).toBeInTheDocument();
   });
 
   it("should display text for Empty Row Scenario", () => {
@@ -28,7 +28,7 @@ describe("Paginated Table", () => {
     handleChangePage={() => {}}>
     </PaginatedTable>);
 
-    expect(screen.getByText("There are no requests to show right now")).toBeInTheDocument();
+    expect(screen.getByTestId("noRowText")).toBeInTheDocument();
   });
 
   it("should show loader for loading scenario", () => {

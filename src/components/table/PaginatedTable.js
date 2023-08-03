@@ -19,7 +19,8 @@ import Popover from "@mui/material/Popover";
 import "./PaginatedTable.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import { APIStatus } from "../../reducers/api-reducer";
-import logoImage from "../../../src/assets/Logo.svg";
+import NoDataImage from "../../../src/assets/NoData.svg";
+import ErrorImage from "../../../src/assets/Error.png";
 
 export default function PaginatedTable({ columns, rows, page, handleChangePage, count, apiStatus, width, elevation }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,16 +45,29 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
 
   const ErrorComponent = () => {
     return (<>
-   <img src={logoImage} />
-   <p> Something went wrong, Please try again!! </p>
+   <img src={ErrorImage} />
+   <p data-testId={"errorText"}> Oops! Looks like a glitch popped up. Please give us some time and try again later.
+      <br/>Thank you for your understanding! </p>
     </>);
   };
 
   const NoDataFoundComponent = () => {
     return (<>
-     <img src={logoImage} />
-     <p> There are no requests to show right now</p>
+     <img src={NoDataImage} />
+     <p data-testId={"noRowText"}> Looks like we&apos;re experiencing a request-free zone at the moment. <br/> Nothing to display here!</p>
     </>);
+  };
+
+  const getStatusColor = (status) => {
+    if (status === "APPROVED") {
+      return "primary";
+    } else if (status === "PENDING") {
+      return "error";
+    } else if (status === "REJECTED") {
+      return "error";
+    } else {
+      return "default";
+    }
   };
 
   return (
@@ -104,8 +118,8 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                           return (
                             <TableCell align="left" className="chip" key={index}>
                               <Chip
-                                label={row.status}
-                                color={row.status === "Approved" ? "primary" : "error"}
+                                label={row?.status}
+                                color={getStatusColor(row?.status)}
                                 size="small"
                               />
                             </TableCell>);
@@ -146,7 +160,7 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                   );
                 })
             }
-            {emptyRows > 0 && apiStatus === APIStatus.SUCCESS && (
+            {emptyRows > 0 && emptyRows < numberOfRowsPerPage && apiStatus === APIStatus.SUCCESS && (
               <TableRow
                 style={{
                   height: 56 * emptyRows,

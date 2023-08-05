@@ -58,7 +58,7 @@ describe("Admin Home Requests", () => {
 
     render(<HomeRequests></HomeRequests>);
 
-    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenCalledWith({limit: 10, "page-number": 1});
+    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenCalledWith({limit: 10, "page-number": 1}, 1);
   });
 
   it("should show loader when apistatus is loading", () => {
@@ -105,6 +105,6 @@ describe("Admin Home Requests", () => {
 
     expect(screen.getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));
-    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenNthCalledWith(2, {limit: 10, "page-number": 2});
+    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenNthCalledWith(2, {limit: 10, "page-number": 2}, 1);
   });
 });

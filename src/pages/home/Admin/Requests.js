@@ -10,6 +10,8 @@ import {rows} from "../../../constants";
 import {adminReqColumns} from "../../../tableHeader";
 import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const getAdminRowData = (requestList) => {
   const {data} = requestList;
@@ -25,7 +27,8 @@ const getAdminRowData = (requestList) => {
 function HomeRequests() {
   const [page, setPage] = useState(0);
   const [params, setParams] = useState({"page-number": 1, limit: 10});
-  const {response: requestList, status} = useGetAllRequest(params);
+  const [render, setRender] = useState(1);
+  const {response: requestList, status} = useGetAllRequest(params, render);
   const employeeRowData = getAdminRowData(requestList);
 
   const convertJsonToWorkbook = (json) => {
@@ -40,6 +43,18 @@ function HomeRequests() {
     setParams({"page-number": newPage + 1, limit: 10});
   };
 
+  const reRenderReqPageAdmin = () => {
+    setRender(render + 1);
+  };
+
+  const showSuccessToastUpdateReq = (message) => {
+    toast.success(message);
+  };
+
+  const showErrorToastUpdateReq = (message) => {
+    toast.error(message);
+  };
+
   const handleDownload = () => {
     const workbook = convertJsonToWorkbook(rows);
     const excelBuffer = XLSX.write(workbook, {bookType: "xlsx", type: "array"});
@@ -48,9 +63,14 @@ function HomeRequests() {
   };
 
   return (
+    <>
     <Box className="requestMain">
         <PaginatedTable columns={adminReqColumns} rows={employeeRowData} page={page}
-        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}/>
+        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}
+        reRenderReqPageAdmin={reRenderReqPageAdmin}
+        showErrorToastUpdateReq={showErrorToastUpdateReq}
+        showSuccessToastUpdateReq={showSuccessToastUpdateReq}
+        />
       <Box className="downloadContainer">
         <span>Export Requests Report</span>
         <Button
@@ -63,6 +83,8 @@ function HomeRequests() {
         </Button>
       </Box>
     </Box>
+    <ToastContainer />
+    </>
   );
 }
 

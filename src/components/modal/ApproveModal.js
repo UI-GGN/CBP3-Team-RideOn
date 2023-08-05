@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import { useUpdateStatus } from '../../services/Request/useUpdateStatus';
 import { useGetVendorsForModal } from '../../services/Request/useGetVendorsForModal';
+import { APIStatus } from '../../reducers/api-reducer';
 
 const style = {
   position: 'absolute',
@@ -16,8 +17,11 @@ const style = {
   elevation: 2
 };
 
-const ApproveModal = ({open, onClose, requestId}) => {
-  const { updateStatus} = useUpdateStatus();
+const ApproveModal = ({
+  open, onClose, requestId, reRenderReqPageAdmin,
+  showErrorToastUpdateReq, showSuccessToastUpdateReq
+}) => {
+  const { apiStatus, updateStatus} = useUpdateStatus();
   const [vendorId, setVendorId] = useState("");
   const { data: vendorLists } = useGetVendorsForModal();
 
@@ -35,6 +39,12 @@ const ApproveModal = ({open, onClose, requestId}) => {
     updateStatus(requestId, bodyApprove);
     setVendorId("");
     onClose();
+    if (apiStatus === APIStatus.SUCCESS) {
+      showSuccessToastUpdateReq("Request Approved Successfully");
+      reRenderReqPageAdmin();
+    } else if (apiStatus === APIStatus.FAILED) {
+      showErrorToastUpdateReq("Request Approval Failed");
+    }
   };
 
   return (

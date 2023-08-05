@@ -1,10 +1,19 @@
 import { APIStatus } from "../../reducers/api-reducer";
 import PaginatedTable from "./PaginatedTable";
 import {render, screen} from "@testing-library/react";
+import * as useUpdateStatus from "../../services/Request/useUpdateStatus";
+import * as useGetVendorsForModal from "../../services/Request/useGetVendorsForModal";
+import * as useGetAllVendor from "../../services/Request/useGetAllVendor";
 
 describe("Paginated Table", () => {
   const mockCols = [{label: "Col1", id: "Col1"}, {label: "Col2", id: "Col2"}];
   const mockRows = [{Col1: "Row1Col1", Col2: "Row1Col2"}, {Col1: "Row2Col1", Col2: "Row2Col2"}];
+
+  beforeEach(() => {
+    jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useGetAllVendor, "useGetAllVendor").mockReturnValue({response: {data: []}, status: ""});
+  });
 
   it("should render table header", () => {
     render(<PaginatedTable columns={mockCols} rows={[]} page={1} count={10} apiStatus={"None"}

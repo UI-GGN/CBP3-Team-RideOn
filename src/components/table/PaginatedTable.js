@@ -21,6 +21,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { APIStatus } from "../../reducers/api-reducer";
 import NoDataImage from "../../../src/assets/NoData.svg";
 import ErrorImage from "../../../src/assets/Error.png";
+import ApproveModal from "../modal/ApproveModal";
+import CancelModal from "../modal/CancelModal";
 
 export default function PaginatedTable({ columns, rows, page, handleChangePage, count, apiStatus, width, elevation }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -30,17 +32,36 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
   const isLoadingOrError = apiStatus === APIStatus.FAILED || apiStatus === APIStatus.LOADING;
   const isError = apiStatus === APIStatus.FAILED;
   const emptyRows = page > -1 ? numberOfRowsPerPage - rows?.length : 0;
+  const [openModal, setModalOpen] = React.useState(false);
+  const [openCancelModal, setCancelModalOpen] = React.useState(false);
+  const [requestId, setRequestId] = React.useState("");
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleApprove = (event) => {
-    console.log(event.currentTarget);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleStatusUpdate = (requestId) => {
+    setRequestId(requestId);
+  };
+
+  const handleModalOpen = (requestId) => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  const handleCancelModalOpen = () => {
+    setCancelModalOpen(true);
+  };
+
+  const handleCancelModalClose = () => {
+    setCancelModalOpen(false);
   };
 
   const ErrorComponent = () => {
@@ -125,8 +146,8 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                             </TableCell>);
                         } else if (column?.id === "action") {
                           return (<TableCell align="justify" key={index}>
-                            <IconButton aria-label="Example">
-                              <FontAwesomeIcon icon={faEllipsisV} onClick={handleActionClick} />
+                            <IconButton aria-label="Example" onClick={(event) => { handleActionClick(event); handleStatusUpdate(row._id); }}>
+                              <FontAwesomeIcon icon={faEllipsisV}/>
                             </IconButton>
                             <Popover
                               id={id}
@@ -142,11 +163,11 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                               }}
                             >
                               <div className="popOverButton">
-                                <Button variant="text" onClick={handleApprove}>
+                                <Button variant="text" onClick={handleModalOpen}>
                                   Approve
                                 </Button>
                                 <Divider />
-                                <Button variant="text">Reject</Button>
+                                <Button variant="text" onClick={handleCancelModalOpen}>Reject</Button>
                               </div>
                             </Popover>
                           </TableCell>);
@@ -169,6 +190,8 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                 <TableCell colSpan={columns.length} />
               </TableRow>
             )}
+          <ApproveModal open={openModal} onClose={handleModalClose} requestId={requestId}/>
+          <CancelModal open={openCancelModal} onClose={handleCancelModalClose} requestId={requestId}/>
           </TableBody>
         </Table>
         <TablePagination

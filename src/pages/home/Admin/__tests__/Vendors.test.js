@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import HomeVendors from "../Vendors";
 import * as useGetAllVendorHook from "../../../../services/Request/useGetAllVendor";
 import { APIStatus } from "../../../../reducers/api-reducer";
+import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
+import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
 
 describe("Admin Home Vendor", () => {
   const mockResponse = {
@@ -18,6 +20,8 @@ describe("Admin Home Vendor", () => {
   };
   beforeEach(() => {
     jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {}, status: ""});
+    jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
   });
 
   afterEach(() => {

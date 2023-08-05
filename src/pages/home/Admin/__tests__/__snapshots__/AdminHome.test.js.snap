@@ -165,8 +165,7 @@ exports[`Home Page renders correctly 1`] = `
                     class="MuiBreadcrumbs-li"
                   >
                     <p
-                      align="Center"
-                      class="MuiTypography-root MuiTypography-body1 css-jp05r1-MuiTypography-root"
+                      class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter css-176sd93-MuiTypography-root"
                       font="Roboto"
                     />
                   </li>

@@ -49,7 +49,7 @@ export default function PermanentDrawerLeft({onLogout, navItems, isHomePage}) {
               key={navItem.title}
               component={NavLink}
               to={navItem.to}
-              activeClassName="active"
+              activeclassname="active"
               className="sidebar-option"
               sx={{
                 backgroundColor:

@@ -54,6 +54,7 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
 
   const handleModalClose = () => {
     setModalOpen(false);
+    handleClose();
   };
 
   const handleCancelModalOpen = () => {
@@ -62,6 +63,7 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
 
   const handleCancelModalClose = () => {
     setCancelModalOpen(false);
+    handleClose();
   };
 
   const ErrorComponent = () => {

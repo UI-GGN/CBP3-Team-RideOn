@@ -24,7 +24,12 @@ import ErrorImage from "../../../src/assets/Error.png";
 import ApproveModal from "../modal/ApproveModal";
 import CancelModal from "../modal/CancelModal";
 
-export default function PaginatedTable({ columns, rows, page, handleChangePage, count, apiStatus, width, elevation }) {
+export default function PaginatedTable({
+  columns, rows, page, handleChangePage,
+  count, apiStatus, width, elevation, reRenderReqPageAdmin,
+  showErrorToastUpdateReq,
+  showSuccessToastUpdateReq
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const numberOfRowsPerPage = 10;
   const open = Boolean(anchorEl);
@@ -192,8 +197,14 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
                 <TableCell colSpan={columns.length} />
               </TableRow>
             )}
-          <ApproveModal open={openModal} onClose={handleModalClose} requestId={requestId}/>
-          <CancelModal open={openCancelModal} onClose={handleCancelModalClose} requestId={requestId}/>
+          <ApproveModal open={openModal} onClose={handleModalClose} requestId={requestId}
+          reRenderReqPageAdmin={reRenderReqPageAdmin}
+          showErrorToastUpdateReq={showErrorToastUpdateReq}
+          showSuccessToastUpdateReq={showSuccessToastUpdateReq}/>
+          <CancelModal open={openCancelModal} onClose={handleCancelModalClose} requestId={requestId}
+          reRenderReqPageAdmin={reRenderReqPageAdmin}
+          showErrorToastUpdateReq={showErrorToastUpdateReq}
+          showSuccessToastUpdateReq={showSuccessToastUpdateReq}/>
           </TableBody>
         </Table>
         <TablePagination

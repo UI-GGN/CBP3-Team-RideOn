@@ -4,6 +4,7 @@ import {
   TextField, FormControl, Paper, Box
 } from '@mui/material';
 import { useUpdateStatus } from '../../services/Request/useUpdateStatus';
+import { APIStatus } from '../../reducers/api-reducer';
 
 const paperStyle = {
   position: 'absolute',
@@ -15,9 +16,12 @@ const paperStyle = {
   elevation: 2,
 };
 
-const CancelModal = ({open, onClose, requestId}) => {
+const CancelModal = ({
+  open, onClose, requestId, reRenderReqPageAdmin,
+  showErrorToastUpdateReq, showSuccessToastUpdateReq
+}) => {
   const [comment, setComment] = useState('');
-  const { updateStatus} = useUpdateStatus();
+  const { apiStatus, updateStatus} = useUpdateStatus();
 
   const bodyCancel = {
     status: "REJECTED",
@@ -31,6 +35,12 @@ const CancelModal = ({open, onClose, requestId}) => {
   const handleSubmit = async () => {
     updateStatus(requestId, bodyCancel);
     onClose();
+    if (apiStatus === APIStatus.SUCCESS) {
+      showSuccessToastUpdateReq("Request Rejected Successfully");
+      reRenderReqPageAdmin();
+    } else if (apiStatus === APIStatus.FAILED) {
+      showErrorToastUpdateReq("Request Update Failed");
+    }
   };
 
   return (

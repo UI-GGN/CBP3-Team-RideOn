@@ -2,6 +2,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import HomeRequests from "../Requests";
 import * as useGetAllRequestHook from "../../../../services/Request/useGetAllRequest";
 import { APIStatus } from "../../../../reducers/api-reducer";
+import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
+import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
+import * as useGetAllVendor from "../../../../services/Request/useGetAllVendor";
 
 describe("Admin Home Requests", () => {
   const mockResponse = {
@@ -29,6 +32,9 @@ describe("Admin Home Requests", () => {
   };
   beforeEach(() => {
     jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: {}, status: ""});
+    jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useGetAllVendor, "useGetAllVendor").mockReturnValue({response: {data: []}, status: ""});
   });
 
   afterEach(() => {

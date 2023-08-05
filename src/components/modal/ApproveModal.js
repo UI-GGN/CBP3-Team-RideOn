@@ -58,7 +58,7 @@ const ApproveModal = ({open, onClose, requestId}) => {
               onChange={handleChange}
               style = {{ margin: 25 }}
             >
-              {vendorList.map(
+              {vendorList?.map(
                 (vendor) => <MenuItem key={vendor._id} value={vendor._id}>
                   {vendor.name}
                   </MenuItem>)}

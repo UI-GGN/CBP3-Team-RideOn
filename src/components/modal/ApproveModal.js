@@ -1,4 +1,3 @@
-// import { Modal } from '@mui/material';
 import React, { useState } from 'react';
 import {
   Modal, Button, Typography,
@@ -20,7 +19,6 @@ const style = {
 const ApproveModal = ({open, onClose, requestId}) => {
   const { updateStatus} = useUpdateStatus();
   const [vendorId, setVendorId] = useState("");
-  // const { data: vendorLists, status: apiStatus } = useGetVendorsForModal();
   const { data: vendorLists } = useGetVendorsForModal();
 
   const vendorList = vendorLists?.data;

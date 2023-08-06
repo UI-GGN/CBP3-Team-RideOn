@@ -35,7 +35,8 @@ const HomeVendors = () => {
   };
 
   const handleFileUpload = async (e) => {
-    setVendorExcelFile(e.target.files[0]);
+    const file = e.target.files[0];
+    setVendorExcelFile(file);
   };
 
   const reset = () => {
@@ -76,9 +77,9 @@ const HomeVendors = () => {
             <Input
               key={fileInputKey || ''}
               type="file"
-              label="File"
-              id="my-input"
-              onClick={handleFileUpload} />
+              id="file-input"
+              inputProps={{accept: ".xls, .xlsx"}}
+              onChange={handleFileUpload} />
           </FormControl>
           <Button
             className="uploadButton"

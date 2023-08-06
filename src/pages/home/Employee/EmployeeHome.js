@@ -54,6 +54,7 @@ function EmployeeHome() {
   const [params, setParams] = useState({"page-number": 1, limit: 10});
   const [render, setRender] = React.useState(0);
   const {response: responseList, status} = useGetAllRequest(params, render);
+  const [minTime, setMinTime] = useState(new Date().setHours(23, 59, 0, 0));
 
   useEffect(() => {
     const list = getEmployeeRowData(responseList);
@@ -85,7 +86,16 @@ function EmployeeHome() {
     toast.error("Failed to save request !");
   };
 
-  const date = new Date();
+  const setTime = (selectedDate) => {
+    if (new Date() > selectedDate) {
+      const date = new Date(selectedDate);
+      date.setHours(new Date().getHours() + 1);
+      date.setMinutes(new Date().getMinutes());
+      setMinTime(date);
+    } else {
+      setMinTime(new Date().setHours(0, 0, 0, 0));
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -204,10 +214,13 @@ function EmployeeHome() {
                     required
                     placeholderText="Pickup Date and Time *"
                     selected={pickupTime}
-                    onChange={(date) => setPickupTime(date)}
-                    minDate={date}
-                    minTime={date.setHours(date.getHours() + 1)}
-                    maxTime={date.setHours(23, 59, 0, 0)}
+                    onChange={(date) => {
+                      setPickupTime(date);
+                      setTime(date);
+                    }}
+                    minDate={new Date()}
+                    minTime={minTime}
+                    maxTime={new Date().setHours(23, 59, 0, 0)}
                     timeIntervals={15}
                     dateFormat="Pp"
                     showTimeSelect

@@ -1,5 +1,5 @@
 import {useAxios} from "../../contexts/axios-context";
-import { APIStatus} from "../../reducers/api-reducer";
+import {APIStatus} from "../../reducers/api-reducer";
 
 export const useExportAllRequests = () => {
   const axiosInstance = useAxios();
@@ -10,7 +10,7 @@ export const useExportAllRequests = () => {
     try {
       const response = await axiosInstance.get("/requests/export", {
         params: queryParams,
-        responseType: 'blob',
+        responseType: "blob",
       });
       return {response, status: APIStatus.SUCCESS};
     } catch (e) {

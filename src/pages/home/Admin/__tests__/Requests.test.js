@@ -1,7 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import HomeRequests from "../Requests";
 import * as useGetAllRequestHook from "../../../../services/Request/useGetAllRequest";
-import { APIStatus } from "../../../../reducers/api-reducer";
+import {APIStatus} from "../../../../reducers/api-reducer";
 import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
 import * as useGetAllVendor from "../../../../services/Request/useGetAllVendor";
@@ -9,33 +9,40 @@ import * as useExportAllRequests from "../../../../services/Request/useExportAll
 
 describe("Admin Home Requests", () => {
   const mockResponse = {
-    data: [{
-      pickupLocation: "Test PickUp",
-      dropLocation: "Test Drop",
-      pickupTime: "2023-06-30T00:00:00.000Z",
-      projectCode: "Test Project",
-      raisedBy: {
-        roles: [
-          "employee"
-        ],
-        name: "Test User",
+    data: [
+      {
+        pickupLocation: "Test PickUp",
+        dropLocation: "Test Drop",
+        pickupTime: "2023-06-30T00:00:00.000Z",
+        projectCode: "Test Project",
+        raisedBy: {
+          roles: ["employee"],
+          name: "Test User",
+        },
+        status: "PENDING",
+        createdAt: "2023-07-23T11:38:00.774Z",
+        updatedAt: "2023-07-23T11:38:00.774Z",
       },
-      status: "PENDING",
-      createdAt: "2023-07-23T11:38:00.774Z",
-      updatedAt: "2023-07-23T11:38:00.774Z"
-    }
     ],
     metadata: {
       pageNumber: "1",
       limit: "1",
-      total: 12
-    }
+      total: 12,
+    },
   };
   beforeEach(() => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: {}, status: ""});
-    jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
-    jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
-    jest.spyOn(useGetAllVendor, "useGetAllVendor").mockReturnValue({response: {data: []}, status: ""});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: {}, status: ""});
+    jest
+      .spyOn(useUpdateStatus, "useUpdateStatus")
+      .mockReturnValue({response: {data: []}, status: ""});
+    jest
+      .spyOn(useGetVendorsForModal, "useGetVendorsForModal")
+      .mockReturnValue({response: {data: []}, status: ""});
+    jest
+      .spyOn(useGetAllVendor, "useGetAllVendor")
+      .mockReturnValue({response: {data: []}, status: ""});
     jest.spyOn(useExportAllRequests, "useExportAllRequests").mockReturnValue(jest.fn());
   });
 
@@ -56,15 +63,22 @@ describe("Admin Home Requests", () => {
   });
 
   it("should call useGetAllRequest to fetch data when page renders", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeRequests></HomeRequests>);
 
-    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenCalledWith({limit: 10, "page-number": 1}, 1);
+    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenCalledWith(
+      {limit: 10, "page-number": 1},
+      1
+    );
   });
 
   it("should show loader when apistatus is loading", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: {}, status: APIStatus.LOADING});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: {}, status: APIStatus.LOADING});
 
     render(<HomeRequests></HomeRequests>);
 
@@ -72,7 +86,9 @@ describe("Admin Home Requests", () => {
   });
 
   it("should show error text when apistatus is Failed", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: {}, status: APIStatus.FAILED});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
     render(<HomeRequests></HomeRequests>);
 
@@ -80,7 +96,9 @@ describe("Admin Home Requests", () => {
   });
 
   it("should show empty row text when row is empty", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
 
     render(<HomeRequests></HomeRequests>);
 
@@ -88,7 +106,9 @@ describe("Admin Home Requests", () => {
   });
 
   it("should display rows data when apistatus is SUCCESSFUL and data is not empty", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeRequests></HomeRequests>);
 
@@ -101,12 +121,18 @@ describe("Admin Home Requests", () => {
   });
 
   it("should call useGetAllRequest to fetch data when click on next arrow button", () => {
-    jest.spyOn(useGetAllRequestHook, "useGetAllRequest").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllRequestHook, "useGetAllRequest")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));
-    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenNthCalledWith(2, {limit: 10, "page-number": 2}, 1);
+    expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenNthCalledWith(
+      2,
+      {limit: 10, "page-number": 2},
+      1
+    );
   });
 });

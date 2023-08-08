@@ -18,5 +18,5 @@ export const employeeReqColumns = [
 
 export const vendorReqColumns = [
   {id: "name", label: "Vendor"},
-  {id: "contactNumber", label: "Contact Number"}
+  {id: "contactNumber", label: "Contact Number"},
 ];

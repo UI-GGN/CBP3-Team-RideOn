@@ -1,7 +1,7 @@
 import React from "react";
 import {renderHook} from "@testing-library/react";
 import * as AxiosContext from "../../../contexts/axios-context";
-import { useGetAllVendor } from "../useGetAllVendor";
+import {useGetAllVendor} from "../useGetAllVendor";
 
 jest.mock("../contexts/axios-context", () => ({
   useAxios: jest.fn(),

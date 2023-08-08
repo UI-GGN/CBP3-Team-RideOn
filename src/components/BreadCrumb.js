@@ -15,8 +15,8 @@ function BreadCrumb({values}) {
     >
       <Typography
         fontSize="inherit"
-        Font="Roboto"
-        Align="Center"
+        font="Roboto"
+        align="center"
         textTransform={"capitalize"}
         color={"text.primary"}
       >

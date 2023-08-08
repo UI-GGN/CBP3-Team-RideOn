@@ -12,6 +12,7 @@ import {useGetAllRequest} from "../../../services/Request/useGetAllRequest";
 import {getDateTime} from "../../../utils/DateTimeConvertor";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DatePicker from "react-datepicker";
 
 const getAdminRowData = (requestList) => {
   const {data} = requestList;
@@ -30,6 +31,8 @@ function HomeRequests() {
   const [render, setRender] = useState(1);
   const {response: requestList, status} = useGetAllRequest(params, render);
   const employeeRowData = getAdminRowData(requestList);
+  const [fromDate, setFromDate] = useState();
+  const [tillDate, setTillDate] = useState();
 
   const convertJsonToWorkbook = (json) => {
     const worksheet = XLSX.utils.json_to_sheet(json);
@@ -77,12 +80,46 @@ function HomeRequests() {
           showSuccessToastUpdateReq={showSuccessToastUpdateReq}
         />
         <Box className="downloadContainer">
-          <span>Export Requests Report</span>
+          <div className="exportLabel" style={{flex: "2"}}>
+            Export Requests Report
+          </div>
+          <div
+            className="datepickerContainer"
+            style={{
+              marginRight: "10px",
+              flex: "1",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <DatePicker
+              wrapperClassName="datePicker"
+              placeholderText="From Date"
+              selected={fromDate}
+              onChange={(date) => setFromDate(date)}
+              minDate={new Date()}
+              dateFormat="dd/MM/yyyy"
+            />
+          </div>
+          <div
+            className="datepickerContainer"
+            style={{flex: "1", display: "flex", alignItems: "center"}}
+          >
+            <DatePicker
+              wrapperClassName="datePicker"
+              placeholderText="Till Date"
+              selected={tillDate}
+              onChange={(date) => setTillDate(date)}
+              minDate={new Date()}
+              dateFormat="dd/MM/yyyy"
+            />
+          </div>
           <Button
             className="downloadButton"
             variant="contained"
             size="medium"
             onClick={handleDownload}
+            style={{flex: "1", display: "flex", alignItems: "center"}}
           >
             Download <GetAppIcon />
           </Button>

@@ -97,7 +97,7 @@ function HomeRequests() {
               placeholderText="From Date"
               selected={fromDate}
               onChange={(date) => setFromDate(date)}
-              minDate={new Date()}
+              maxDate={new Date()}
               dateFormat="dd/MM/yyyy"
             />
           </div>
@@ -110,7 +110,7 @@ function HomeRequests() {
               placeholderText="Till Date"
               selected={tillDate}
               onChange={(date) => setTillDate(date)}
-              minDate={new Date()}
+              maxDate={new Date()}
               dateFormat="dd/MM/yyyy"
             />
           </div>

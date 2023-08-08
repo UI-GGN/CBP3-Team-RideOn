@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
 import {useExportAllRequests} from "../../../services/Request/useExportAllRequests";
 import {APIStatus} from "../../../reducers/api-reducer";
+import moment from "moment";
 
 const getAdminRowData = (requestList) => {
   const {data} = requestList;
@@ -53,7 +54,9 @@ function HomeRequests() {
   };
 
   const getFileName = () => {
-    return `Cab-Request-${fromDate}-${tillDate}`;
+    const fromDateFileName = moment(fromDate).format("DD MMM YYYY");
+    const tillDateFileName = moment(tillDate).format("DD MMM YYYY");
+    return `Cab-Request-${fromDateFileName}-${tillDateFileName}`;
   };
 
   const reset = () => {
@@ -61,12 +64,38 @@ function HomeRequests() {
     setFromDate(null);
   };
 
-  const handleDownload = async () => {
+  const checkDateValidation = () => {
+    const startDate = fromDate && moment(fromDate);
+    const endDate = tillDate && moment(tillDate);
+
     if (!(fromDate && tillDate)) {
+      showErrorToastUpdateReq("Please choose From and Till Date");
       return null;
     }
+
+    if (!startDate) {
+      showErrorToastUpdateReq("Please Enter From Date");
+      return null;
+    }
+
+    if (!endDate) {
+      showErrorToastUpdateReq("Please Enter Till Date");
+      return null;
+    }
+
+    if (startDate.isAfter(endDate)) {
+      showErrorToastUpdateReq("Start Date cannot be after End Date");
+      return null;
+    }
+  };
+
+  const handleDownload = async () => {
+    const value = checkDateValidation();
+    if (value === null) {
+      return;
+    }
     const {response, status} = await fetchData({fromDate, tillDate});
-    const data = new Blob([response.data], {
+    const data = new Blob([response?.data], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
     const fileName = getFileName();
@@ -101,6 +130,7 @@ function HomeRequests() {
               marginRight: "10px",
               flex: "1",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
             }}
           >
@@ -109,23 +139,25 @@ function HomeRequests() {
               wrapperClassName="datePicker"
               placeholderText="From Date"
               selected={fromDate}
+              dateFormat="dd/MM/yyyy"
               onChange={(date) => setFromDate(date)}
             />
           </div>
           <div
             className="datepickerContainer"
-            style={{flex: "1", display: "flex", alignItems: "center"}}
+            style={{flex: "1", display: "flex", flexDirection: "column", alignItems: "center"}}
           >
             <DatePicker
               required
               wrapperClassName="datePicker"
               placeholderText="Till Date"
               selected={tillDate}
+              dateFormat="dd/MM/yyyy"
               onChange={(date) => setTillDate(date)}
             />
           </div>
           <Button
-            disabled={!(fromDate && tillDate)}
+            // disabled={!(fromDate && tillDate)}
             className="downloadButton"
             variant="contained"
             size="medium"

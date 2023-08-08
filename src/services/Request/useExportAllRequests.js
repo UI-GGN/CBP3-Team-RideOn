@@ -14,7 +14,7 @@ export const useExportAllRequests = () => {
       });
       return {response, status: APIStatus.SUCCESS};
     } catch (e) {
-      return {status: APIStatus.error};
+      return {status: APIStatus.FAILED};
     }
   };
 

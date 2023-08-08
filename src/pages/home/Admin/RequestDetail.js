@@ -9,8 +9,24 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./RequestDetail.css";
+import {useLocation} from "react-router-dom";
 
 function RequestDetail() {
+  const location = useLocation();
+  const rowData = location.state?.rowData;
+
+  const getStatusColor = (status) => {
+    if (status === "APPROVED") {
+      return "primary";
+    } else if (status === "PENDING") {
+      return "error";
+    } else if (status === "REJECTED") {
+      return "error";
+    } else {
+      return "default";
+    }
+  };
+
   return (
     <>
       <div className="cardContainer">
@@ -27,7 +43,7 @@ function RequestDetail() {
               >
                 Status
               </Typography>
-              <Chip label="Pending" color="error" size="small" />
+              <Chip label={rowData.status} color={getStatusColor(rowData.status)} size="small" />
             </div>
           </CardContent>
         </Card>
@@ -43,7 +59,7 @@ function RequestDetail() {
               >
                 Created At
               </Typography>
-              <Typography fontSize="0.8rem">24-Mar-2023</Typography>
+              <Typography fontSize="0.8rem">{rowData.createdAt}</Typography>
             </div>
           </CardContent>
         </Card>
@@ -59,7 +75,7 @@ function RequestDetail() {
               >
                 Modified At
               </Typography>
-              <Typography fontSize="0.8rem">28-April-2023</Typography>
+              <Typography fontSize="0.8rem">{rowData.updatedAt}</Typography>
             </div>
           </CardContent>
         </Card>
@@ -74,9 +90,9 @@ function RequestDetail() {
                 <div className="cellHeaderContent">Project Code</div>
               </TableCell>
               <TableCell align="left">
-                <div className="cellContent">abc</div>
-                <div className="cellContent">text@gmail.com</div>
-                <div className="cellContent">Project-abc</div>
+                <div className="cellContent">{rowData.raisedBy && rowData.raisedBy.name}</div>
+                <div className="cellContent">{rowData.raisedBy && rowData.raisedBy.email}</div>
+                <div className="cellContent">{rowData.projectCode}</div>
               </TableCell>
             </TableRow>
             <TableRow>
@@ -86,21 +102,21 @@ function RequestDetail() {
                 <div className="cellHeaderContent">Pickup Time</div>
               </TableCell>
               <TableCell align="left">
-                <div className="cellContent">Location-A</div>
-                <div className="cellContent">Location-B</div>
-                <div className="cellContent">28-March2023 5:30PM</div>
+                <div className="cellContent">{rowData.pickupLocation}</div>
+                <div className="cellContent">{rowData.dropLocation}</div>
+                <div className="cellContent">{rowData.pickupTime}</div>
               </TableCell>
             </TableRow>
-            <TableRow>
+            {rowData && rowData.allotedVendor && <TableRow>
               <TableCell className="requestDetailTableCell">
                 <div className="cellHeaderContent">Vendor Name</div>
                 <div className="cellHeaderContent">Vendor Contact</div>
               </TableCell>
               <TableCell align="left">
-                <div className="cellContent">abc</div>
-                <div className="cellContent">123455</div>
+                <div className="cellContent">{rowData && rowData.allotedVendor && rowData.allotedVendor.name}</div>
+                <div className="cellContent">{rowData && rowData.allotedVendor && rowData.allotedVendor.contactNumber}</div>
               </TableCell>
-            </TableRow>
+            </TableRow>}
           </Table>
         </TableContainer>
       </Paper>

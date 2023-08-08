@@ -23,6 +23,7 @@ import NoDataImage from "../../../src/assets/NoData.svg";
 import ErrorImage from "../../../src/assets/Error.png";
 import ApproveModal from "../modal/ApproveModal";
 import CancelModal from "../modal/CancelModal";
+import { useNavigate } from 'react-router-dom';
 
 export default function PaginatedTable({
   columns,
@@ -48,6 +49,7 @@ export default function PaginatedTable({
   const [openModal, setModalOpen] = React.useState(false);
   const [openCancelModal, setCancelModalOpen] = React.useState(false);
   const [requestId, setRequestId] = React.useState("");
+  const navigate = useNavigate();
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -173,7 +175,7 @@ export default function PaginatedTable({
                 : (
                     rows?.map((row, index) => {
                       return (
-                  <TableRow className="tableRows" hover key={row.id}>
+                  <TableRow className="tableRows" hover key={row.id} onClick={() => { navigate(`/home/request/${row._id}`, { state: { rowData: row } }); }}>
                     {columns?.map((column) => {
                       if (column?.id === "status") {
                         return (

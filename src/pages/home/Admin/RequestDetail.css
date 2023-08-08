@@ -1,12 +1,14 @@
 .cardContainer {
+  width: 80%;
   display: flex;
-  flexdirection: row;
-  justifycontent: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   margin-right: 20px;
+  margin-top: 40px;
 }
 
 .requestDetailCard {
-  width: 430px;
+  width: 350px;
   margin-right: 40px;
 }
 
@@ -17,7 +19,7 @@
 }
 
 .requestDetailPaper {
-  width: 99%;
+  width: 80%;
   margin-top: 40px;
   margin-bottom: 30px;
 }

@@ -53,6 +53,7 @@ export default function PaginatedTable({
   const [openModal, setModalOpen] = React.useState(false);
   const [openCancelModal, setCancelModalOpen] = React.useState(false);
   const [requestId, setRequestId] = React.useState("");
+  const [approveReassign, setApproveReassign] = React.useState("APPROVE");
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -62,8 +63,14 @@ export default function PaginatedTable({
     setAnchorEl(null);
   };
 
-  const handleStatusUpdate = (requestId) => {
+  const handleStatusUpdate = (requestId, reqStatus) => {
     setRequestId(requestId);
+    if (reqStatus === "APPROVED") {
+      setApproveReassign("REASSIGN");
+    }
+    if (reqStatus === "REJECTED" || reqStatus === "PENDING") {
+      setApproveReassign("APPROVE");
+    }
   };
 
   const handleModalOpen = (requestId) => {
@@ -123,15 +130,6 @@ export default function PaginatedTable({
       return "default";
     }
   };
-
-  // const getMessageAccordingToStatus = (status) => {
-  //   console.log("status----", status);
-  //   if (status === "APPROVED") {
-  //     return "REASSIGN";
-  //   } else {
-  //     return "APPROVE";
-  //   }
-  // };
 
   return (
     <Paper className="table" elevation={elevation}>
@@ -208,7 +206,7 @@ export default function PaginatedTable({
                               aria-label="Example"
                               onClick={(event) => {
                                 handleActionClick(event);
-                                handleStatusUpdate(row._id);
+                                handleStatusUpdate(row._id, row?.status);
                               }}
                             >
                               <FontAwesomeIcon icon={faEllipsisV} />
@@ -227,8 +225,9 @@ export default function PaginatedTable({
                               }}
                             >
                                 <Button variant="contained" sx={{ width: 100 }} disableElevation onClick={handleModalOpen}>
-                                  Approve
+                                  {/* Approve */}
                                   {/* {(row?.status)} */}
+                                  {approveReassign}
                                 </Button>
                                 <Divider />
                                 <Button variant="outlined" sx={{ width: 100 }} onClick={handleCancelModalOpen}>

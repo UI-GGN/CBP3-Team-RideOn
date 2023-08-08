@@ -1,0 +1,40 @@
+.cardContainer {
+  display: flex;
+  flexdirection: row;
+  justifycontent: space-between;
+  margin-right: 20px;
+}
+
+.requestDetailCard {
+  width: 430px;
+  margin-right: 40px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.requestDetailPaper {
+  width: 99%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.requestDetailTableCell {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.cellHeaderContent {
+  margin-top: 10px;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.cellContent {
+  margin-top: 10px;
+  font-size: 17px;
+}

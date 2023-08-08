@@ -289,10 +289,14 @@ describe("Employee Home Page", () => {
 
     expect(getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(getByTestId("KeyboardArrowRightIcon"));
-    expect(useGetAllRequest.useGetAllRequest).toHaveBeenNthCalledWith(3, {
-      limit: 10,
-      "page-number": 2,
-    }, 0);
+    expect(useGetAllRequest.useGetAllRequest).toHaveBeenNthCalledWith(
+      3,
+      {
+        limit: 10,
+        "page-number": 2,
+      },
+      0
+    );
   });
 
   it("should not save data on error", async function () {

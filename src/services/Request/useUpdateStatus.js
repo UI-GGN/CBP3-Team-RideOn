@@ -1,10 +1,10 @@
-import { useReducer } from "react";
-import { useAxios } from "../../contexts/axios-context";
-import { reducer, successNoContent, error, APIStatus } from "../../reducers/api-reducer";
+import {useReducer} from "react";
+import {useAxios} from "../../contexts/axios-context";
+import {reducer, successNoContent, error, APIStatus} from "../../reducers/api-reducer";
 
 const initialState = {
   data: [],
-  status: APIStatus.NONE
+  status: APIStatus.NONE,
 };
 
 export const useUpdateStatus = () => {
@@ -13,7 +13,10 @@ export const useUpdateStatus = () => {
 
   const updateStatus = async (requestId, body) => {
     try {
-      const response = await axiosInstance.post(`/requests/${requestId}/updateStatus`, body);
+      const response = await axiosInstance.post(
+        `/requests/${requestId}/updateStatus`,
+        body
+      );
       if (response.status === 204) {
         dispatch(successNoContent());
       }

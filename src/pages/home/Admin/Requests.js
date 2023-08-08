@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AdminHome.css";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {Box, Button} from "@mui/material";
@@ -64,26 +64,31 @@ function HomeRequests() {
 
   return (
     <>
-    <Box className="requestMain">
-        <PaginatedTable columns={adminReqColumns} rows={employeeRowData} page={page}
-        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}
-        reRenderReqPageAdmin={reRenderReqPageAdmin}
-        showErrorToastUpdateReq={showErrorToastUpdateReq}
-        showSuccessToastUpdateReq={showSuccessToastUpdateReq}
+      <Box className="requestMain">
+        <PaginatedTable
+          columns={adminReqColumns}
+          rows={employeeRowData}
+          page={page}
+          handleChangePage={handleChangePage}
+          count={requestList?.metadata?.total}
+          apiStatus={status}
+          reRenderReqPageAdmin={reRenderReqPageAdmin}
+          showErrorToastUpdateReq={showErrorToastUpdateReq}
+          showSuccessToastUpdateReq={showSuccessToastUpdateReq}
         />
-      <Box className="downloadContainer">
-        <span>Export Requests Report</span>
-        <Button
-          className="downloadButton"
-          variant="contained"
-          size="medium"
-          onClick={handleDownload}
-        >
-          Download <GetAppIcon />
-        </Button>
+        <Box className="downloadContainer">
+          <span>Export Requests Report</span>
+          <Button
+            className="downloadButton"
+            variant="contained"
+            size="medium"
+            onClick={handleDownload}
+          >
+            Download <GetAppIcon />
+          </Button>
+        </Box>
       </Box>
-    </Box>
-    <ToastContainer />
+      <ToastContainer />
     </>
   );
 }

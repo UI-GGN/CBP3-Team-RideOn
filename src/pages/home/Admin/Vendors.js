@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AdminHome.css";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {Box} from "@mui/material";
@@ -12,7 +12,7 @@ const getVendorRows = (requestList) => {
 
 const columnVendorWidths = {
   name: "50%",
-  contactNumber: "50%"
+  contactNumber: "50%",
 };
 
 const HomeVendors = () => {
@@ -28,9 +28,16 @@ const HomeVendors = () => {
 
   return (
     <Box className="requestMain" style={{paddingBottom: 30}}>
-        <PaginatedTable columns={vendorReqColumns} rows={vendorRowData} page={page}
-        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}
-        width={columnVendorWidths} elevation={2}/>
+      <PaginatedTable
+        columns={vendorReqColumns}
+        rows={vendorRowData}
+        page={page}
+        handleChangePage={handleChangePage}
+        count={requestList?.metadata?.total}
+        apiStatus={status}
+        width={columnVendorWidths}
+        elevation={2}
+      />
     </Box>
   );
 };

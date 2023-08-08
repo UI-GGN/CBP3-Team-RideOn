@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import HomeVendors from "../Vendors";
 import * as useGetAllVendorHook from "../../../../services/Request/useGetAllVendor";
+import * as useVendorBulkUploadHook from "../../../../services/Request/useVendorBulkUpload";
+
 import { APIStatus } from "../../../../reducers/api-reducer";
 
 describe("Admin Home Vendor", () => {
@@ -18,6 +20,7 @@ describe("Admin Home Vendor", () => {
   };
   beforeEach(() => {
     jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {}, status: ""});
+    jest.spyOn(useVendorBulkUploadHook, "useVendorBulkUpload").mockReturnValue(jest.fn());
   });
 
   afterEach(() => {

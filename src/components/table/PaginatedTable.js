@@ -4,6 +4,10 @@ import {faEllipsisV} from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import {
   Divider,
   Button,
+  // List,
+  // ListItem,
+  // ListItemText,
+  Tooltip,
   Chip,
   Paper,
   Table,
@@ -13,6 +17,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  // ListItemButton
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
@@ -119,6 +124,15 @@ export default function PaginatedTable({
     }
   };
 
+  // const getMessageAccordingToStatus = (status) => {
+  //   console.log("status----", status);
+  //   if (status === "APPROVED") {
+  //     return "REASSIGN";
+  //   } else {
+  //     return "APPROVE";
+  //   }
+  // };
+
   return (
     <Paper className="table" elevation={elevation}>
       <TableContainer>
@@ -178,11 +192,13 @@ export default function PaginatedTable({
                       if (column?.id === "status") {
                         return (
                           <TableCell align="left" className="chip" key={index}>
-                            <Chip
+                            <Tooltip title={row?.reason}>
+                              <Chip
                               label={row?.status}
                               color={getStatusColor(row?.status)}
                               size="small"
                             />
+                          </Tooltip>
                           </TableCell>
                         );
                       } else if (column?.id === "action") {
@@ -210,15 +226,14 @@ export default function PaginatedTable({
                                 className: "popOver",
                               }}
                             >
-                              <div className="popOverButton">
-                                <Button variant="text" onClick={handleModalOpen}>
+                                <Button variant="contained" sx={{ width: 100 }} disableElevation onClick={handleModalOpen}>
                                   Approve
+                                  {/* {(row?.status)} */}
                                 </Button>
                                 <Divider />
-                                <Button variant="text" onClick={handleCancelModalOpen}>
+                                <Button variant="outlined" sx={{ width: 100 }} onClick={handleCancelModalOpen}>
                                   Reject
                                 </Button>
-                              </div>
                             </Popover>
                           </TableCell>
                         );

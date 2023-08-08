@@ -62,7 +62,7 @@ export default function PaginatedTable({ columns, rows, page, handleChangePage, 
     if (status === "APPROVED") {
       return "primary";
     } else if (status === "PENDING") {
-      return "error";
+      return "warning";
     } else if (status === "REJECTED") {
       return "error";
     } else {

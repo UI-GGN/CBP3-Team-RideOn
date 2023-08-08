@@ -5,6 +5,7 @@ import { APIStatus } from "../../../../reducers/api-reducer";
 import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
 import * as useGetAllVendor from "../../../../services/Request/useGetAllVendor";
+import * as useExportAllRequests from "../../../../services/Request/useExportAllRequests";
 
 describe("Admin Home Requests", () => {
   const mockResponse = {
@@ -35,6 +36,7 @@ describe("Admin Home Requests", () => {
     jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
     jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
     jest.spyOn(useGetAllVendor, "useGetAllVendor").mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useExportAllRequests, "useExportAllRequests").mockReturnValue(jest.fn());
   });
 
   afterEach(() => {

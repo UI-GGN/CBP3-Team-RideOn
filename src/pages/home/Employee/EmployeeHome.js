@@ -150,7 +150,7 @@ function EmployeeHome() {
 
   return (
     <>
-      <Container maxWidth="xl" sx={{marginBottom: "30px"}}>
+      <Container maxWidth="2500px" sx={{marginBottom: "30px"}}>
         <Stack direction={"row"} spacing={2}>
           <Box
             sx={{

@@ -1,6 +1,6 @@
 import {cleanup, fireEvent, render} from "@testing-library/react";
 import Employee from "../EmployeeHome";
-import {useLocation} from "react-router-dom";
+import {BrowserRouter, useLocation} from "react-router-dom";
 import {useAuth0} from "@auth0/auth0-react";
 import AvatarWithPopper from "../../../../components/AvatarWithPopper";
 import {fireChangeForInputTimeIfValid} from "@testing-library/user-event/dist/keyboard/shared";
@@ -57,7 +57,7 @@ describe("Employee Home Page", () => {
   });
 
   it("should called avatar with imageLink", () => {
-    render(<Employee />);
+    render(<Employee />, {wrapper: BrowserRouter});
 
     expect(AvatarWithPopper).toBeCalledWith(
       {
@@ -71,13 +71,15 @@ describe("Employee Home Page", () => {
   });
 
   it("should display welcome msg for user", () => {
-    const {getByText} = render(<Employee />);
+    const {getByText} = render(<Employee />, {wrapper: BrowserRouter});
 
     expect(getByText(`Hello John,`)).toBeVisible();
   });
 
   it("should submit request with valid form attributes", () => {
-    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />, {
+      wrapper: BrowserRouter,
+    });
 
     act(() => {
       fireEvent.click(
@@ -98,7 +100,9 @@ describe("Employee Home Page", () => {
   });
 
   it("should display error message on submit of form without project code", () => {
-    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />, {
+      wrapper: BrowserRouter,
+    });
 
     act(() => {
       fireEvent.click(
@@ -122,7 +126,9 @@ describe("Employee Home Page", () => {
   });
 
   it("should display error message on submit of form without pickup location ", () => {
-    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />, {
+      wrapper: BrowserRouter,
+    });
 
     act(() => {
       fireEvent.click(
@@ -145,7 +151,9 @@ describe("Employee Home Page", () => {
   });
 
   it("should display error message on submit of form without drop location ", () => {
-    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />, {
+      wrapper: BrowserRouter,
+    });
 
     act(() => {
       fireEvent.click(
@@ -184,7 +192,7 @@ describe("Employee Home Page", () => {
       status: APIStatus.SUCCESS,
     });
 
-    const {getByText} = render(<Employee />);
+    const {getByText} = render(<Employee />, {wrapper: BrowserRouter});
     expect(getByText(mockEmployeeRequest[0].pickupLocation)).toBeInTheDocument();
     expect(getByText(mockEmployeeRequest[0].dropLocation)).toBeInTheDocument();
     expect(getByText("Sun 09 Jul 2023 10:52 AM")).toBeInTheDocument();
@@ -197,7 +205,7 @@ describe("Employee Home Page", () => {
       .spyOn(useGetAllRequest, "useGetAllRequest")
       .mockReturnValue({response: {}, status: APIStatus.LOADING});
 
-    const {getByRole} = render(<Employee />);
+    const {getByRole} = render(<Employee />, {wrapper: BrowserRouter});
 
     expect(getByRole("progressbar")).toBeInTheDocument();
   });
@@ -207,7 +215,7 @@ describe("Employee Home Page", () => {
       .spyOn(useGetAllRequest, "useGetAllRequest")
       .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
-    const {getByTestId} = render(<Employee />);
+    const {getByTestId} = render(<Employee />, {wrapper: BrowserRouter});
 
     expect(getByTestId("errorText")).toBeInTheDocument();
   });
@@ -236,7 +244,9 @@ describe("Employee Home Page", () => {
       status: APIStatus.SUCCESS,
     });
 
-    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />);
+    const {getByText, getByTestId, getByPlaceholderText} = render(<Employee />, {
+      wrapper: BrowserRouter,
+    });
 
     await act(async () => {
       fireEvent.click(
@@ -285,7 +295,7 @@ describe("Employee Home Page", () => {
       .spyOn(useGetAllRequest, "useGetAllRequest")
       .mockReturnValue({response: mockEmployeeRequest, status: APIStatus.SUCCESS});
 
-    const {getByTestId} = render(<Employee />);
+    const {getByTestId} = render(<Employee />, {wrapper: BrowserRouter});
 
     expect(getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(getByTestId("KeyboardArrowRightIcon"));
@@ -309,7 +319,8 @@ describe("Employee Home Page", () => {
     });
 
     const {getByText, getByTestId, getByPlaceholderText, queryByText} = render(
-      <Employee />
+      <Employee />,
+      {wrapper: BrowserRouter}
     );
     await act(async () => {
       fireEvent.click(

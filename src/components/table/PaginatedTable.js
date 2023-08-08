@@ -23,7 +23,7 @@ import NoDataImage from "../../../src/assets/NoData.svg";
 import ErrorImage from "../../../src/assets/Error.png";
 import ApproveModal from "../modal/ApproveModal";
 import CancelModal from "../modal/CancelModal";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
 
 export default function PaginatedTable({
   columns,
@@ -175,11 +175,20 @@ export default function PaginatedTable({
                 : (
                     rows?.map((row, index) => {
                       return (
-                  <TableRow className="tableRows" hover key={row.id} onClick={() => { navigate(`/home/request/${row._id}`, { state: { rowData: row } }); }}>
+                  <TableRow className="tableRows" hover key={row.id}>
                     {columns?.map((column) => {
                       if (column?.id === "status") {
                         return (
-                          <TableCell align="left" className="chip" key={index}>
+                          <TableCell
+                            align="left"
+                            className="chip"
+                            key={index}
+                            onClick={() => {
+                              navigate(`/home/request/${row._id}`, {
+                                state: {rowData: row},
+                              });
+                            }}
+                          >
                             <Chip
                               label={row?.status}
                               color={getStatusColor(row?.status)}
@@ -226,7 +235,16 @@ export default function PaginatedTable({
                         );
                       } else {
                         return (
-                          <TableCell component="th" className="tableCell" key={index}>
+                          <TableCell
+                            component="th"
+                            className="tableCell"
+                            key={index}
+                            onClick={() => {
+                              navigate(`/home/request/${row._id}`, {
+                                state: {rowData: row},
+                              });
+                            }}
+                          >
                             {row[column.id]}
                           </TableCell>
                         );

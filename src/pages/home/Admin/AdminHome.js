@@ -31,6 +31,13 @@ function AdminHome() {
   const length = breadcrumbsValues.length;
   const isHomePage = length === 1;
 
+  const getBreadCrumbValue = () => {
+    if (length > 2) {
+      return breadcrumbsValues[length - 2] + " / " + breadcrumbsValues[length - 1];
+    }
+    return breadcrumbsValues[length - 1];
+  };
+
   useEffect(() => {
     navigate("/home/requests", {replace: true});
   }, []);
@@ -58,7 +65,7 @@ function AdminHome() {
               <AvatarWithPopper imageLink={user.picture} />
             </Box>
             <Box sx={{marginTop: 8}}>
-              <BreadCrumb values={breadcrumbsValues[length - 1]} />
+              <BreadCrumb values={getBreadCrumbValue()} />
             </Box>
             <Box>
               <Outlet />

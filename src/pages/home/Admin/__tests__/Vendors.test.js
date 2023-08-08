@@ -4,6 +4,7 @@ import * as useGetAllVendorHook from "../../../../services/Request/useGetAllVend
 import {APIStatus} from "../../../../reducers/api-reducer";
 import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
+import {BrowserRouter} from "react-router-dom";
 
 describe("Admin Home Vendor", () => {
   const mockResponse = {
@@ -36,7 +37,7 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should render vendor table header", () => {
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByText("Vendor")).toBeInTheDocument();
     expect(screen.getByText("Contact Number")).toBeInTheDocument();
@@ -47,7 +48,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(useGetAllVendorHook.useGetAllVendor).toHaveBeenCalledWith({
       limit: 10,
@@ -60,7 +61,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: {}, status: APIStatus.LOADING});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByRole("progressbar")).toBeInTheDocument();
   });
@@ -70,7 +71,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByTestId("errorText")).toBeInTheDocument();
   });
@@ -80,7 +81,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByTestId("noRowText")).toBeInTheDocument();
   });
@@ -90,7 +91,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByText("Test Vendor")).toBeInTheDocument();
     expect(screen.getByText("9988776655")).toBeInTheDocument();
@@ -101,7 +102,7 @@ describe("Admin Home Vendor", () => {
       .spyOn(useGetAllVendorHook, "useGetAllVendor")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeVendors></HomeVendors>);
+    render(<HomeVendors></HomeVendors>, {wrapper: BrowserRouter});
 
     expect(screen.getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));

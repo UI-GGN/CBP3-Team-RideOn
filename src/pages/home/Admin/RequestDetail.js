@@ -43,7 +43,11 @@ function RequestDetail() {
               >
                 Status
               </Typography>
-              <Chip label={rowData.status} color={getStatusColor(rowData.status)} size="small" />
+              <Chip
+                label={rowData.status}
+                color={getStatusColor(rowData.status)}
+                size="small"
+              />
             </div>
           </CardContent>
         </Card>
@@ -90,8 +94,12 @@ function RequestDetail() {
                 <div className="cellHeaderContent">Project Code</div>
               </TableCell>
               <TableCell align="left">
-                <div className="cellContent">{rowData.raisedBy && rowData.raisedBy.name}</div>
-                <div className="cellContent">{rowData.raisedBy && rowData.raisedBy.email}</div>
+                <div className="cellContent">
+                  {rowData.raisedBy && rowData.raisedBy.name}
+                </div>
+                <div className="cellContent">
+                  {rowData.raisedBy && rowData.raisedBy.email}
+                </div>
                 <div className="cellContent">{rowData.projectCode}</div>
               </TableCell>
             </TableRow>
@@ -107,16 +115,24 @@ function RequestDetail() {
                 <div className="cellContent">{rowData.pickupTime}</div>
               </TableCell>
             </TableRow>
-            {rowData && rowData.allotedVendor && <TableRow>
-              <TableCell className="requestDetailTableCell">
-                <div className="cellHeaderContent">Vendor Name</div>
-                <div className="cellHeaderContent">Vendor Contact</div>
-              </TableCell>
-              <TableCell align="left">
-                <div className="cellContent">{rowData && rowData.allotedVendor && rowData.allotedVendor.name}</div>
-                <div className="cellContent">{rowData && rowData.allotedVendor && rowData.allotedVendor.contactNumber}</div>
-              </TableCell>
-            </TableRow>}
+            {rowData && rowData.allotedVendor && (
+              <TableRow>
+                <TableCell className="requestDetailTableCell">
+                  <div className="cellHeaderContent">Vendor Name</div>
+                  <div className="cellHeaderContent">Vendor Contact</div>
+                </TableCell>
+                <TableCell align="left">
+                  <div className="cellContent">
+                    {rowData && rowData.allotedVendor && rowData.allotedVendor.name}
+                  </div>
+                  <div className="cellContent">
+                    {rowData &&
+                      rowData.allotedVendor &&
+                      rowData.allotedVendor.contactNumber}
+                  </div>
+                </TableCell>
+              </TableRow>
+            )}
           </Table>
         </TableContainer>
       </Paper>

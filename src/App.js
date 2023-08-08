@@ -7,6 +7,7 @@ import HomeRequests from "./pages/home/Admin/Requests";
 import EmployeeHome from "./pages/home/Employee/EmployeeHome";
 import {useAuth0} from "@auth0/auth0-react";
 import HomeVendors from "./pages/home/Admin/Vendors";
+import RequestDetail from "./pages/home/Admin/RequestDetail";
 
 function App() {
   const {user} = useAuth0();
@@ -21,6 +22,7 @@ function App() {
         >
           <Route path="requests" element={<HomeRequests />} />
           <Route path="vendors" element={<HomeVendors />} />
+          <Route path="request/:id" element={<RequestDetail />} />
         </Route>
       </Routes>
     </div>

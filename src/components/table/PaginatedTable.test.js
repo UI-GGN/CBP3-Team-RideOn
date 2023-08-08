@@ -4,6 +4,7 @@ import {render, screen} from "@testing-library/react";
 import * as useUpdateStatus from "../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../services/Request/useGetVendorsForModal";
 import * as useGetAllVendor from "../../services/Request/useGetAllVendor";
+import {BrowserRouter} from "react-router-dom";
 
 describe("Paginated Table", () => {
   const mockCols = [
@@ -36,7 +37,8 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={"None"}
         handleChangePage={() => {}}
-      ></PaginatedTable>
+      ></PaginatedTable>,
+      {wrapper: BrowserRouter}
     );
 
     expect(screen.getByText("Col1")).toBeInTheDocument();
@@ -52,7 +54,8 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.FAILED}
         handleChangePage={() => {}}
-      ></PaginatedTable>
+      ></PaginatedTable>,
+      {wrapper: BrowserRouter}
     );
 
     expect(screen.getByTestId("errorText")).toBeInTheDocument();
@@ -67,7 +70,8 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.SUCCESS}
         handleChangePage={() => {}}
-      ></PaginatedTable>
+      ></PaginatedTable>,
+      {wrapper: BrowserRouter}
     );
 
     expect(screen.getByTestId("noRowText")).toBeInTheDocument();
@@ -82,7 +86,8 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.LOADING}
         handleChangePage={() => {}}
-      ></PaginatedTable>
+      ></PaginatedTable>,
+      {wrapper: BrowserRouter}
     );
 
     expect(screen.getByRole("progressbar")).toBeInTheDocument();
@@ -97,7 +102,8 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.SUCCESS}
         handleChangePage={() => {}}
-      ></PaginatedTable>
+      ></PaginatedTable>,
+      {wrapper: BrowserRouter}
     );
 
     expect(screen.getByText("Row1Col1")).toBeInTheDocument();

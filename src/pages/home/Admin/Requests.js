@@ -13,6 +13,7 @@ import {getDateTime} from "../../../utils/DateTimeConvertor";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
+import { useExportAllRequests } from '../../../services/Request/useExportAllRequests';
 
 const getAdminRowData = (requestList) => {
   const {data} = requestList;
@@ -33,8 +34,11 @@ function HomeRequests() {
   const employeeRowData = getAdminRowData(requestList);
   const [fromDate, setFromDate] = useState();
   const [tillDate, setTillDate] = useState();
+  const {response, fetchData} = useExportAllRequests();
 
   const convertJsonToWorkbook = (json) => {
+    // fetchData({fromDate, tillDate});
+    // console.log({response});
     const worksheet = XLSX.utils.json_to_sheet(json);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
@@ -59,10 +63,10 @@ function HomeRequests() {
   };
 
   const handleDownload = () => {
-    const workbook = convertJsonToWorkbook(rows);
-    const excelBuffer = XLSX.write(workbook, {bookType: "xlsx", type: "array"});
-    const data = new Blob([excelBuffer], {type: "application/octet-stream"});
-    saveAs(data, "EmployeeRequests.xlsx");
+    // const workbook = convertJsonToWorkbook(rows);
+    fetchData({fromDate, tillDate});
+    const data = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    saveAs(data, "EmployeeRequestsList.xlsx");
   };
 
   return (
@@ -83,7 +87,6 @@ function HomeRequests() {
             selected={fromDate}
             onChange={(date) => setFromDate(date)}
             minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
           />
         </div>
         <div className="datepickerContainer" style={{ flex: "1", display: "flex", alignItems: "center" }}>
@@ -93,7 +96,6 @@ function HomeRequests() {
             selected={tillDate}
             onChange={(date) => setTillDate(date)}
             minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
           />
         </div>
         <Button

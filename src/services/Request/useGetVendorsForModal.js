@@ -1,6 +1,6 @@
-import { useEffect, useReducer } from "react";
-import { useAxios } from "../../contexts/axios-context";
-import { reducer, fetching, success, error, APIStatus } from "../../reducers/api-reducer";
+import {useEffect, useReducer} from "react";
+import {useAxios} from "../../contexts/axios-context";
+import {reducer, fetching, success, error, APIStatus} from "../../reducers/api-reducer";
 
 const initialState = {
   response: {
@@ -19,7 +19,7 @@ export const useGetVendorsForModal = () => {
   const axiosInstance = useAxios();
   const params = {"page-number": 1, limit: 100};
 
-  const fetchVendors = async() => {
+  const fetchVendors = async () => {
     dispatch(fetching());
     try {
       const response = await axiosInstance.get("/vendors", {params});

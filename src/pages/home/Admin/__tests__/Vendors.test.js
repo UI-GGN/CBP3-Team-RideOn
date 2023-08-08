@@ -1,27 +1,37 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import HomeVendors from "../Vendors";
 import * as useGetAllVendorHook from "../../../../services/Request/useGetAllVendor";
-import { APIStatus } from "../../../../reducers/api-reducer";
+import * as useVendorBulkUploadHook from "../../../../services/Request/useVendorBulkUpload";
+
+import {APIStatus} from "../../../../reducers/api-reducer";
 import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
 
 describe("Admin Home Vendor", () => {
   const mockResponse = {
-    data: [{
-      name: "Test Vendor",
-      contactNumber: "9988776655"
-    }
+    data: [
+      {
+        name: "Test Vendor",
+        contactNumber: "9988776655",
+      },
     ],
     metadata: {
       pageNumber: "1",
       limit: "1",
-      total: 12
-    }
+      total: 12,
+    },
   };
   beforeEach(() => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {}, status: ""});
-    jest.spyOn(useUpdateStatus, "useUpdateStatus").mockReturnValue({response: {data: []}, status: ""});
-    jest.spyOn(useGetVendorsForModal, "useGetVendorsForModal").mockReturnValue({response: {data: []}, status: ""});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: {}, status: ""});
+    jest.spyOn(useVendorBulkUploadHook, "useVendorBulkUpload").mockReturnValue(jest.fn());
+    jest
+      .spyOn(useUpdateStatus, "useUpdateStatus")
+      .mockReturnValue({response: {data: []}, status: ""});
+    jest
+      .spyOn(useGetVendorsForModal, "useGetVendorsForModal")
+      .mockReturnValue({response: {data: []}, status: ""});
   });
 
   afterEach(() => {
@@ -36,15 +46,22 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should call useGetAllVendor to fetch data when page renders", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeVendors></HomeVendors>);
 
-    expect(useGetAllVendorHook.useGetAllVendor).toHaveBeenCalledWith({limit: 10, "page-number": 1});
+    expect(useGetAllVendorHook.useGetAllVendor).toHaveBeenCalledWith({
+      limit: 10,
+      "page-number": 1,
+    });
   });
 
   it("should show loader when apistatus is loading", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {}, status: APIStatus.LOADING});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: {}, status: APIStatus.LOADING});
 
     render(<HomeVendors></HomeVendors>);
 
@@ -52,7 +69,9 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should show error text when apistatus is Failed", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {}, status: APIStatus.FAILED});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
     render(<HomeVendors></HomeVendors>);
 
@@ -60,7 +79,9 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should show empty row text when row is empty", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
 
     render(<HomeVendors></HomeVendors>);
 
@@ -68,7 +89,9 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should display rows data when apistatus is SUCCESSFUL and data is not empty", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeVendors></HomeVendors>);
 
@@ -77,12 +100,17 @@ describe("Admin Home Vendor", () => {
   });
 
   it("should call useGetAllVendor to fetch data when click on next arrow button", () => {
-    jest.spyOn(useGetAllVendorHook, "useGetAllVendor").mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
+    jest
+      .spyOn(useGetAllVendorHook, "useGetAllVendor")
+      .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
     render(<HomeVendors></HomeVendors>);
 
     expect(screen.getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));
-    expect(useGetAllVendorHook.useGetAllVendor).toHaveBeenNthCalledWith(2, {limit: 10, "page-number": 2});
+    expect(useGetAllVendorHook.useGetAllVendor).toHaveBeenNthCalledWith(2, {
+      limit: 10,
+      "page-number": 2,
+    });
   });
 });

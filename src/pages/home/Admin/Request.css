@@ -11,7 +11,7 @@
 }
 
 .downloadButton {
-  height:40px;
+  height: 40px;
   width: 146px;
   background-color: #1976d20a !important;
   color: #1976d2 !important;
@@ -25,14 +25,14 @@
   width: 98% !important;
 }
 
-.exportLabel{
+.exportLabel {
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
   color: rgba(0, 0, 0, 0.6);
   text-align: start;
 }
-.datepicker{
+.datepicker {
   margin-right: 10px;
   font-weight: 400;
   font-size: 16px;
@@ -41,7 +41,7 @@
 }
 
 .downloadButton {
-  height:40px;
+  height: 40px;
   width: 146px;
   background-color: #1976d20a !important;
   color: #1976d2 !important;
@@ -51,7 +51,7 @@
   line-height: 36px;
 }
 
-.exportLabel{
+.exportLabel {
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
@@ -59,7 +59,7 @@
   text-align: start;
 }
 
-.datepicker{
+.datepicker {
   margin-right: 10px;
   font-weight: 400;
   font-size: 16px;

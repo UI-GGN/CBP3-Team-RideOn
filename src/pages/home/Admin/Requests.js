@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./AdminHome.css";
 import PaginatedTable from "../../../components/table/PaginatedTable";
 import {Box, Button} from "@mui/material";
@@ -67,47 +67,65 @@ function HomeRequests() {
 
   return (
     <>
-    <Box className="requestMain">
-        <PaginatedTable columns={adminReqColumns} rows={employeeRowData} page={page}
-        handleChangePage={handleChangePage} count={requestList?.metadata?.total} apiStatus={status}
-        reRenderReqPageAdmin={reRenderReqPageAdmin}
-        showErrorToastUpdateReq={showErrorToastUpdateReq}
-        showSuccessToastUpdateReq={showSuccessToastUpdateReq}
+      <Box className="requestMain">
+        <PaginatedTable
+          columns={adminReqColumns}
+          rows={employeeRowData}
+          page={page}
+          handleChangePage={handleChangePage}
+          count={requestList?.metadata?.total}
+          apiStatus={status}
+          reRenderReqPageAdmin={reRenderReqPageAdmin}
+          showErrorToastUpdateReq={showErrorToastUpdateReq}
+          showSuccessToastUpdateReq={showSuccessToastUpdateReq}
         />
-      <Box className="downloadContainer">
-        <div className="exportLabel" style={{ flex: "2" }}>Export Requests Report</div>
-        <div className="datepickerContainer" style={{ marginRight: "10px", flex: "1", display: "flex", alignItems: "center" }}>
-          <DatePicker
-            wrapperClassName="datePicker"
-            placeholderText="From Date"
-            selected={fromDate}
-            onChange={(date) => setFromDate(date)}
-            minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
-          />
-        </div>
-        <div className="datepickerContainer" style={{ flex: "1", display: "flex", alignItems: "center" }}>
-          <DatePicker
-            wrapperClassName="datePicker"
-            placeholderText="Till Date"
-            selected={tillDate}
-            onChange={(date) => setTillDate(date)}
-            minDate={new Date()}
-            dateFormat="dd/MM/yyyy"
-          />
-        </div>
-        <Button
-          className="downloadButton"
-          variant="contained"
-          size="medium"
-          onClick={handleDownload}
-          style={{ flex: "1", display: "flex", alignItems: "center"}}
-        >
-          Download <GetAppIcon />
-        </Button>
+        <Box className="downloadContainer">
+          <div className="exportLabel" style={{flex: "2"}}>
+            Export Requests Report
+          </div>
+          <div
+            className="datepickerContainer"
+            style={{
+              marginRight: "10px",
+              flex: "1",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <DatePicker
+              wrapperClassName="datePicker"
+              placeholderText="From Date"
+              selected={fromDate}
+              onChange={(date) => setFromDate(date)}
+              minDate={new Date()}
+              dateFormat="dd/MM/yyyy"
+            />
+          </div>
+          <div
+            className="datepickerContainer"
+            style={{flex: "1", display: "flex", alignItems: "center"}}
+          >
+            <DatePicker
+              wrapperClassName="datePicker"
+              placeholderText="Till Date"
+              selected={tillDate}
+              onChange={(date) => setTillDate(date)}
+              minDate={new Date()}
+              dateFormat="dd/MM/yyyy"
+            />
+          </div>
+          <Button
+            className="downloadButton"
+            variant="contained"
+            size="medium"
+            onClick={handleDownload}
+            style={{flex: "1", display: "flex", alignItems: "center"}}
+          >
+            Download <GetAppIcon />
+          </Button>
+        </Box>
       </Box>
-    </Box>
-    <ToastContainer />
+      <ToastContainer />
     </>
   );
 }

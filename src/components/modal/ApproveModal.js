@@ -77,33 +77,40 @@ const ApproveModal = ({
             Select Vendor
           </InputLabel>
           <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={vendorId}
-              label="Select Vendor"
-              onChange={handleChange}
-              style = {{ margin: 25 }}
-            >
-              {vendorList?.map(
-                (vendor) => <MenuItem key={vendor._id} value={vendor._id}>
-                  {vendor.name}
-                  </MenuItem>)}
-            </Select>
-            </FormControl>
-            <Box style = {{ marginLeft: 580 }}>
-            <Button variant="outlined"
-            onClick={onClose} color="error"
-            style = {{ marginTop: 10, marginRight: 5, marginBottom: 25 }}>
-              Cancel
-            </Button>
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={vendorId}
+            label="Select Vendor"
+            onChange={handleChange}
+            style={{margin: 25}}
+          >
+            {vendorList?.map((vendor) => (
+              <MenuItem key={vendor._id} value={vendor._id}>
+                {vendor.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Box style={{marginLeft: 580}}>
+          <Button
+            variant="outlined"
+            onClick={onClose}
+            color="error"
+            style={{marginTop: 10, marginRight: 5, marginBottom: 25}}
+          >
+            Cancel
+          </Button>
 
-            <Button variant="outlined" onClick={handleSubmit}
-            style = {{ marginTop: 10, marginRight: 5, marginBottom: 25 }}>
-              Approve
-            </Button>
-            </Box>
-          </Paper>
-        </Modal>
+          <Button
+            variant="outlined"
+            onClick={handleSubmit}
+            style={{marginTop: 10, marginRight: 5, marginBottom: 25}}
+          >
+            Approve
+          </Button>
+        </Box>
+      </Paper>
+    </Modal>
   );
 };
 

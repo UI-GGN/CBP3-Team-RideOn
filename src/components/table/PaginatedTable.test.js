@@ -37,8 +37,7 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={"None"}
         handleChangePage={() => {}}
-      ></PaginatedTable>
-    ,
+      ></PaginatedTable>,
       {wrapper: BrowserRouter}
     );
 
@@ -55,8 +54,7 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.FAILED}
         handleChangePage={() => {}}
-      ></PaginatedTable>
-    ,
+      ></PaginatedTable>,
       {wrapper: BrowserRouter}
     );
 
@@ -72,8 +70,7 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.SUCCESS}
         handleChangePage={() => {}}
-      ></PaginatedTable>
-    ,
+      ></PaginatedTable>,
       {wrapper: BrowserRouter}
     );
 
@@ -89,8 +86,7 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.LOADING}
         handleChangePage={() => {}}
-      ></PaginatedTable>
-    ,
+      ></PaginatedTable>,
       {wrapper: BrowserRouter}
     );
 
@@ -106,8 +102,7 @@ describe("Paginated Table", () => {
         count={10}
         apiStatus={APIStatus.SUCCESS}
         handleChangePage={() => {}}
-      ></PaginatedTable>
-    ,
+      ></PaginatedTable>,
       {wrapper: BrowserRouter}
     );
 

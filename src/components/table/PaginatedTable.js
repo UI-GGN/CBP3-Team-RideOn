@@ -154,7 +154,7 @@ export default function PaginatedTable({
             </TableRow>
           </TableHead>
           <TableBody className="tableBody">
-            {isLoadingOrError
+            { isLoadingOrError
               ? (
               <TableRow>
                 <TableCell
@@ -198,12 +198,12 @@ export default function PaginatedTable({
                             }}
                           >
                             <Tooltip title={row?.reason}>
-                            <Chip
-                              label={row?.status}
-                              color={getStatusColor(row?.status)}
-                              size="small"
-                            />
-                          </Tooltip>
+                              <Chip
+                                label={row?.status}
+                                color={getStatusColor(row?.status)}
+                                size="small"
+                              />
+                            </Tooltip>
                           </TableCell>
                         );
                       } else if (column?.id === "action") {
@@ -231,15 +231,24 @@ export default function PaginatedTable({
                                 className: "popOver",
                               }}
                             >
-                                <Button variant="contained" sx={{ width: 100 }} disableElevation onClick={handleModalOpen}>
-                                  {/* Approve */}
-                                  {/* {(row?.status)} */}
-                                  {approveReassign}
-                                </Button>
-                                <Divider />
-                                <Button variant="outlined" sx={{ width: 100 }} onClick={handleCancelModalOpen}>
-                                  Reject
-                                </Button>
+                              <Button
+                                variant="contained"
+                                sx={{width: 100}}
+                                disableElevation
+                                onClick={handleModalOpen}
+                              >
+                                {/* Approve */}
+                                {/* {(row?.status)} */}
+                                {approveReassign}
+                              </Button>
+                              <Divider />
+                              <Button
+                                variant="outlined"
+                                sx={{width: 100}}
+                                onClick={handleCancelModalOpen}
+                              >
+                                Reject
+                              </Button>
                             </Popover>
                           </TableCell>
                         );

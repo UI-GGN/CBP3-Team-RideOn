@@ -68,11 +68,6 @@ function HomeRequests() {
     const startDate = fromDate && moment(fromDate);
     const endDate = tillDate && moment(tillDate);
 
-    if (!(fromDate && tillDate)) {
-      showErrorToastUpdateReq("Please choose From and Till Date");
-      return null;
-    }
-
     if (!startDate) {
       showErrorToastUpdateReq("Please Enter From Date");
       return null;
@@ -80,6 +75,11 @@ function HomeRequests() {
 
     if (!endDate) {
       showErrorToastUpdateReq("Please Enter Till Date");
+      return null;
+    }
+
+    if (!(fromDate && tillDate)) {
+      showErrorToastUpdateReq("Please choose From and Till Date");
       return null;
     }
 

@@ -9,7 +9,7 @@ import {useVendorBulkUpload} from "../../../services/Request/useVendorBulkUpload
 import {APIStatus} from "../../../reducers/api-reducer";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import GetAppIcon from "@mui/icons-material/GetApp";
+import PublishIcon from "@mui/icons-material/Publish";
 
 const getVendorRows = (requestList) => {
   return requestList?.data;
@@ -25,9 +25,12 @@ const HomeVendors = () => {
   const [params, setParams] = useState({"page-number": 1, limit: 10});
   const {response: requestList, status} = useGetAllVendor(params);
   const vendorRowData = getVendorRows(requestList);
-  const [vendorExcelFile, setVendorExcelFile] = useState("");
+  const [vendorExcelFile, setVendorExcelFile] = useState(null);
   const {bulkUploadVendor} = useVendorBulkUpload();
   const [fileInputKey, setFileInputKey] = useState(0);
+  const [fileInputErrorMsg, setFileInputErrorMsg] = useState(null);
+  const [fileInputError, setFileInputError] = useState(false);
+  const fileInputhelperText = "Only .xlsx or .xls is allowed";
 
   const handleChangePage = async (_event, newPage) => {
     setPage(newPage);
@@ -42,27 +45,34 @@ const HomeVendors = () => {
   const reset = () => {
     setFileInputKey(Math.random().toString(36));
     setVendorExcelFile("");
+    setFileInputErrorMsg(fileInputhelperText);
+    setFileInputError(false);
   };
 
   const handleOnSubmit = async () => {
+    if (!vendorExcelFile) {
+      setFileInputErrorMsg("Please upload the file");
+      setFileInputError(true);
+      return;
+    }
     const formData = new FormData();
     formData.append("file", vendorExcelFile);
     const status = await bulkUploadVendor(formData);
     if (status === APIStatus.SUCCESS) {
-      showSuccessToastMessage();
+      showSuccessToastMessage("Successfully uploaded Vendors!");
       setParams({"page-number": 1, limit: 10});
     } else {
-      showErrorToastMessage();
+      showErrorToastMessage("Failed to upload the vendors!");
     }
     reset();
   };
 
-  const showSuccessToastMessage = () => {
-    toast.success("Successfully uploaded Vendors!");
+  const showSuccessToastMessage = (message) => {
+    toast.success(message);
   };
 
-  const showErrorToastMessage = () => {
-    toast.error("Failed to upload the vendors!");
+  const showErrorToastMessage = (message) => {
+    toast.error(message);
   };
 
   return (
@@ -79,15 +89,20 @@ const HomeVendors = () => {
           elevation={2}
         />
         <Box className="uploadContainer">
-          <span>Bulk Upload Vendors</span>
+          <span>Bulk Upload Vendors<span style={{color: "red"}}>*</span></span>
           <FormControl>
             <Input
+              required
               key={fileInputKey || ""}
               type="file"
               id="file-input"
               inputProps={{accept: ".xls, .xlsx"}}
               onChange={handleFileUpload}
+              error={fileInputError}
             />
+            { fileInputError
+              ? <span style={{fontSize: 10, color: "red"}}> {fileInputErrorMsg}</span>
+              : <span style={{fontSize: 10, color: "#1976d2"}}> {fileInputhelperText}</span>}
           </FormControl>
           <Button
             className="uploadButton"
@@ -95,7 +110,7 @@ const HomeVendors = () => {
             size="medium"
             onClick={handleOnSubmit}
           >
-            Submit <GetAppIcon />
+            Submit <PublishIcon style={{paddingLeft: 5}}fontSize="small"/>
           </Button>
         </Box>
       </Box>

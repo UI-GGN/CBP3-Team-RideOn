@@ -30,7 +30,7 @@ const CancelModal = ({
   showSuccessToastUpdateReq,
 }) => {
   const [comment, setComment] = useState("");
-  const {apiStatus, updateStatus} = useUpdateStatus();
+  const {updateStatus} = useUpdateStatus();
 
   const bodyCancel = {
     status: "REJECTED",
@@ -42,7 +42,7 @@ const CancelModal = ({
   };
 
   const handleSubmit = async () => {
-    updateStatus(requestId, bodyCancel);
+    const apiStatus = await updateStatus(requestId, bodyCancel);
     onClose();
     if (apiStatus === APIStatus.SUCCESS) {
       showSuccessToastUpdateReq("Request Rejected Successfully");

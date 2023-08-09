@@ -110,7 +110,7 @@ const HomeVendors = () => {
             size="medium"
             onClick={handleOnSubmit}
           >
-            Submit <PublishIcon style={{paddingLeft: 5}}fontSize="small"/>
+            Submit <PublishIcon style={{paddingLeft: 5}} fontSize="small"/>
           </Button>
         </Box>
       </Box>

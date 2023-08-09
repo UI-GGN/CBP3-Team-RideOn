@@ -32,7 +32,7 @@ const ApproveModal = ({
   showErrorToastUpdateReq,
   showSuccessToastUpdateReq,
 }) => {
-  const {apiStatus, updateStatus} = useUpdateStatus();
+  const {updateStatus} = useUpdateStatus();
   const [vendorId, setVendorId] = useState("");
   const {data: vendorLists} = useGetVendorsForModal();
 
@@ -47,7 +47,7 @@ const ApproveModal = ({
   };
 
   const handleSubmit = async () => {
-    updateStatus(requestId, bodyApprove);
+    const apiStatus = await updateStatus(requestId, bodyApprove);
     setVendorId("");
     onClose();
     if (apiStatus === APIStatus.SUCCESS) {

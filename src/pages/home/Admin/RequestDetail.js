@@ -19,7 +19,7 @@ function RequestDetail() {
     if (status === "APPROVED") {
       return "primary";
     } else if (status === "PENDING") {
-      return "error";
+      return "warning";
     } else if (status === "REJECTED") {
       return "error";
     } else {

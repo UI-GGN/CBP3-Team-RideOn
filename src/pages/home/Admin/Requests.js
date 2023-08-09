@@ -145,7 +145,12 @@ function HomeRequests() {
           </div>
           <div
             className="datepickerContainer"
-            style={{flex: "1", display: "flex", flexDirection: "column", alignItems: "center"}}
+            style={{
+              flex: "1",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <DatePicker
               required

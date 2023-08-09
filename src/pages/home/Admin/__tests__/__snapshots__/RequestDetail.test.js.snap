@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Request Detail test renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="cardContainer"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root requestDetailCard css-bhp9pd-MuiPaper-root-MuiCard-root"
+      >
+        <div
+          class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+        >
+          <div
+            class="cardContent"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom heading css-84mn5j-MuiTypography-root"
+              font="Roboto"
+            >
+              Status
+            </p>
+            <div
+              class="MuiChip-root MuiChip-filled MuiChip-sizeSmall MuiChip-colorDefault MuiChip-filledDefault css-1fj5pxn-MuiChip-root"
+            >
+              <span
+                class="MuiChip-label MuiChip-labelSmall css-wjsjww-MuiChip-label"
+              >
+                Approved
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root requestDetailCard css-bhp9pd-MuiPaper-root-MuiCard-root"
+      >
+        <div
+          class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+        >
+          <div
+            class="cardContent"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-84mn5j-MuiTypography-root"
+              font="Roboto"
+            >
+              Created At
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-r9rcpu-MuiTypography-root"
+            >
+              2023-08-08T16:39:28.242Z
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-jhsodw-MuiPaper-root-MuiCard-root"
+      >
+        <div
+          class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+        >
+          <div
+            class="cardContent"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-84mn5j-MuiTypography-root"
+              font="Roboto"
+            >
+              Modified At
+            </p>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-r9rcpu-MuiTypography-root"
+            >
+              2023-08-08T16:39:28.242Z
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 requestDetailPaper css-1ps6pg7-MuiPaper-root"
+    >
+      <div
+        class="MuiTableContainer-root css-41abqd-MuiTableContainer-root"
+      >
+        <table
+          aria-label="sticky table"
+          class="MuiTable-root css-rqglhn-MuiTable-root"
+        >
+          <tr
+            class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-sizeMedium requestDetailTableCell css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellHeaderContent"
+              >
+                Employee Name
+              </div>
+              <div
+                class="cellHeaderContent"
+              >
+                Email
+              </div>
+              <div
+                class="cellHeaderContent"
+              >
+                Project Code
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellContent"
+              >
+                Anu
+              </div>
+              <div
+                class="cellContent"
+              >
+                test@gmail.com
+              </div>
+              <div
+                class="cellContent"
+              >
+                Test1
+              </div>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-sizeMedium requestDetailTableCell css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellHeaderContent"
+              >
+                Pickup Location
+              </div>
+              <div
+                class="cellHeaderContent"
+              >
+                Drop Location
+              </div>
+              <div
+                class="cellHeaderContent"
+              >
+                Pickup Time
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellContent"
+              >
+                Location-B
+              </div>
+              <div
+                class="cellContent"
+              >
+                Location-A
+              </div>
+              <div
+                class="cellContent"
+              >
+                Tue 18 Jul 2023 9:30 PM
+              </div>
+            </td>
+          </tr>
+          <tr
+            class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          >
+            <td
+              class="MuiTableCell-root MuiTableCell-sizeMedium requestDetailTableCell css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellHeaderContent"
+              >
+                Vendor Name
+              </div>
+              <div
+                class="cellHeaderContent"
+              >
+                Vendor Contact
+              </div>
+            </td>
+            <td
+              class="MuiTableCell-root MuiTableCell-alignLeft MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+            >
+              <div
+                class="cellContent"
+              >
+                A1 Cab Services
+              </div>
+              <div
+                class="cellContent"
+              >
+                919005695229
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+`;

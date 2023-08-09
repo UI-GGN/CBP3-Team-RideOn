@@ -4,9 +4,6 @@ import {faEllipsisV} from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import {
   Divider,
   Button,
-  // List,
-  // ListItem,
-  // ListItemText,
   Tooltip,
   Chip,
   Paper,
@@ -17,7 +14,6 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  // ListItemButton
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
@@ -28,6 +24,7 @@ import NoDataImage from "../../../src/assets/NoData.svg";
 import ErrorImage from "../../../src/assets/Error.png";
 import ApproveModal from "../modal/ApproveModal";
 import CancelModal from "../modal/CancelModal";
+import {useNavigate} from "react-router-dom";
 
 export default function PaginatedTable({
   columns,
@@ -53,6 +50,7 @@ export default function PaginatedTable({
   const [openModal, setModalOpen] = React.useState(false);
   const [openCancelModal, setCancelModalOpen] = React.useState(false);
   const [requestId, setRequestId] = React.useState("");
+  const navigate = useNavigate();
   const [approveReassign, setApproveReassign] = React.useState("APPROVE");
 
   const handleActionClick = (event) => {
@@ -156,7 +154,7 @@ export default function PaginatedTable({
             </TableRow>
           </TableHead>
           <TableBody className="tableBody">
-            {isLoadingOrError
+            { isLoadingOrError
               ? (
               <TableRow>
                 <TableCell
@@ -189,14 +187,23 @@ export default function PaginatedTable({
                     {columns?.map((column) => {
                       if (column?.id === "status") {
                         return (
-                          <TableCell align="left" className="chip" key={index}>
+                          <TableCell
+                            align="left"
+                            className="chip"
+                            key={index}
+                            onClick={() => {
+                              navigate(`/home/request/${row._id}`, {
+                                state: {rowData: row},
+                              });
+                            }}
+                          >
                             <Tooltip title={row?.reason}>
                               <Chip
-                              label={row?.status}
-                              color={getStatusColor(row?.status)}
-                              size="small"
-                            />
-                          </Tooltip>
+                                label={row?.status}
+                                color={getStatusColor(row?.status)}
+                                size="small"
+                              />
+                            </Tooltip>
                           </TableCell>
                         );
                       } else if (column?.id === "action") {
@@ -224,21 +231,39 @@ export default function PaginatedTable({
                                 className: "popOver",
                               }}
                             >
-                                <Button variant="contained" sx={{ width: 100 }} disableElevation onClick={handleModalOpen}>
-                                  {/* Approve */}
-                                  {/* {(row?.status)} */}
-                                  {approveReassign}
-                                </Button>
-                                <Divider />
-                                <Button variant="outlined" sx={{ width: 100 }} onClick={handleCancelModalOpen}>
-                                  Reject
-                                </Button>
+                              <Button
+                                variant="contained"
+                                sx={{width: 100}}
+                                disableElevation
+                                onClick={handleModalOpen}
+                              >
+                                {/* Approve */}
+                                {/* {(row?.status)} */}
+                                {approveReassign}
+                              </Button>
+                              <Divider />
+                              <Button
+                                variant="outlined"
+                                sx={{width: 100}}
+                                onClick={handleCancelModalOpen}
+                              >
+                                Reject
+                              </Button>
                             </Popover>
                           </TableCell>
                         );
                       } else {
                         return (
-                          <TableCell component="th" className="tableCell" key={index}>
+                          <TableCell
+                            component="th"
+                            className="tableCell"
+                            key={index}
+                            onClick={() => {
+                              navigate(`/home/request/${row._id}`, {
+                                state: {rowData: row},
+                              });
+                            }}
+                          >
                             {row[column.id]}
                           </TableCell>
                         );

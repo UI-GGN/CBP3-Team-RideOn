@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx prettier --write .
-npm run lint
+npm run lint -- --fix
 npm audit json
 npm test -- --watchAll=false
 npm run build

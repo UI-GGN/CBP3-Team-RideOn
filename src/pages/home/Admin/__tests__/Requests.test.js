@@ -5,7 +5,7 @@ import {APIStatus} from "../../../../reducers/api-reducer";
 import * as useUpdateStatus from "../../../../services/Request/useUpdateStatus";
 import * as useGetVendorsForModal from "../../../../services/Request/useGetVendorsForModal";
 import * as useGetAllVendor from "../../../../services/Request/useGetAllVendor";
-import {BrowserRouter} from "react-router-dom";
+import * as useExportAllRequests from "../../../../services/Request/useExportAllRequests";
 
 describe("Admin Home Requests", () => {
   const mockResponse = {
@@ -43,6 +43,7 @@ describe("Admin Home Requests", () => {
     jest
       .spyOn(useGetAllVendor, "useGetAllVendor")
       .mockReturnValue({response: {data: []}, status: ""});
+    jest.spyOn(useExportAllRequests, "useExportAllRequests").mockReturnValue(jest.fn());
   });
 
   afterEach(() => {
@@ -50,7 +51,7 @@ describe("Admin Home Requests", () => {
   });
 
   it("should render admin table header", () => {
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByText("Employee")).toBeInTheDocument();
     expect(screen.getByText("Project Code")).toBeInTheDocument();
@@ -66,7 +67,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(useGetAllRequestHook.useGetAllRequest).toHaveBeenCalledWith(
       {limit: 10, "page-number": 1},
@@ -79,7 +80,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: {}, status: APIStatus.LOADING});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByRole("progressbar")).toBeInTheDocument();
   });
@@ -89,7 +90,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: {}, status: APIStatus.FAILED});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByTestId("errorText")).toBeInTheDocument();
   });
@@ -99,7 +100,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: {data: []}, status: APIStatus.SUCCESS});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByTestId("noRowText")).toBeInTheDocument();
   });
@@ -109,7 +110,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByText("Test User")).toBeInTheDocument();
     expect(screen.getByText("Test Project")).toBeInTheDocument();
@@ -124,7 +125,7 @@ describe("Admin Home Requests", () => {
       .spyOn(useGetAllRequestHook, "useGetAllRequest")
       .mockReturnValue({response: mockResponse, status: APIStatus.SUCCESS});
 
-    render(<HomeRequests></HomeRequests>, {wrapper: BrowserRouter});
+    render(<HomeRequests></HomeRequests>);
 
     expect(screen.getByTestId("KeyboardArrowRightIcon")).toBeEnabled();
     fireEvent.click(screen.getByTestId("KeyboardArrowRightIcon"));

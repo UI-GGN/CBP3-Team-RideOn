@@ -4,6 +4,7 @@ import {faEllipsisV} from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import {
   Divider,
   Button,
+  Tooltip,
   Chip,
   Paper,
   Table,
@@ -50,6 +51,7 @@ export default function PaginatedTable({
   const [openCancelModal, setCancelModalOpen] = React.useState(false);
   const [requestId, setRequestId] = React.useState("");
   const navigate = useNavigate();
+  const [approveReassign, setApproveReassign] = React.useState("APPROVE");
 
   const handleActionClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -59,8 +61,14 @@ export default function PaginatedTable({
     setAnchorEl(null);
   };
 
-  const handleStatusUpdate = (requestId) => {
+  const handleStatusUpdate = (requestId, reqStatus) => {
     setRequestId(requestId);
+    if (reqStatus === "APPROVED") {
+      setApproveReassign("REASSIGN");
+    }
+    if (reqStatus === "REJECTED" || reqStatus === "PENDING") {
+      setApproveReassign("APPROVE");
+    }
   };
 
   const handleModalOpen = (requestId) => {
@@ -113,7 +121,7 @@ export default function PaginatedTable({
     if (status === "APPROVED") {
       return "primary";
     } else if (status === "PENDING") {
-      return "error";
+      return "warning";
     } else if (status === "REJECTED") {
       return "error";
     } else {
@@ -189,11 +197,13 @@ export default function PaginatedTable({
                               });
                             }}
                           >
+                            <Tooltip title={row?.reason}>
                             <Chip
                               label={row?.status}
                               color={getStatusColor(row?.status)}
                               size="small"
                             />
+                          </Tooltip>
                           </TableCell>
                         );
                       } else if (column?.id === "action") {
@@ -203,7 +213,7 @@ export default function PaginatedTable({
                               aria-label="Example"
                               onClick={(event) => {
                                 handleActionClick(event);
-                                handleStatusUpdate(row._id);
+                                handleStatusUpdate(row._id, row?.status);
                               }}
                             >
                               <FontAwesomeIcon icon={faEllipsisV} />
@@ -221,15 +231,15 @@ export default function PaginatedTable({
                                 className: "popOver",
                               }}
                             >
-                              <div className="popOverButton">
-                                <Button variant="text" onClick={handleModalOpen}>
-                                  Approve
+                                <Button variant="contained" sx={{ width: 100 }} disableElevation onClick={handleModalOpen}>
+                                  {/* Approve */}
+                                  {/* {(row?.status)} */}
+                                  {approveReassign}
                                 </Button>
                                 <Divider />
-                                <Button variant="text" onClick={handleCancelModalOpen}>
+                                <Button variant="outlined" sx={{ width: 100 }} onClick={handleCancelModalOpen}>
                                   Reject
                                 </Button>
-                              </div>
                             </Popover>
                           </TableCell>
                         );
